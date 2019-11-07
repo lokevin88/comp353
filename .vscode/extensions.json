@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    // Debugger for Chrome
+    "msjsdiag.debugger-for-chrome",
+    // Prettier - Code formatter
+    "esbenp.prettier-vscode"
+  ]
+}
+
