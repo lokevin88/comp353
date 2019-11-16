@@ -1,10 +1,11 @@
 <?php
 
-    DEFINE ('dbUser', '');
+    DEFINE ('dbUser', 'root');
     DEFINE ('dbPassword', '');
-    DEFINED ('dbhost', '');
+    DEFINE ('dbHost', 'localhost');
+    DEFINE ('dbName', 'rr_comp353_2');
 
-    $databaseConnection = mysqli_connect(dbHost, dbUser, dbPassword);
+    $databaseConnection = mysqli_connect(dbHost, dbUser, dbPassword, dbName);
 
     if(!$databaseConnection) {
         echo 'Could not connect to the server';
