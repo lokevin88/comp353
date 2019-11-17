@@ -1,7 +1,10 @@
 {
   "editor.formatOnSave": true,
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
   "editor.codeActionsOnSave": {
     "source.organizeImports": true
-  }
+  },
+  "editor.acceptSuggestionOnCommitCharacter": false
 }
-

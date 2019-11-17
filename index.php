@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-  <?php
-    require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/head.php';
+<?php
+    require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/navbar.php';
   ?>
-  <body></body>
+
+<div class="main-body container-fluid">
+
+</div>
+
+
 </html>
