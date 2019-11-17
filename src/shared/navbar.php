@@ -3,7 +3,7 @@
   ?>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
     <a class="navbar-brand" href="#">rr_comp353_2</a>
 
     <div class="d-flex flex-fill justify-content-end">
@@ -18,7 +18,7 @@
     <div class="container">
       <div class="row my-3 justify-content-center">
         <img src="/comp353/src/assets/images/mockedprofilepic.png" alt="mock"
-          class="img-fluid img-thumbnail profile-wrap">
+          class="img-fluid img-thumbnail profile-wrap shadow-sm">
       </div>
 
       <div class="row px-4">
@@ -30,9 +30,7 @@
       <hr>
 
       <div class="row px-4" style="transform: rotate(0);">
-        <span>
-          <i class="fa fa-address-book"></i> <a href="#" class="stretched-link">my account</a>
-        </span>
+        <a href="#" class="stretched-link">my account</a>
       </div>
 
       <hr>
