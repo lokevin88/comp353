@@ -33,7 +33,7 @@
   ></script>
 
   <link
-    href="/comp353/src/assets/common-css/common.css"
+    href="/comp353/src/assets/css/common.css"
     type="text/css"
     rel="stylesheet"
   />

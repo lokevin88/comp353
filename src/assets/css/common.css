@@ -1,3 +1,9 @@
+/* newsfeed css */
+@import "/comp353/src/assets/css/newsfeed.css";
+
+/* login css */
+@import "/comp353/src/assets/css/login.css";
+
 * {
   font-family: "Roboto";
   margin: 0;
