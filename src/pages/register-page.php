@@ -5,16 +5,29 @@
 
     if(isset($_POST['register'])) {
       $email = $_POST['email'];
+      $username = $_POST['username'];
       $fname = $_POST['fname'];
       $lname = $_POST['lname'];
       $gender = $_POST['gender'];
+      $dob = $_POST['dob'];
+      $profilePic = "/src/assets/images/mockuser.png";
       $pwd = $_POST['pwd'];
 
-      echo $email;
-      echo $fname;
-      echo $lname;
-      echo $gender;
-      echo $pwd;
+      echo $username;
+      echo $dob;
+
+      $emailResult_query = mysqli_query($databaseConnection, "SELECT * FROM user where emailAddress='$email'");
+      $emailResult_rows = mysqli_num_rows($emailResult_query);
+
+      if($emailResult_rows > 0) {
+        // call jsfunction to display message PLACEHOLDER
+        echo 'poop';
+      }
+      else {
+        $register_query = mysqli_query($databaseConnection, "INSERT INTO user (emailAddress, username, firstName, lastName, gender, dob, profilePicture, password) VALUES
+        ('$email', '$username', '$fname', '$lname', '$gender', '$dob', '$profilePic', '$pwd')");
+        navigateTo("/comp353/index.php");                                             
+      }
 
     }
   ?>
@@ -48,7 +61,7 @@
                   <div class="form-group row">
                     <label for="email" class="col-sm-2 col-form-label text-nowrap">Email</label>
                     <div class="col-sm-10">
-                      <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
+                      <input type="email" class="form-control" name="email" id="email" placeholder="test@hotmail.com" required>
                     </div>
                   </div>
                   <div class="form-group row">
@@ -58,9 +71,9 @@
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="lname" class="col-sm-2 col-form-label text-nowrap">Last Name</label>
+                    <label for="lname" class="col-sm-2 col-form-label text-nowrap">John</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" name="lname" id="lname" placeholder="Enter last name">
+                      <input type="text" class="form-control" name="lname" id="lname" placeholder="Doe">
                     </div>
                   </div>
                   <fieldset class="form-group">
@@ -82,8 +95,21 @@
                         </div>
                       </div>
                     </div>
-
                   </fieldset>
+                  <div class="form-group row">
+                    <label for="dob" class="col-sm-2 col-form-label text-nowrap">Date of Birth</label>
+                    <div class="col-sm-10">
+                      <input type="date" class="form-control" name="dob" id="dob"
+                        required>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="username" class="col-sm-2 col-form-label text-nowrap">Username</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" name="username" id="username" placeholder="JohnDoe"
+                        required>
+                    </div>
+                  </div>
                   <div class="form-group row">
                     <label for="pwd" class="col-sm-2 col-form-label text-nowrap">Password</label>
                     <div class="col-sm-10">
