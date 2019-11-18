@@ -21,7 +21,7 @@
 
       if($emailResult_rows > 0) {
         // call jsfunction to display message PLACEHOLDER
-        echo 'poop';
+        echo 'test';
       }
       else {
         $register_query = mysqli_query($databaseConnection, "INSERT INTO user (emailAddress, username, firstName, lastName, gender, dob, profilePicture, password) VALUES
