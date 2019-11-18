@@ -2,7 +2,25 @@
 <html lang="en">
 <?php
     require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/head.php';
-  ?>
+
+    if(isset($_POST['login'])) {
+      $email = $_POST['email'];
+      $pwd = $_POST['pwd'];
+
+      $user_query = mysqli_query($databaseConnection, "SELECT * FROM user where emailAddress='$email' AND password='$pwd'");
+      $user_rows = mysqli_num_rows($user_query);
+
+      if(!empty($user_rows)) {
+        $row = mysqli_fetch_array($user_query);
+        $username = $row['username'];
+
+        $_SESSION['username'] = $username;
+        $_SESSION['email'] = $email;
+
+        navigateTo("/comp353/src/pages/homepage.php"); 
+      }
+    }
+?>
 
 <body class="vh-100">
   <div id="login-wrapper" class="bg-dark">
@@ -29,7 +47,7 @@
                 <h1>Sign in</h1>
               </div>
               <div class="row-nomargin margin-30">
-                <form>
+                <form action="index.php" method="POST">
                   <div class="form-group row">
                     <label for="email" class="col-sm-2 col-form-label text-nowrap">Email</label>
                     <div class="col-sm-10">
@@ -44,7 +62,7 @@
                   </div>
                   <div class="form-group row">
                     <div class="col-sm-12">
-                      <button class="btn bg-dark text-white" name="signIn" type="submit">Sign In</button>
+                      <button class="btn bg-dark text-white" name="login" type="submit">Sign In</button>
                     </div>
                   </div>
                   <div class="form-group row">

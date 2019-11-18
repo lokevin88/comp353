@@ -1,4 +1,5 @@
 <?php
+    session_start();
 
     DEFINE ('dbUser', 'root');
     DEFINE ('dbPassword', '');

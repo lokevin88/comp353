@@ -63,6 +63,10 @@ body {
   font-size: 10px;
 }
 
+.logout {
+  margin-top: -45px;
+}
+
 /* main-body-container */
 
 .main-body {
