@@ -2,7 +2,7 @@
 @import "/comp353/src/assets/css/newsfeed.css";
 
 /* login css */
-@import "/comp353/src/assets/css/login.css";
+@import "/comp353/src/assets/css/loginAndRegister.css";
 
 * {
   font-family: "Roboto";
@@ -13,6 +13,17 @@
 
 a:hover {
   text-decoration: none;
+}
+
+.row-nomargin {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.margin-30 {
+  margin: 30px;
 }
 
 body {

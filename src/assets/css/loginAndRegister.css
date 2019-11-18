@@ -13,13 +13,19 @@
   background-color: white;
 
   position: absolute;
-  width: 500px;
+  width: 600px;
   top: 20%;
   right: 50%;
-  height: 50%;
 }
 
-#login-wrapper .form-container {
+#login-wrapper .form-container,
+#login-wrapper form {
   width: 100%;
-  margin: 30px;
+}
+
+@media screen and (max-width: 767px) {
+  #login-wrapper .form-wrapper {
+    right: initial !important;
+    height: initial !important;
+  }
 }

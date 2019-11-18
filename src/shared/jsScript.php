@@ -1,4 +1,7 @@
 <script type="text/javascript">
-// addtional functions in here
+    function navigateTo($url) {
+        header("Location: " + $url);
+        exit();
+    }
 </script>
 </body>
