@@ -29,7 +29,7 @@
                 <h1>Sign in</h1>
               </div>
               <div class="row-nomargin margin-30">
-                <form>
+                <form action="index.php" method="POST">
                   <div class="form-group row">
                     <label for="email" class="col-sm-2 col-form-label text-nowrap">Email</label>
                     <div class="col-sm-10">

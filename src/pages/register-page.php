@@ -3,7 +3,20 @@
 <?php
     require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/head.php';
 
+    if(isset($_POST['register'])) {
+      $email = $_POST['email'];
+      $fname = $_POST['fname'];
+      $lname = $_POST['lname'];
+      $gender = $_POST['gender'];
+      $pwd = $_POST['pwd'];
 
+      echo $email;
+      echo $fname;
+      echo $lname;
+      echo $gender;
+      echo $pwd;
+
+    }
   ?>
 
 <body class="vh-100">
@@ -31,18 +44,11 @@
                 <h1>Register</h1>
               </div>
               <div class="row-nomargin margin-30">
-                <form>
+                <form action="register-page.php" method="POST">
                   <div class="form-group row">
                     <label for="email" class="col-sm-2 col-form-label text-nowrap">Email</label>
                     <div class="col-sm-10">
                       <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="pwd" class="col-sm-2 col-form-label text-nowrap">Password</label>
-                    <div class="col-sm-10">
-                      <input type="password" class="form-control" name="pwd" id="pwd" placeholder="Enter password"
-                        required>
                     </div>
                   </div>
                   <div class="form-group row">
@@ -62,20 +68,29 @@
                       <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
                       <div class="col-sm-10">
                         <div class="form-check">
-                          <input class="form-check-input" type="radio" name="gender" id="gender" value="male">
+                          <input class="form-check-input" type="radio" name="gender" id="gender" value="male" required>
                           <label class="form-check-label text-nowrap" for="gender">
                             Male
                           </label>
                         </div>
                         <div class="form-check">
-                          <input class="form-check-input" type="radio" name="gender" id="gender" value="female">
+                          <input class="form-check-input" type="radio" name="gender" id="gender" value="female"
+                            required>
                           <label class="form-check-label text-nowrap" for="gender">
                             Female
                           </label>
                         </div>
                       </div>
                     </div>
+
                   </fieldset>
+                  <div class="form-group row">
+                    <label for="pwd" class="col-sm-2 col-form-label text-nowrap">Password</label>
+                    <div class="col-sm-10">
+                      <input type="password" class="form-control" name="pwd" id="pwd" placeholder="Enter password"
+                        required>
+                    </div>
+                  </div>
                   <div class="form-group row">
                     <div class="col-sm-12">
                       <button class="btn bg-dark text-white" name="register" type="submit">Register</button>
