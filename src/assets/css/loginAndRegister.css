@@ -1,0 +1,31 @@
+#login-wrapper {
+  width: 100%;
+  height: 100%;
+  color: white;
+}
+
+#login-wrapper .introduction {
+  margin: 0 10em;
+  padding-top: 3em;
+}
+
+#login-wrapper .form-wrapper {
+  background-color: white;
+
+  position: absolute;
+  width: 600px;
+  top: 20%;
+  right: 50%;
+}
+
+#login-wrapper .form-container,
+#login-wrapper form {
+  width: 100%;
+}
+
+@media screen and (max-width: 767px) {
+  #login-wrapper .form-wrapper {
+    right: initial !important;
+    height: initial !important;
+  }
+}

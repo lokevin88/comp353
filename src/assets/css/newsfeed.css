@@ -1,0 +1,18 @@
+#newsfeed {
+}
+
+#newsfeed .card {
+  margin: 10px 0;
+}
+
+#newsfeed .card-title-text {
+  font-size: 12px;
+}
+
+#newsfeed .card-body-text {
+  font-size: 15px;
+}
+
+#newsfeed .card-name-text {
+  font-size: 14px;
+}

@@ -1,0 +1,71 @@
+/* newsfeed css */
+@import "/comp353/src/assets/css/newsfeed.css";
+
+/* login css */
+@import "/comp353/src/assets/css/loginAndRegister.css";
+
+* {
+  font-family: "Roboto";
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.row-nomargin {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.margin-30 {
+  margin: 30px;
+}
+
+body {
+  background-color: #e8e8e8;
+}
+
+/* nav-style */
+
+.icon-size {
+  font-size: 2em;
+}
+
+.sideNavBar {
+  position: fixed;
+  left: 0;
+  width: 300px;
+  height: 100vh;
+  background-color: white;
+}
+
+.profile-wrap {
+  width: 250px;
+  height: 250px;
+  object-fit: contain;
+  object-position: center;
+}
+
+.profile-name {
+  font-weight: bold;
+  margin-bottom: 50px;
+}
+
+.footer-wrapper {
+  position: absolute;
+  bottom: 5%;
+  width: 100%;
+  font-size: 10px;
+}
+
+/* main-body-container */
+
+.main-body {
+  margin-left: 300px;
+  padding: 20px;
+}
