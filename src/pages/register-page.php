@@ -10,7 +10,7 @@
       $lname = $_POST['lname'];
       $gender = $_POST['gender'];
       $dob = $_POST['dob'];
-      $profilePic = "/src/assets/images/mockuser.png";
+      $profilePic = "/comp353/src/assets/images/mockuser.png";
       $pwd = $_POST['pwd'];
 
       echo $username;
@@ -67,11 +67,11 @@
                   <div class="form-group row">
                     <label for="fname" class="col-sm-2 col-form-label text-nowrap">First Name</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" name="fname" id="fname" placeholder="Enter first name">
+                      <input type="text" class="form-control" name="fname" id="fname" placeholder="John">
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="lname" class="col-sm-2 col-form-label text-nowrap">John</label>
+                    <label for="lname" class="col-sm-2 col-form-label text-nowrap">LastName</label>
                     <div class="col-sm-10">
                       <input type="text" class="form-control" name="lname" id="lname" placeholder="Doe">
                     </div>
