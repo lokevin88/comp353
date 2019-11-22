@@ -5,9 +5,16 @@
     if(!isset($_SESSION['email'])) {
       navigateTo("/comp353/index.php");  
     } else {
+
       $user_email = $_SESSION['email'];
-      $user_query = mysqli_query($databaseConnection, "SELECT * FROM user where emailAddress='$user_email'");
-      $user_data_row = mysqli_fetch_array($user_query);
+      if($user_email == isAdmin) {
+        $query = mysqli_query($databaseConnection, "SELECT * FROM admin where emailAddress='$user_email'");
+      }
+      else {
+        $query = mysqli_query($databaseConnection, "SELECT * FROM user where emailAddress='$user_email'");
+      }
+
+      $user_data_row = mysqli_fetch_array($query);
 
     }
   ?>

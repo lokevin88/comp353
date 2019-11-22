@@ -1,6 +1,8 @@
 <?php
     session_start();
 
+    DEFINE ('isAdmin', 'test@admin.com');
+
     DEFINE ('dbUser', 'root');
     DEFINE ('dbPassword', '');
     DEFINE ('dbHost', 'localhost');
