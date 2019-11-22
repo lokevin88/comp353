@@ -56,10 +56,14 @@ body {
   z-index: 1020;
   margin-top: 10px;
   background-color: white;
-  height: 50%;
+  /* height: 50%; */
   padding: 10px;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
+}
+
+.commonGroupAndEventSideContainer {
+  min-height: 150px;
 }
 
 .profile-wrap {
@@ -91,6 +95,7 @@ body {
   padding: 20px;
 }
 
-#message_submit {
+#message_submit,
+.groupAndEventGroup {
   width: 100%;
 }

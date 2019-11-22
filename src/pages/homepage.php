@@ -1,7 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
 <?php
     require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/navbar.php';
+    //  always import from below here 
+
+    
+    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/user.php';
   ?>
 
 <div class="main-body">
@@ -11,132 +13,11 @@
   ?>
 
   <div class="row">
-    <div class="col-md-9">
-      <div id="newsfeed">
-        <div class="card">
-          <div class="card-header card-title-text">
-            Group something number
-          </div>
-          <div class="card-body">
-            <blockquote class="blockquote mb-0">
-              <p class="card-body-text">message message message message message message message message message
-                message message message
-                message</p>
-              <footer class="blockquote-footer card-name-text">name of person</footer>
-            </blockquote>
-          </div>
-        </div>
+    <div class="col-lg-9">
+      <!-- put things here -->
 
-        <div class="card">
-          <div class="card-header card-title-text">
-            Group something number
-          </div>
-          <div class="card-body">
-            <blockquote class="blockquote mb-0">
-              <p class="card-body-text">message message message message message message message message message
-                message message message
-                message</p>
-              <footer class="blockquote-footer card-name-text">name of person</footer>
-            </blockquote>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-header card-title-text">
-            Group something number
-          </div>
-          <div class="card-body">
-            <blockquote class="blockquote mb-0">
-              <p class="card-body-text">message message message message message message message message message
-                message message message
-                message</p>
-              <footer class="blockquote-footer card-name-text">name of person</footer>
-            </blockquote>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-header card-title-text">
-            Group something number
-          </div>
-          <div class="card-body">
-            <blockquote class="blockquote mb-0">
-              <p class="card-body-text">message message message message message message message message message
-                message message message
-                message</p>
-              <footer class="blockquote-footer card-name-text">name of person</footer>
-            </blockquote>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-header card-title-text">
-            Group something number
-          </div>
-          <div class="card-body">
-            <blockquote class="blockquote mb-0">
-              <p class="card-body-text">message message message message message message message message message
-                message message message
-                message</p>
-              <footer class="blockquote-footer card-name-text">name of person</footer>
-            </blockquote>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-header card-title-text">
-            Group something number
-          </div>
-          <div class="card-body">
-            <blockquote class="blockquote mb-0">
-              <p class="card-body-text">message message message message message message message message message
-                message message message
-                message</p>
-              <footer class="blockquote-footer card-name-text">name of person</footer>
-            </blockquote>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-header card-title-text">
-            Group something number
-          </div>
-          <div class="card-body">
-            <blockquote class="blockquote mb-0">
-              <p class="card-body-text">message message message message message message message message message
-                message message message
-                message</p>
-              <footer class="blockquote-footer card-name-text">name of person</footer>
-            </blockquote>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-header card-title-text">
-            Group something number
-          </div>
-          <div class="card-body">
-            <blockquote class="blockquote mb-0">
-              <p class="card-body-text">message message message message message message message message message
-                message message message
-                message</p>
-              <footer class="blockquote-footer card-name-text">name of person</footer>
-            </blockquote>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-header card-title-text">
-            Group something number
-          </div>
-          <div class="card-body">
-            <blockquote class="blockquote mb-0">
-              <p class="card-body-text">message message message message message message message message message
-                message message message
-                message</p>
-              <footer class="blockquote-footer card-name-text">name of person</footer>
-            </blockquote>
-          </div>
-        </div>
-      </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-lg-3">
       <?php
         include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/commonGroupAndEvent.php';
       ?>
@@ -145,7 +26,8 @@
 </div>
 
 <?php
+
+    //  always import from above here  
     require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/jsScript.php';
   ?>
-
-</html>
+  
