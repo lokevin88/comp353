@@ -63,7 +63,7 @@ body {
 }
 
 .commonGroupAndEventSideContainer {
-  min-height: 150px;
+  margin: 15px;
 }
 
 .profile-wrap {
