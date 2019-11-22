@@ -1,9 +1,6 @@
 <?php
     require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/navbar.php';
     //  always import from below here 
-
-    
-    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/user.php';
   ?>
 
 <div class="main-body">
