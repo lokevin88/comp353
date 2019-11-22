@@ -1,7 +1,8 @@
 <?php
     session_start();
 
-    DEFINE ('isAdmin', 'test@admin.com');
+    DEFINE ('isAdmin', 'admin@db.com');
+    DEFINE ('isController', 'controller@db.com');
 
     DEFINE ('dbUser', 'root');
     DEFINE ('dbPassword', '');

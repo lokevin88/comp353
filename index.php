@@ -13,6 +13,10 @@
         $query = mysqli_query($databaseConnection, "SELECT * FROM admin where emailAddress='$email' AND password='$pwd'");
         $homepage = "/comp353/src/pages/admin.php";
       }
+      else if($email == isController) {
+        $query = mysqli_query($databaseConnection, "SELECT * FROM controller where emailAddress='$email' AND password='$pwd'");
+        $homepage = "/comp353/src/pages/controller.php";
+      }
       else {
         $query = mysqli_query($databaseConnection, "SELECT * FROM user where emailAddress='$email' AND password='$pwd'");
         $homepage = "/comp353/src/pages/homepage.php";

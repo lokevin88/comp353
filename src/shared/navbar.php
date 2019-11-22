@@ -9,6 +9,9 @@
       if($user_email == isAdmin) {
         $query = mysqli_query($databaseConnection, "SELECT * FROM admin where emailAddress='$user_email'");
       }
+      else if($user_email == isController) {
+        $query = mysqli_query($databaseConnection, "SELECT * FROM controller where emailAddress='$user_email'");
+      }
       else {
         $query = mysqli_query($databaseConnection, "SELECT * FROM user where emailAddress='$user_email'");
       }
