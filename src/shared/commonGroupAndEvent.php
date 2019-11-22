@@ -42,8 +42,9 @@
                 </button>
             </div>
             <div class="modal-body">
-                <!-- logic tmr -->
-                ...
+                <form action="commonGroupAndEvent.php" method="post">
+
+                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

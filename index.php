@@ -10,7 +10,7 @@
       $user_query = mysqli_query($databaseConnection, "SELECT * FROM user where emailAddress='$email' AND password='$pwd'");
       $user_rows = mysqli_num_rows($user_query);
 
-      if(!empty($user_rows)) {
+      if($user_rows) {
         $row = mysqli_fetch_array($user_query);
         $username = $row['username'];
 
