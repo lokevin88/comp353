@@ -17,9 +17,8 @@
 
     <div class="d-flex flex-fill justify-content-end">
 
-      <a class="nav-link text-white" href="#">Home</a>
-      <a class="nav-link text-white" href="#">Groups</a>
-      <a class="nav-link text-white" href="#">Events</a>
+      <a class="nav-link text-white" href="#">NotificationPlaceHolder</a>
+      <a class="nav-link text-white" href="#">MessengerPlaceHolder</a>
     </div>
   </nav>
 
@@ -51,7 +50,7 @@
 
       <div class="row px-4" style="transform: rotate(0);">
         <span>
-          <a href="#" class="stretched-link">something</a>
+          <a href="#" class="stretched-link">Events</a>
         </span>
       </div>
 
