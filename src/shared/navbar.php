@@ -5,7 +5,6 @@
     if(!isset($_SESSION['email'])) {
       navigateTo("/comp353/index.php");  
     } else {
-
       $user_email = $_SESSION['email'];
       if($user_email == isAdmin) {
         $query = mysqli_query($databaseConnection, "SELECT * FROM admin where emailAddress='$user_email'");
