@@ -1,9 +1,9 @@
 
 <?php
     require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/head.php';
-    
+
     if(!isset($_SESSION['email'])) {
-      navigateTo("/comp353/index.php");  
+      navigateTo("/comp353/index.php");
     } else {
       $user_email = $_SESSION['email'];
       if($user_email == isAdmin) {
@@ -88,4 +88,3 @@
       <p>© Copyright 2019 | All Rights Reserved | rr_comp353_2 </p>
     </div>
   </div>
-  
