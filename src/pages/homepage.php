@@ -3,7 +3,6 @@
     //  always import from below here
     include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/user.php';
     include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/event.php';
-    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/admin.php';
 
     $user = new User($databaseConnection, $user_email);
 

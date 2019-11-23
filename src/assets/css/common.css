@@ -4,6 +4,9 @@
 /* login css */
 @import "/comp353/src/assets/css/loginAndRegister.css";
 
+/* admin css */
+@import "/comp353/src/assets/css/admin.css";
+
 * {
   font-family: "Roboto";
   margin: 0;
