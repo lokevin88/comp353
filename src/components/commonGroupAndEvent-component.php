@@ -7,8 +7,9 @@ if(isset($_POST['createEvent'])) {
     $eventSize = $_POST['eventSize'];
     $eventStartDate = $_POST['eventStartDate'];
     $eventEndDate = $_POST['eventEndDate'];
+    $pageTemplate = $_POST['pageTemplate'];
     
-    $eventArray = array($eventName, $eventDescription, $eventPhoneNumber, $eventType, $eventSize, $eventStartDate, $eventEndDate);
+    $eventArray = array($eventName, $eventDescription, $eventPhoneNumber, $eventType, $eventSize, $eventStartDate, $eventEndDate, $pageTemplate);
 
     $event = new Event($databaseConnection, $user_email);
     $event->createEvent($eventArray);
@@ -64,17 +65,17 @@ if(isset($_POST['createEvent'])) {
                     <div class="form-group">
                         <label for="eventName">Event</label>
                         <input type="text" class="form-control" name="eventName" id="eventName"
-                            placeholder="Enter event name">
+                            placeholder="Enter event name" required>
                     </div>
                     <div class="form-group">
                         <label for="eventDescription">Description</label>
                         <input type="text" class="form-control" name="eventDescription" id="eventDescription"
-                            placeholder="Enter description">
+                            placeholder="Enter description" required>
                     </div>
                     <div class="form-group">
                         <label for="eventPhoneNumber">Phone number</label>
                         <input type="text" class="form-control" name="eventPhoneNumber" id="eventPhoneNumber"
-                            placeholder="Enter phone number">
+                            placeholder="Enter phone number" required>
                     </div>
                     <fieldset class="form-group">
                         <p class="col-form-label pt-0">Event type</p>
@@ -111,6 +112,26 @@ if(isset($_POST['createEvent'])) {
                         <input type="date" min="<?php echo date('Y-m-d'); ?>" class="form-control" name="eventEndDate"
                             id="eventEndDate" required>
                     </div>
+                    <fieldset class="form-group">
+                        <p class="col-form-label pt-0">Page template</p>
+                        <div class="row text-center">
+                            <div class="form-check col-md-6">
+                                <input class="form-check-input" type="radio" name="pageTemplate" id="pageTemplate"
+                                    value="/comp353/src/pages/eventTemplate/event-something-template.php" checked
+                                    required>
+                                <label class="form-check-label text-nowrap" for="pageTemplate">
+                                    Something1Placholder
+                                </label>
+                            </div>
+                            <div class="form-check col-md-6">
+                                <input class="form-check-input" type="radio" name="pageTemplate" id="pageTemplate"
+                                    value="/comp353/src/pages/eventTemplate/event-something2-template.php" required>
+                                <label class="form-check-label text-nowrap" for="pageTemplate">
+                                    Something2Placeholder
+                                </label>
+                            </div>
+                        </div>
+                    </fieldset>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
