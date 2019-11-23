@@ -8,5 +8,6 @@
   },
   "editor.acceptSuggestionOnCommitCharacter": false,
   "files.insertFinalNewline": true,
-  "files.trimTrailingWhitespace": true
+  "files.trimTrailingWhitespace": true,
+  "files.trimFinalNewlines": true
 }
