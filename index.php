@@ -25,9 +25,6 @@
       $user_rows = mysqli_num_rows($query);
 
       if($user_rows) {
-        $row = mysqli_fetch_array($user_rows);
-
-        $_SESSION['username'] = $row['username'];
         $_SESSION['email'] = $email;
 
         navigateTo($homepage);

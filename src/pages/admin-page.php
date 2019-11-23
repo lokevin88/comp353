@@ -4,10 +4,21 @@
     if($user_email != isAdmin) {
         navigateTo("/comp353/src/pages/homepage.php");
     }
+
+    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/admin.php';
+
+    $eventPending = new Admin($databaseConnection);
   ?>
 
 <div class="main-body">
+    <?php
+      $result = $eventPending->getAllPendingEvents();
 
+
+      foreach($result as $row) {
+        echo $row['username'] . '</br>';
+      }
+    ?>
 </div>
 
 <?php

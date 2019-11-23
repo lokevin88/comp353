@@ -21,7 +21,7 @@
 
       if($emailResult_rows) {
         // call jsfunction to display message PLACEHOLDER
-        echo 'test';
+        echo 'display something saying email exists already';
       }
       else {
         $register_query = mysqli_query($databaseConnection, "INSERT INTO user (emailAddress, username, firstName, lastName, gender, dob, profilePicture, password) VALUES
