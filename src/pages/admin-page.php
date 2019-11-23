@@ -15,8 +15,10 @@
       $result = $admin->getAllPendingEvents();
 
 
-      foreach($result as $row) {
-        echo $row['username'] . '</br>';
+      if(is_array($result)) {
+        foreach($result as $row) {
+          echo $row['username'] . '</br>';
+        }
       }
     ?>
 </div>

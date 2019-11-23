@@ -1,22 +1,3 @@
-<?php
-if(isset($_POST['createEvent'])) {
-    $eventName = $_POST['eventName'];
-    $eventDescription = $_POST['eventDescription'];
-    $eventPhoneNumber = $_POST['eventPhoneNumber'];
-    $eventType = $_POST['eventType'];
-    $eventSize = $_POST['eventSize'];
-    $eventStartDate = $_POST['eventStartDate'];
-    $eventEndDate = $_POST['eventEndDate'];
-    $pageTemplate = $_POST['pageTemplate'];
-
-    $eventArray = array($eventName, $eventDescription, $eventPhoneNumber, $eventType, $eventSize, $eventStartDate, $eventEndDate, $pageTemplate);
-
-    $event = new Event($databaseConnection, $user_email);
-    $event->createEvent($eventArray);
-    navigateTo("/comp353/src/pages/homepage.php");
-  }
-?>
-
 <div class="commonGroupAndEventSide">
     <div class="row">
         <div class="col-lg-12">
