@@ -63,7 +63,7 @@ CREATE TABLE event_manager (
     eventManagerID int(11) NOT NULL AUTO_INCREMENT,
     userID int(11) NOT NULL,
     statusCode varchar(15) NOT NULL,
-    CONSTRAINT PK_Event_Manager PRIMARY KEY (eventManagerID, userID),
+    CONSTRAINT PK_Event_Manager PRIMARY KEY (eventManagerID),
     CONSTRAINT FK_Event_Manager_User FOREIGN KEY (userID) REFERENCES user(userID) ON DELETE CASCADE
 );
 
