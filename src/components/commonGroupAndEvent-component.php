@@ -8,7 +8,7 @@ if(isset($_POST['createEvent'])) {
     $eventStartDate = $_POST['eventStartDate'];
     $eventEndDate = $_POST['eventEndDate'];
     $pageTemplate = $_POST['pageTemplate'];
-    
+
     $eventArray = array($eventName, $eventDescription, $eventPhoneNumber, $eventType, $eventSize, $eventStartDate, $eventEndDate, $pageTemplate);
 
     $event = new Event($databaseConnection, $user_email);

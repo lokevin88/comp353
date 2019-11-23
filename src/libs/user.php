@@ -15,7 +15,7 @@
         }
 
         function getAllEventNameAndStatus() {
-            $userID = this->getUserID();
+            $userID = $this->getUserID();
 
             $query = mysqli_query($this->db_connection, "SELECT u.username, em.statusCode, e.eventName
                                                          FROM user u

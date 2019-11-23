@@ -26,7 +26,7 @@
       else {
         $register_query = mysqli_query($databaseConnection, "INSERT INTO user (emailAddress, username, firstName, lastName, gender, dob, profilePicture, password) VALUES
         ('$email', '$username', '$fname', '$lname', '$gender', '$dob', '$profilePic', '$pwd')");
-        navigateTo("/comp353/index.php");                                             
+        navigateTo("/comp353/index.php");
       }
 
     }

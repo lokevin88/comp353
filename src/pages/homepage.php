@@ -1,8 +1,12 @@
 <?php
     require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/navbar.php';
-    //  always import from below here 
+    //  always import from below here
     include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/user.php';
     include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/event.php';
+
+    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/admin.php';
+
+    $user = new User($databaseConnection, $user_email);
   ?>
 
 <div class="main-body">
@@ -14,7 +18,14 @@
   <div class="row">
     <div class="col-lg-9">
       <!-- put things here -->
+      <?php
+        $result = $user->getAllEventNameAndStatus();
 
+
+        foreach($result as $row) {
+          echo $row['username'] . '</br>';
+        }
+      ?>
     </div>
     <div class="col-lg-3">
       <?php
@@ -26,7 +37,6 @@
 
 <?php
 
-    //  always import from above here  
+    //  always import from above here
     require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/jsScript.php';
   ?>
-  
