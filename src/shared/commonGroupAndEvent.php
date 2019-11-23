@@ -1,3 +1,21 @@
+<?php
+if(isset($_POST['createEvent'])) {
+    $eventName = $_POST['eventName'];
+    $eventDescription = $_POST['eventDescription'];
+    $eventPhoneNumber = $_POST['eventPhoneNumber'];
+    $eventType = $_POST['eventType'];
+    $eventSize = $_POST['eventSize'];
+    $eventStartDate = $_POST['eventStartDate'];
+    $eventEndDate = $_POST['eventEndDate'];
+    
+    $eventArray = array($eventName, $eventDescription, $eventPhoneNumber, $eventType, $eventSize, $eventStartDate, $eventEndDate);
+
+    $event = new Event($databaseConnection, $user_email);
+    $event->createEvent($eventArray);
+    navigateTo("/comp353/src/pages/homepage.php");
+  }
+?>
+
 <div class="commonGroupAndEventSide">
     <div class="row">
         <div class="col-lg-12">
@@ -35,7 +53,7 @@
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-            <form action="commonGroupAndEvent.php" method="post">
+            <form action="homepage.php" method="post">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLongTitle">Create Event</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -80,8 +98,7 @@
                     </fieldset>
                     <div class="form-group">
                         <label for="eventSize">Event size</label>
-                        <input type="number" class="form-control" name="eventSize" id="eventSize" min="25"
-                            placeholder="25">
+                        <input type="number" class="form-control" name="eventSize" id="eventSize" min="25" value="25">
                     </div>
                     <div class="form-group">
                         <label for="eventStartDate" class="col-sm-2 col-form-label text-nowrap">Start Date</label>

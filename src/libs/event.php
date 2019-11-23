@@ -5,13 +5,19 @@
 
         function __construct($dbCon, $user_email) {
             $this->db_connection = $dbCon;
-
-            $query = mysqli_query($this->db_connection, "SELECT * FROM user where emailAddress='$user_email'");
-            $this->user = mysqli_fetch_array($query);
+            $this->user = new User($this->db_connection, $user_email);
         }
 
-        function createEvent() {
-            // continue tmr
+        function createEvent($eventArray) {
+            print_r($eventArray);
+            $userID = $this->user->getUserID();
+            echo $userID;
+            
+            // make person event manager
+            $insert_EventManagerQuery =  mysqli_query($this->db_connection, "INSERT INTO event_manager (userID, statusCode) VALUES
+            ('$userID', 'PENDING')");
+
+            // create event
         }
         
     }
