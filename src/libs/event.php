@@ -16,8 +16,12 @@
             // make person event manager
             $insert_EventManagerQuery =  mysqli_query($this->db_connection, "INSERT INTO event_manager (userID, statusCode) VALUES
             ('$userID', 'PENDING')");
+            $eventMangerID = mysqli_insert_id($this->db_connection);
 
             // create event
+
+            $insert_EventManagerQuery =  mysqli_query($this->db_connection, "INSERT INTO event (userID, statusCode) VALUES
+            ('$userID', 'PENDING')");
         }
         
     }

@@ -6,7 +6,7 @@
 <div class="main-body">
 
   <?php
-    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/bannerAndMessage.php';
+    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/components/bannerAndMessage-component.php';
   ?>
 
   <div class="row">
@@ -16,7 +16,7 @@
     </div>
     <div class="col-lg-3">
       <?php
-        include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/commonGroupAndEvent.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/components/commonGroupAndEvent-component.php';
       ?>
     </div>
   </div>

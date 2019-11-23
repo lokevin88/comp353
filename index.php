@@ -11,11 +11,11 @@
 
       if($email == isAdmin) {
         $query = mysqli_query($databaseConnection, "SELECT * FROM admin where emailAddress='$email' AND password='$pwd'");
-        $homepage = "/comp353/src/pages/admin.php";
+        $homepage = "/comp353/src/pages/admin-page.php";
       }
       else if($email == isController) {
         $query = mysqli_query($databaseConnection, "SELECT * FROM controller where emailAddress='$email' AND password='$pwd'");
-        $homepage = "/comp353/src/pages/controller.php";
+        $homepage = "/comp353/src/pages/controller-page.php";
       }
       else {
         $query = mysqli_query($databaseConnection, "SELECT * FROM user where emailAddress='$email' AND password='$pwd'");
