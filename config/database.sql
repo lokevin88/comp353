@@ -71,7 +71,10 @@ DROP TABLE IF EXISTS event;
 CREATE TABLE event (
     eventID int(11) NOT NULL AUTO_INCREMENT,
     eventManagerID int(11) NOT NULL,
-    phoneNumber varchar(50) NOT NULL,
+    eventName varchar(255) NOT NULL,
+    eventDescription text NOT NULL,
+    eventPhoneNumber varchar(50) NOT NULL,
+    eventType varchar(50) NOT NULL,
     size int(11) NOT NULL,
     startDate DATE NOT NULL,
     endDate DATE NOT NULL,

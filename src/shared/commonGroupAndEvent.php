@@ -44,14 +44,55 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" name="exampleInputEmail1" id="exampleInputEmail1"
-                            placeholder="Enter email">
+                        <label for="eventName">Event</label>
+                        <input type="text" class="form-control" name="eventName" id="eventName"
+                            placeholder="Enter event name">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" name="exampleInputPassword1"
-                            id="exampleInputPassword1" placeholder="Password">
+                        <label for="eventDescription">Description</label>
+                        <input type="text" class="form-control" name="eventDescription" id="eventDescription"
+                            placeholder="Enter description">
+                    </div>
+                    <div class="form-group">
+                        <label for="eventPhoneNumber">Phone number</label>
+                        <input type="text" class="form-control" name="eventPhoneNumber" id="eventPhoneNumber"
+                            placeholder="Enter phone number">
+                    </div>
+                    <fieldset class="form-group">
+                        <p class="col-form-label pt-0">Event type</p>
+                        <div class="row text-center">
+                            <div class="form-check col-md-6">
+                                <input class="form-check-input" type="radio" name="eventType" id="eventType"
+                                    value="public" checked required>
+                                <label class="form-check-label text-nowrap" for="eventType">
+                                    Public
+                                </label>
+                            </div>
+                            <div class="form-check col-md-6">
+                                <input class="form-check-input" type="radio" name="eventType" id="eventType"
+                                    value="private" required>
+                                <label class="form-check-label text-nowrap" for="eventType">
+                                    private
+                                </label>
+                            </div>
+
+                        </div>
+                    </fieldset>
+                    <div class="form-group">
+                        <label for="eventSize">Event size</label>
+                        <input type="number" class="form-control" name="eventSize" id="eventSize" min="25"
+                            placeholder="25">
+                    </div>
+                    <div class="form-group">
+                        <label for="eventStartDate" class="col-sm-2 col-form-label text-nowrap">Start Date</label>
+                        <input type="date" min="<?php echo date('Y-m-d'); ?>" class="form-control" name="eventStartDate"
+                            id="eventStartDate" required>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="eventEndDate" class="col-sm-2 col-form-label text-nowrap">End Date</label>
+                        <input type="date" min="<?php echo date('Y-m-d'); ?>" class="form-control" name="eventEndDate"
+                            id="eventEndDate" required>
                     </div>
                 </div>
                 <div class="modal-footer">
