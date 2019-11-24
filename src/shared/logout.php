@@ -5,5 +5,5 @@
     session_unset();
     session_destroy();
 
-    navigateTo("/comp353/index.php"); 
+    navigateTo("/comp353/index.php");
 ?>

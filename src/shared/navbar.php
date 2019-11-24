@@ -1,12 +1,22 @@
+
 <?php
     require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/head.php';
-    
+
     if(!isset($_SESSION['email'])) {
-      navigateTo("/comp353/index.php");  
+      navigateTo("/comp353/index.php");
     } else {
       $user_email = $_SESSION['email'];
-      $user_query = mysqli_query($databaseConnection, "SELECT * FROM user where emailAddress='$user_email'");
-      $user_data_row = mysqli_fetch_array($user_query);
+      if($user_email == isAdmin) {
+        $query = mysqli_query($databaseConnection, "SELECT * FROM admin where emailAddress='$user_email'");
+      }
+      else if($user_email == isController) {
+        $query = mysqli_query($databaseConnection, "SELECT * FROM controller where emailAddress='$user_email'");
+      }
+      else {
+        $query = mysqli_query($databaseConnection, "SELECT * FROM user where emailAddress='$user_email'");
+      }
+
+      $user_data_row = mysqli_fetch_array($query);
 
     }
   ?>
@@ -17,9 +27,8 @@
 
     <div class="d-flex flex-fill justify-content-end">
 
-      <a class="nav-link text-white" href="#">Home</a>
-      <a class="nav-link text-white" href="#">Groups</a>
-      <a class="nav-link text-white" href="#">Events</a>
+      <a class="nav-link text-white" href="#">NotificationPlaceHolder</a>
+      <a class="nav-link text-white" href="#">MessengerPlaceHolder</a>
     </div>
   </nav>
 
@@ -51,7 +60,7 @@
 
       <div class="row px-4" style="transform: rotate(0);">
         <span>
-          <a href="#" class="stretched-link">something</a>
+          <a href="#" class="stretched-link">Events</a>
         </span>
       </div>
 

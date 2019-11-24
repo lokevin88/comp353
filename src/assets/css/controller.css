@@ -1,0 +1,10 @@
+#controller-wrapper thead th {
+  position: sticky;
+  top: 0;
+}
+
+#controller-wrapper .reviewingTable {
+  width: 100%;
+  height: 300px;
+  overflow-y: auto;
+}

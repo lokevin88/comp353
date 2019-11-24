@@ -1,6 +1,9 @@
 <?php
     session_start();
 
+    DEFINE ('isAdmin', 'admin@db.com');
+    DEFINE ('isController', 'controller@db.com');
+
     DEFINE ('dbUser', 'root');
     DEFINE ('dbPassword', '');
     DEFINE ('dbHost', 'localhost');

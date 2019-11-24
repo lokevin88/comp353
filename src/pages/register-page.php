@@ -19,14 +19,14 @@
       $emailResult_query = mysqli_query($databaseConnection, "SELECT * FROM user where emailAddress='$email'");
       $emailResult_rows = mysqli_num_rows($emailResult_query);
 
-      if($emailResult_rows > 0) {
+      if($emailResult_rows) {
         // call jsfunction to display message PLACEHOLDER
-        echo 'test';
+        echo 'display something saying email exists already';
       }
       else {
         $register_query = mysqli_query($databaseConnection, "INSERT INTO user (emailAddress, username, firstName, lastName, gender, dob, profilePicture, password) VALUES
         ('$email', '$username', '$fname', '$lname', '$gender', '$dob', '$profilePic', '$pwd')");
-        navigateTo("/comp353/index.php");                                             
+        navigateTo("/comp353/index.php");
       }
 
     }

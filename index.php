@@ -3,21 +3,31 @@
 <?php
     require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/head.php';
 
+    $homepage = '';
+
     if(isset($_POST['login'])) {
       $email = $_POST['email'];
       $pwd = $_POST['pwd'];
 
-      $user_query = mysqli_query($databaseConnection, "SELECT * FROM user where emailAddress='$email' AND password='$pwd'");
-      $user_rows = mysqli_num_rows($user_query);
+      if($email == isAdmin) {
+        $query = mysqli_query($databaseConnection, "SELECT * FROM admin where emailAddress='$email' AND password='$pwd'");
+        $homepage = "/comp353/src/pages/admin-page.php";
+      }
+      else if($email == isController) {
+        $query = mysqli_query($databaseConnection, "SELECT * FROM controller where emailAddress='$email' AND password='$pwd'");
+        $homepage = "/comp353/src/pages/controller-page.php";
+      }
+      else {
+        $query = mysqli_query($databaseConnection, "SELECT * FROM user where emailAddress='$email' AND password='$pwd'");
+        $homepage = "/comp353/src/pages/homepage.php";
+      }
+    
+      $user_rows = mysqli_num_rows($query);
 
-      if(!empty($user_rows)) {
-        $row = mysqli_fetch_array($user_query);
-        $username = $row['username'];
-
-        $_SESSION['username'] = $username;
+      if($user_rows) {
         $_SESSION['email'] = $email;
 
-        navigateTo("/comp353/src/pages/homepage.php"); 
+        navigateTo($homepage);
       }
     }
 ?>
@@ -51,13 +61,15 @@
                   <div class="form-group row">
                     <label for="email" class="col-sm-2 col-form-label text-nowrap">Email</label>
                     <div class="col-sm-10">
-                      <input type="email" class="form-control" name="email" id="email" placeholder="Enter email" required>
+                      <input type="email" class="form-control" name="email" id="email" placeholder="Enter email"
+                        required>
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="pwd" class="col-sm-2 col-form-label text-nowrap">Password</label>
                     <div class="col-sm-10">
-                      <input type="password" class="form-control" name="pwd" id="pwd" placeholder="Enter password" required>
+                      <input type="password" class="form-control" name="pwd" id="pwd" placeholder="Enter password"
+                        required>
                     </div>
                   </div>
                   <div class="form-group row">
@@ -76,10 +88,10 @@
           </div>
         </div>
 
+      </div>
     </div>
-  </div>
 
-  <?php
+    <?php
     require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/jsScript.php';
   ?>
 
