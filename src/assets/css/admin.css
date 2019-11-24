@@ -8,3 +8,7 @@
   height: 300px;
   overflow-y: auto;
 }
+
+#admin-wrapper .table {
+  height: 100%;
+}

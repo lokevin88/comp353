@@ -9,9 +9,7 @@
         }
 
         function createEvent($eventArray) {
-            print_r($eventArray);
             $userID = $this->user->getUserID();
-            echo $userID;
 
             // make person event manager
             $insert_EventManagerQuery =  mysqli_query($this->db_connection, "INSERT INTO event_manager (userID, statusCode) VALUES
