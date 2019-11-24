@@ -48,9 +48,11 @@
           <tbody>
             <form action="admin-page.php" method="post">
               <?php if($count_pending_result == 0) : ?>
-                <tr class="table-secondary text-center">
-                  <td colspan="5"><h3>No pending events</h3></td>
-                </tr>
+              <tr class="table-secondary text-center">
+                <td colspan="5">
+                  <h3>No pending events</h3>
+                </td>
+              </tr>
               <?php endif; ?>
 
               <?php
@@ -91,21 +93,21 @@
             </tr>
           </thead>
           <tbody>
-            <form action="admin-page.php" method="post">
-              <?php if($count_pending_result == 0) : ?>
-                <tr class="table-secondary text-center">
-                  <td colspan="2"><h3>No events</h3></td>
-                </tr>
-              <?php endif; ?>
-              <?php
+            <?php if($count_pending_result == 0) : ?>
+            <tr class="table-secondary text-center">
+              <td colspan="2">
+                <h3>No events</h3>
+              </td>
+            </tr>
+            <?php endif; ?>
+            <?php
                 foreach($admin_allEventStatus_result as $row):
               ?>
-              <tr class="table-secondary">
-                <td><?php echo $row['eventName']; ?></td>
-                <td><?php echo $row['statusCode']; ?></td>
-              </tr>
-              <?php endforeach; ?>
-            </form>
+            <tr class="table-secondary">
+              <td><?php echo $row['eventName']; ?></td>
+              <td><?php echo $row['statusCode']; ?></td>
+            </tr>
+            <?php endforeach; ?>
           </tbody>
         </table>
       </div>
