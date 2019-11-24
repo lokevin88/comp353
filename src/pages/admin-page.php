@@ -93,7 +93,7 @@
             </tr>
           </thead>
           <tbody>
-            <?php if($count_pending_result == 0) : ?>
+            <?php if($count_allEventStatus_result == 0) : ?>
             <tr class="table-secondary text-center">
               <td colspan="2">
                 <h3>No events</h3>

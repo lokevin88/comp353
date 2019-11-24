@@ -67,10 +67,20 @@ CREATE TABLE event_manager (
     CONSTRAINT FK_Event_Manager_User FOREIGN KEY (userID) REFERENCES user(userID) ON DELETE CASCADE
 );
 
+DROP TABLE IF EXISTS event_fee_calculation;
+CREATE TABLE event_fee_calculation (
+    eventFeeID int(11) NOT NULL,
+    controllerID int(11) NOT NULL,
+    -- chargeRate int(11) NOT NULL, WILL ADD CHARGE RATE AFTER DISCUSSING
+    CONSTRAINT PK_Event_Fee PRIMARY KEY (eventFeeID),
+    CONSTRAINT FK_Event_Fee_Controller FOREIGN KEY (controllerID) REFERENCES controller(controllerID) ON DELETE CASCADE
+);
+
 DROP TABLE IF EXISTS event;
 CREATE TABLE event (
     eventID int(11) NOT NULL AUTO_INCREMENT,
     eventManagerID int(11) NOT NULL,
+    eventFeeID int(11) NULL,
     eventName varchar(255) NOT NULL,
     eventDescription text NOT NULL,
     eventPhoneNumber varchar(50) NOT NULL,
@@ -80,7 +90,8 @@ CREATE TABLE event (
     endDate DATE NOT NULL,
     pageTemplate varchar(255) NOT NULL,
     CONSTRAINT PK_Event PRIMARY KEY (eventID),
-    CONSTRAINT FK_Event_Manager FOREIGN KEY (eventManagerID) REFERENCES event_manager(eventManagerID) ON DELETE CASCADE
+    CONSTRAINT FK_Event_Manager FOREIGN KEY (eventManagerID) REFERENCES event_manager(eventManagerID) ON DELETE CASCADE,
+    CONSTRAINT FK_Event_Event_FEE FOREIGN KEY (eventFeeID) REFERENCES event_fee_calculation(eventFeeID) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS event_list;

@@ -4,19 +4,30 @@
     if($user_email != isController) {
         navigateTo("/comp353/src/pages/homepage.php");
     }
-
+    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/User.php';
     include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/controller.php';
 
-    $controller = new Controller($databaseConnection);
+    $controller = new Controller($databaseConnection, $user_email);
 
     $controller_reviewing_result = $controller->getAllReviewingEvents();
     $count_reviewing_result = count($controller_reviewing_result);
 
+    if(isset($_POST['addToAccepted'])) {
+      // $chargeRate = "chargeRate-" . $row['eventID'];
+      // echo $chargeRate;
+
+      $eventID = $_POST['addToAccepted'];
+
+      $controller->updateEventManagerStatus($eventID);
+
+      navigateTo("/comp353/src/pages/controller-page.php");
+    }
+
   ?>
 
-<div class="controller-wrapper main-body">
+<div id="controller-wrapper" class="main-body">
   <a name="eventReviewingTableName">List of reviewing events</a>
-  <div class="table-responsive ReviewingTable">
+  <div class="table-responsive reviewingTable">
     <table class="table">
       <thead class="thead-dark">
         <tr>
@@ -31,7 +42,7 @@
         <form action="controller-page.php" method="post">
           <?php if($count_reviewing_result == 0) : ?>
           <tr class="table-secondary text-center">
-            <td colspan="4">
+            <td colspan="5">
               <h3>No reviewing events</h3>
             </td>
           </tr>
@@ -45,8 +56,7 @@
             <td><?php echo $row['username']; ?></td>
             <td><?php echo $row['statusCode']; ?></td>
             <td><?php echo $row['eventName']; ?></td>
-            <td><input type="number" class="form-control" name="chargeRate" id="chargeRate" placeholder="price"
-                        required>
+            <td><input type="number" class="form-control" name="chargeRate-<?php echo $row['eventID']; ?>" id="chargeRate" placeholder="price">
             <td>
               <button type="submit" name="addToAccepted" class="btn btn-primary" value="<?php echo $row['eventID']; ?>">
                 <i class="fa fa-check"></i> Accept

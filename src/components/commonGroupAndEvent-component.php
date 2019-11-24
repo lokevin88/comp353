@@ -2,10 +2,29 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="commonGroupAndEventSideContainer">
-                <h4>Events</h4>
+                <h4>Managed Event and Status</h4>
+                <?php if($count_managed_events_result == 0): ?>
+                <p>not managing any events</p>
+                <?php endif; ?>
+
+                <?php
+                    foreach($user_managed_events_status as $row):
+                ?>
+                <p><?php echo $row['eventName']; ?></p>
+                <p><?php echo $row['statusCode']; ?></p>
+                <hr>
+                <?php endforeach; ?>
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="commonGroupAndEventSideContainer">
+                <h4>Events Status</h4>
                 <p>placeholder1EventName</p>
                 <p>placeholder2EventName</p>
-                <p>placeholder3EventName</p>
+                <p>placeholder3GroupName</p>
                 <div class="btn-group groupAndEventGroup">
                     <button type="button" class="btn bg-dark text-white">View More</button>
                     <button type="button" class="btn bg-dark text-white" data-toggle="modal"
@@ -17,7 +36,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="commonGroupAndEventSideContainer">
-                <h4>Groups</h4>
+                <h4>Groups Status</h4>
                 <p>placeholder1GroupName</p>
                 <p>placeholder2GroupName</p>
                 <p>placeholder3GroupName</p>

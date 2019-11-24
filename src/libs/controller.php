@@ -1,9 +1,13 @@
 <?php
-    class Controller {
+    class Controller extends User {
+        private $user = null;
         private $db_connection = null;
 
-        function __construct($dbCon) {
+        function __construct($dbCon, $user_email) {
             $this->db_connection = $dbCon;
+
+            $query = mysqli_query($this->db_connection, "SELECT * FROM controller where emailAddress='$user_email'");
+            $this->user = mysqli_fetch_array($query);
         }
 
         function getAllReviewingEvents() {
@@ -26,7 +30,7 @@
 
             $update_StatusCodeQuery =  mysqli_query($this->db_connection, "UPDATE event_manager em
                                                                            INNER JOIN event e ON em.eventManagerID = e.eventManagerID
-                                                                           SET em.statusCode='$newStatus'
+                                                                           SET em.statusCode='APPROVED'
                                                                            WHERE e.eventID = '$eventID'");
 
             if(!$update_StatusCodeQuery) {

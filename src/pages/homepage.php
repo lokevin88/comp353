@@ -5,7 +5,8 @@
     include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/event.php';
 
     $user = new User($databaseConnection, $user_email);
-
+    $user_managed_events_status = $user->getManagedEventNameAndStatus();
+    $count_managed_events_result = count($user_managed_events_status);
 
     if(isset($_POST['createEvent'])) {
       $eventName = $_POST['eventName'];
@@ -35,16 +36,7 @@
   <div class="row">
     <div class="col-lg-9">
       <!-- put things here -->
-      <?php
-        $result = $user->getAllEventNameAndStatus();
 
-        if(is_array($result)) {
-          foreach($result as $row) {
-            echo $row['username'] . '</br>';
-          }
-        }
-
-      ?>
     </div>
     <div class="col-lg-3">
       <?php
