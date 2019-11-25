@@ -80,7 +80,7 @@ DROP TABLE IF EXISTS event;
 CREATE TABLE event (
     eventID int(11) NOT NULL AUTO_INCREMENT,
     eventManagerID int(11) NOT NULL,
-    eventFeeID int(11) NULL,
+    eventFeeID int(11),
     eventName varchar(255) NOT NULL,
     eventDescription text NOT NULL,
     eventPhoneNumber varchar(50) NOT NULL,

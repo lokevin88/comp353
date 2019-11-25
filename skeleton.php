@@ -6,18 +6,16 @@
 <div class="main-body">
 
   <?php
-    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/components/bannerAndMessage-component.php';
+    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/components/banner-component.php';
   ?>
 
-  <div class="row">
-    <div class="col-lg-9">
-      <!-- put things here -->
+  <div class="row-nomargin">
+    <div class="col-lg-9"> <!-- change grid size accordingly from the 12 grid -->
+      <!-- put main things here -->
 
     </div>
-    <div class="col-lg-3">
-      <?php
-        include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/components/commonGroupAndEvent-component.php';
-      ?>
+    <div class="col-lg-3"> <!-- change grid size accordingly from the 12 grid -->
+      <!-- right side bar -->
     </div>
   </div>
 </div>

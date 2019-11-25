@@ -8,22 +8,21 @@
             $this->user = new User($this->db_connection, $user_email);
         }
 
-        function createEvent($eventArray) {
+        function getAllApprovedEvents() {
             $userID = $this->user->getUserID();
+            $query = mysqli_query($this->db_connection, "SELECT e.eventID, e.eventName, e.eventDescription, e.eventType, e.startDate, e.endDate
+                                                         FROM user u
+                                                         INNER JOIN event_manager em ON u.userID = em.userID
+                                                         INNER JOIN event e ON em.eventManagerID = e.eventManagerID
+                                                         WHERE em.statusCode='APPROVED' AND em.userID !='$userID'");
 
-            // make person event manager
-            $insert_EventManagerQuery =  mysqli_query($this->db_connection, "INSERT INTO event_manager (userID, statusCode) VALUES
-            ('$userID', 'PENDING')");
-            $eventMangerID = mysqli_insert_id($this->db_connection);
-
-            // create event
-            $insert_EventManagerQuery =  mysqli_query($this->db_connection, "INSERT INTO event (eventManagerID, eventName, eventDescription, eventPhoneNumber, eventType, size, startDate, endDate, pageTemplate) VALUES
-            ('$eventMangerID', '$eventArray[0]', '$eventArray[1]', '$eventArray[2]', '$eventArray[3]', '$eventArray[4]', '$eventArray[5]', '$eventArray[6]', '$eventArray[7]')");
-            $eventID = mysqli_insert_id($this->db_connection);
-
-            // // populate event list
-            $insert_EventList =  mysqli_query($this->db_connection, "INSERT INTO event_list (eventID, userID) VALUES
-            ('$eventID', '$userID')");
+            $all_approved_events_num_rows = mysqli_num_rows($query);
+            if($all_approved_events_num_rows) {
+                return mysqli_fetch_all($query, MYSQLI_ASSOC);
+            }
+            else {
+                return [];
+            }
         }
 
     }

@@ -20,8 +20,7 @@
 
       $eventArray = array($eventName, $eventDescription, $eventPhoneNumber, $eventType, $eventSize, $eventStartDate, $eventEndDate, $pageTemplate);
 
-      $event = new Event($databaseConnection, $user_email);
-      $event->createEvent($eventArray);
+      $user->createEvent($eventArray);
       navigateTo("/comp353/src/pages/homepage.php");
     }
 
@@ -30,7 +29,7 @@
 <div class="main-body">
 
   <?php
-    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/components/bannerAndMessage-component.php';
+    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/components/banner-component.php';
   ?>
 
   <div class="row">
