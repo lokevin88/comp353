@@ -80,7 +80,7 @@ DROP TABLE IF EXISTS event;
 CREATE TABLE event (
     eventID int(11) NOT NULL AUTO_INCREMENT,
     eventManagerID int(11) NOT NULL,
-    eventFeeID int(11) NULL,
+    eventFeeID int(11),
     eventName varchar(255) NOT NULL,
     eventDescription text NOT NULL,
     eventPhoneNumber varchar(50) NOT NULL,
@@ -98,6 +98,8 @@ DROP TABLE IF EXISTS event_list;
 CREATE TABLE event_list (
     eventID int(11) NOT NULL,
     userID int(11) NOT NULL,
+    statusPosition varchar(50) NOT NULL,
+    statusCode varchar(15) DEFAULT '',
     CONSTRAINT PK_Event_List PRIMARY KEY (eventID, userID),
     CONSTRAINT FK_Event_List_Event FOREIGN KEY (eventID) REFERENCES event(eventID) ON DELETE CASCADE,
     CONSTRAINT FK_Event_List_User FOREIGN KEY (userID) REFERENCES user(userID) ON DELETE CASCADE

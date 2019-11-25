@@ -1,4 +1,3 @@
-
 <?php
     require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/head.php';
 
@@ -23,7 +22,7 @@
 
 <body>
   <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">rr_comp353_2</a>
+    <a class="navbar-brand" href="/comp353/src/pages/homepage.php">rr_comp353_2</a>
 
     <div class="d-flex flex-fill justify-content-end">
 
@@ -44,23 +43,26 @@
           <p class="profile-name">Hey <?php echo $user_data_row['username']; ?></p>
         </span>
       </div>
-      <div class="row px-4">
-        <span class="logout">
+      <div class="row px-4 logout">
+        <div class="col-md-12">
+          <a href="#" class="stretched-link">My account</a>
+        </div>
+        <div class="col-md-12">
           <a href="/comp353/src/shared/logout.php">logout</a>
-        </span>
+        </div>
       </div>
 
       <hr>
 
       <div class="row px-4" style="transform: rotate(0);">
-        <a href="#" class="stretched-link">my account</a>
+        <a href="/comp353/src/pages/homepage.php" class="stretched-link">Home</a>
       </div>
 
       <hr>
 
       <div class="row px-4" style="transform: rotate(0);">
         <span>
-          <a href="#" class="stretched-link">Events</a>
+          <a href="/comp353/src/pages/event-page.php" class="stretched-link">Events</a>
         </span>
       </div>
 
