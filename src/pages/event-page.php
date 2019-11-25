@@ -6,10 +6,15 @@
     include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/event.php';
 
     $user = new User($databaseConnection, $user_email);
+    // get all managed events
     $user_managed_events_status = $user->getManagedEventNameAndStatus();
     $count_managed_events_result = count($user_managed_events_status);
+    // get all requested to join events
     $user_requested_events_status = $user->getAllPendingRequestedEvents();
     $count_requested_events_status = count($user_requested_events_status);
+    // get all requestee who wants to join your event
+    $user_request_to_join_events_status = $user->getAllPendingRequestToEvents();
+    $count_request_to_join_events_status = count($user_request_to_join_events_status);
 
     $event = new Event($databaseConnection, $user_email);
     $event_all_approved = $event->getAllApprovedEvents();
@@ -36,7 +41,21 @@
 
         $user->joinEvent($eventID);
         navigateTo("/comp353/src/pages/event-page.php");
-      }
+    }
+
+    if(isset($_POST['addToApproved'])) {
+        $eventID = $_POST['addToApproved'];
+
+        $user->updateRequestedPeopleToJoinEvent($eventID, 'APPROVED');
+        navigateTo("/comp353/src/pages/event-page.php");
+    }
+
+    if(isset($_POST['addToRejected'])) {
+        $eventID = $_POST['addToRejected'];
+
+        $user->updateRequestedPeopleToJoinEvent($eventID, 'REJECTED');
+        navigateTo("/comp353/src/pages/event-page.php");
+    }
   ?>
 
 <div id="event-wrapper" class="main-body">
@@ -47,7 +66,7 @@
 
     <div class="row-nomargin">
         <div class="col-lg-12">
-            <a name="eventPendingTableName">List of pending events</a>
+            <a name="eventPendingTableName">List of people who wants to join your event</a>
             <div class="table-responsive pendingTable">
                 <table class="table">
                     <thead class="thead-dark">
@@ -61,16 +80,16 @@
                     </thead>
                     <tbody>
                         <form action="admin-page.php" method="post">
-                            <?php if($count_pending_result == 0) : ?>
+                            <?php if($count_request_to_join_events_status == 0) : ?>
                             <tr class="table-secondary text-center">
                                 <td colspan="5">
-                                    <h3>No pending events</h3>
+                                    <h3>No one wants to join your events as of yet</h3>
                                 </td>
                             </tr>
                             <?php endif; ?>
 
                             <?php
-                                foreach($admin_pending_result as $row):
+                                foreach($user_request_to_join_events_status as $row):
                             ?>
 
                             <tr class="table-secondary">
@@ -78,7 +97,7 @@
                                 <td><?php echo $row['statusCode']; ?></td>
                                 <td><?php echo $row['eventName']; ?></td>
                                 <td>
-                                    <button type="submit" name="addToReviewing" class="btn btn-primary"
+                                    <button type="submit" name="addToApproved" class="btn btn-primary"
                                         value="<?php echo $row['eventID']; ?>">
                                         <i class="fa fa-check"></i> Accept
                                     </button>

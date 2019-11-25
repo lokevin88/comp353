@@ -59,14 +59,32 @@
                                                          FROM user u
                                                          INNER JOIN event_list el ON u.userID = el.userID
                                                          INNER JOIN event e ON el.eventID = e.eventID
-                                                         WHERE el.statusCode='PENDING' AND el.statusPosition='EVENTMANAGER' AND u.userID='$userID'");
+                                                         WHERE el.statusCode='PENDING' AND e.eventID IN
+                                                            (SELECT e.eventID
+                                                            FROM user u
+                                                            INNER JOIN event_manager em ON u.userID = em.userID
+                                                            INNER JOIN event e ON em.eventManagerID = e.eventManagerID
+                                                            WHERE u.userID='$userID')");
 
-            $eventPending_num_rows = mysqli_num_rows($query);
-            if($eventPending_num_rows) {
+            $eventPendingToJoin_num_rows = mysqli_num_rows($query);
+            if($eventPendingToJoin_num_rows) {
                 return mysqli_fetch_all($query, MYSQLI_ASSOC);
             }
             else {
                 return [];
+            }
+        }
+
+        function updateRequestedPeopleToJoinEvent($eventID, $newStatus) {
+            $update_RequestedPeopleToJoinEvent =  mysqli_query($this->db_connection, "UPDATE event_list el
+                                                                                      INNER JOIN user u ON el.userID = el.userID
+                                                                                      SET em.statusCode='APPROVED'
+                                                                                      WHERE e.eventID = '$eventID'");
+
+            if(!$update_RequestedPeopleToJoinEvent) {
+                echo 'placeholder could not update';
+            } else {
+                echo 'updated placeholder';
             }
         }
 
