@@ -55,7 +55,7 @@
         function getAllPendingRequestToEvents() {
             $userID = $this->getUserID();
 
-            $query = mysqli_query($this->db_connection, "SELECT e.eventID, u.username, el.statusCode, e.eventName
+            $query = mysqli_query($this->db_connection, "SELECT u.userID, e.eventID, u.username, el.statusCode, e.eventName
                                                          FROM user u
                                                          INNER JOIN event_list el ON u.userID = el.userID
                                                          INNER JOIN event e ON el.eventID = e.eventID
@@ -75,11 +75,11 @@
             }
         }
 
-        function updateRequestedPeopleToJoinEvent($eventID, $newStatus) {
+        function updateRequestedPeopleToJoinEvent($eventID, $userID, $newStatus) {
             $update_RequestedPeopleToJoinEvent =  mysqli_query($this->db_connection, "UPDATE event_list el
-                                                                                      INNER JOIN user u ON el.userID = el.userID
-                                                                                      SET em.statusCode='APPROVED'
-                                                                                      WHERE e.eventID = '$eventID'");
+                                                                                      INNER JOIN user u ON el.userID = u.userID
+                                                                                      SET el.statusCode='APPROVED'
+                                                                                      WHERE el.eventID = '$eventID' AND u.userID='$userID' AND el.statusCode='PENDING'");
 
             if(!$update_RequestedPeopleToJoinEvent) {
                 echo 'placeholder could not update';
@@ -99,6 +99,24 @@
 
             $eventRequested_num_rows = mysqli_num_rows($query);
             if($eventRequested_num_rows) {
+                return mysqli_fetch_all($query, MYSQLI_ASSOC);
+            }
+            else {
+                return [];
+            }
+        }
+
+        function getAllGoingEvents() {
+            $userID = $this->getUserID();
+
+            $query = mysqli_query($this->db_connection, "SELECT el.statusCode, e.eventName
+                                                         FROM user u
+                                                         INNER JOIN event_list el ON u.userID = el.userID
+                                                         INNER JOIN event e ON el.eventID = e.eventID
+                                                         WHERE u.userID='$userID' AND el.statusCode='APPROVED'");
+
+            $eventGoing_num_rows = mysqli_num_rows($query);
+            if($eventGoing_num_rows) {
                 return mysqli_fetch_all($query, MYSQLI_ASSOC);
             }
             else {

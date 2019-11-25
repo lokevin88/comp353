@@ -15,10 +15,14 @@
     // get all requestee who wants to join your event
     $user_request_to_join_events_status = $user->getAllPendingRequestToEvents();
     $count_request_to_join_events_status = count($user_request_to_join_events_status);
+    // get all going and approved events
+    $user_going_events_status = $user->getAllGoingEvents();
+    $count_going_events_status = count($user_going_events_status);
 
     $event = new Event($databaseConnection, $user_email);
     $event_all_approved = $event->getAllApprovedEvents();
     $count_all_approved_events_status = count($event_all_approved);
+
 
     if(isset($_POST['createEvent'])) {
       $eventName = $_POST['eventName'];
@@ -45,15 +49,17 @@
 
     if(isset($_POST['addToApproved'])) {
         $eventID = $_POST['addToApproved'];
+        $userID = $_POST['userToAccept'];
 
-        $user->updateRequestedPeopleToJoinEvent($eventID, 'APPROVED');
+        $user->updateRequestedPeopleToJoinEvent($eventID, $userID, 'APPROVED');
         navigateTo("/comp353/src/pages/event-page.php");
     }
 
     if(isset($_POST['addToRejected'])) {
         $eventID = $_POST['addToRejected'];
+        $userID = $_POST['userToAccept'];
 
-        $user->updateRequestedPeopleToJoinEvent($eventID, 'REJECTED');
+        $user->updateRequestedPeopleToJoinEvent($eventID, $userID, 'REJECTED');
         navigateTo("/comp353/src/pages/event-page.php");
     }
   ?>
@@ -76,13 +82,14 @@
                             <th scope="col">Event name</th>
                             <th scope="col"></th>
                             <th scope="col"></th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <form action="admin-page.php" method="post">
+                        <form action="event-page.php" method="post">
                             <?php if($count_request_to_join_events_status == 0) : ?>
                             <tr class="table-secondary text-center">
-                                <td colspan="5">
+                                <td colspan="6">
                                     <h3>No one wants to join your events as of yet</h3>
                                 </td>
                             </tr>
@@ -107,6 +114,9 @@
                                         value="<?php echo $row['eventID']; ?>">
                                         <i class="fa fa-minus-circle"></i> Reject
                                     </button>
+                                </td>
+                                <td>
+                                    <input type="hidden" name="userToAccept" value="<?php echo $row['userID']; ?>" />
                                 </td>
                             </tr>
                             <?php endforeach; ?>
@@ -134,17 +144,27 @@
             ?>
             <p>Event name: <?php echo $row['eventName']; ?></p>
             <p>Status: <?php echo $row['statusCode']; ?></p>
-            <p>Link to event page: </p>
             <hr>
             <?php endforeach; ?>
 
         </div>
         <div class="col-lg-2 whiteBorderAndBlackLines">
             <h4>Going events</h4>
+            <?php if($count_going_events_status == 0): ?>
+            <p>No pending request to join</p>
+            <?php endif; ?>
+
+            <?php
+                foreach($user_going_events_status as $row):
+            ?>
+            <p>Event name: <?php echo $row['eventName']; ?></p>
+            <p>Status: <?php echo $row['statusCode']; ?></p>
+            <p>Link to event page: </p>
+            <hr>
+            <?php endforeach; ?>
         </div>
         <div class="col-lg-6 whiteBorderAndBlackLines">
             <h4>Ongoing events</h4>
-
             <div class="table-responsive pendingTable">
                 <table class="table">
                     <thead>
