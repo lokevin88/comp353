@@ -160,6 +160,14 @@
             ('$eventManagerID', '$groupArray[0]', '$groupArray[1]', '$groupArray[2]')");
         }
 
+        function joinGroup($groupID) {
+            $userID = $this->getUserID();
+            // create group
+            $update_groupQuery =  mysqli_query($this->db_connection, "INSERT INTO group_member_list (groupID, userID, statusPosition, statusCode) VALUES
+            ('$groupID', '$userID', 'MEMBER', 'PENDING')");
+        }
+
+
         function getEventManagerIDFromUserID($userID) {
             $query = mysqli_query($this->db_connection, "SELECT eventManagerID
                                                          FROM event_manager
@@ -238,11 +246,39 @@
 
         function getAllJoinedGroups() {
             $userID = $this->getUserID();
-            $query = mysqli_query($this->db_connection, "SELECT gml.statusCode, g.groupName
+            $query = mysqli_query($this->db_connection, "SELECT gml.statusCode, g.groupName, g.groupID
                                                          FROM group_member_list gml
                                                          INNER JOIN groups g ON gml.groupID = g.groupID
                                                          WHERE gml.userID='$userID' AND gml.statusCode='APPROVED'");
 
+            $joinedGroups_num_rows = mysqli_num_rows($query);
+            if($joinedGroups_num_rows) {
+                return mysqli_fetch_all($query, MYSQLI_ASSOC);
+            }
+            else {
+                return [];
+            }
+        }
+
+        function getAllAvailableGroups() {
+            $userID = $this->getUserID();
+            $query = mysqli_query($this->db_connection, "SELECT DISTINCT g.groupName, g.groupID
+                                                         FROM groups g
+                                                         INNER JOIN event_list el ON g.eventID = el.eventID
+                                                         LEFT JOIN group_member_list gml ON g.groupID = gml.groupID
+                                                         WHERE el.userID = '$userID'");
+
+                                                        //  SELECT DISTINCT g.groupName, g.groupID
+                                                        //  FROM groups g
+                                                        //  INNER JOIN event_list el ON g.eventID = el.eventID
+                                                        //  LEFT JOIN group_member_list gml ON g.groupID = gml.groupID
+                                                        //  WHERE el.userID = '$userID' AND gml.userID != '$userID'");
+
+                                                        //  SELECT DISTINCT g.groupName, g.groupID
+                                                        //  FROM groups g
+                                                        //  INNER JOIN event_list el ON g.eventID = el.eventID
+                                                        //  LEFT JOIN group_member_list gml ON g.groupID = gml.groupID
+                                                        //  WHERE el.userID = 3 AND gml.groupID != (SELECT groupID FROM group_member_list WHERE userID = 3)
             $joinedGroups_num_rows = mysqli_num_rows($query);
             if($joinedGroups_num_rows) {
                 return mysqli_fetch_all($query, MYSQLI_ASSOC);

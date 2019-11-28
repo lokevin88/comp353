@@ -1,8 +1,13 @@
-<!-- TO CHANGE to groups, this only to based off events page -->
+<!-- TO CHANGE to groups, this only to based off events page
+    TO CONTINUE :
+    CREATE A GROUP DETAILS PAGE WITH THE LATEST POST,
+    DISPLAYING ALL THE MEMBERS (POSSIBILITY TO KICk OUT
+    MEMBERS IF EVENMANAGER, INTEGRATE MESSAGING)
+
+-->
 
 <?php
     require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/navbar.php';
-    //  always import from below here
 
     include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/user.php';
 
@@ -35,7 +40,14 @@
 
         $user->createGroup($groupArray);
         navigateTo("/comp353/src/pages/group-page.php");
-      }
+    }
+
+    if(isset($_POST['joinGroup'])) {
+        $groupID = $_POST['groupID'];
+
+        $user->joinGroup($groupID);
+        navigateTo("/comp353/src/pages/group-page.php");
+    }
 
     if(isset($_POST['addToPending'])) {
         $eventID = $_POST['addToPending'];
@@ -154,10 +166,12 @@
 
             <?php
                 foreach($user_joined_groups_status as $row):
+                $link = '/comp353/src/pages/group-details-page.php?groupID=' . $row['groupID'];
             ?>
             <p>Group name: <?php echo $row['groupName']; ?></p>
             <p>Status: <?php echo $row['statusCode']; ?></p>
-            <p>Link to event page: </p>
+
+            <a href="<?php echo $link;?>">Go to group's detail page</a>
             <hr>
             <?php endforeach; ?>
         </div>
