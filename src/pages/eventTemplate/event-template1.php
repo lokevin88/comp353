@@ -15,9 +15,7 @@
 
     </div>
     <div class="col-lg-3">
-      <?php
-        include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/components/commonGroupAndEvent-component.php';
-      ?>
+
     </div>
   </div>
 </div>
