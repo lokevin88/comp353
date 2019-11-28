@@ -4,14 +4,16 @@
     // groupID= is of length 8, subtringing it with give the ID
     $id = substr($idRaw, 8);
 
-    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/user.php';
+    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/group.php';
+
+    $group = new Group($databaseConnection);
+    $groupName = $group->getGroupName($id);
 
     // For the title
-    $title ="<h1 class='display-4'> Welcome to Group $id</h1>";
+    $title ="<h1 class='display-4'> Welcome to $groupName Group</h1>";
   ?>
 
 <div class="main-body">
-<?php echo "hellloooo" .$id ?>
 <div class="jumbotron">
     <?php echo $title?>
     <hr class="my-4">
@@ -20,7 +22,7 @@
   <div class="row-nomargin">
     <div class="col-lg-9"> <!-- change grid size accordingly from the 12 grid -->
       <!-- put main things here -->
-      nfkdfjkdslfjklsdjfkldsj
+      POST GOES HERE
 
     </div>
     <div class="col-lg-3"> <!-- change grid size accordingly from the 12 grid -->
