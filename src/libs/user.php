@@ -52,6 +52,25 @@
             }
         }
 
+        function getManagedEventsNameAndID() {
+            $userID = $this->getUserID();
+
+            $query = mysqli_query($this->db_connection, "SELECT e.eventName, e.eventID
+                                                         FROM user u
+                                                         INNER JOIN event_manager em ON u.userID = em.userID
+                                                         INNER JOIN event e ON em.eventManagerID = e.eventManagerID
+                                                         WHERE u.userID='$userID'
+                                                         ORDER BY e.eventID DESC");
+
+            $managedEvent_num_rows = mysqli_num_rows($query);
+            if($managedEvent_num_rows) {
+                return mysqli_fetch_all($query, MYSQLI_ASSOC);
+            }
+            else {
+                return [];
+            }
+        }
+
         function getAllPendingRequestToEvents() {
             $userID = $this->getUserID();
 
@@ -130,5 +149,162 @@
             $insert_JoinEventQuery =  mysqli_query($this->db_connection, "INSERT INTO event_list (eventID, userID, statusPosition, statusCode) VALUES
                                                                         ('$eventID', '$userID', 'PARTICIPANT', 'PENDING')");
         }
+
+        // Start of functions for groups
+
+        function createGroup($groupArray) {
+            $userID = $this->getUserID();
+            $eventManagerID = $this->getEventManagerIDFromUserID($userID);
+            // create group
+            $insert_groupQuery =  mysqli_query($this->db_connection, "INSERT INTO groups (groupManagerID, groupName, groupDescription, eventID) VALUES
+            ('$eventManagerID', '$groupArray[0]', '$groupArray[1]', '$groupArray[2]')");
+        }
+
+        function joinGroup($groupID) {
+            $userID = $this->getUserID();
+            // create group
+            $update_groupQuery =  mysqli_query($this->db_connection, "INSERT INTO group_member_list (groupID, userID, statusPosition, statusCode) VALUES
+            ('$groupID', '$userID', 'MEMBER', 'PENDING')");
+        }
+
+
+        function getEventManagerIDFromUserID($userID) {
+            $query = mysqli_query($this->db_connection, "SELECT eventManagerID
+                                                         FROM event_manager
+                                                         WHERE userID = '$userID'");
+            if($query) {
+                $dataAsArray = mysqli_fetch_array($query, MYSQLI_ASSOC);
+                return $dataAsArray['eventManagerID'];
+            }
+
+        }
+
+        function getManagedGroupName() {
+            $userID = $this->getUserID();
+
+            $query = mysqli_query($this->db_connection, "SELECT groupName, groupDescription
+                                                         FROM groups
+                                                         WHERE groupManagerID='$userID'
+                                                         ORDER BY groupID DESC
+                                                         LIMIT 3");
+
+            $managedGroups_num_rows = mysqli_num_rows($query);
+            if($managedGroups_num_rows) {
+                return mysqli_fetch_all($query, MYSQLI_ASSOC);
+            }
+            else {
+                return [];
+            }
+        }
+
+        function getAllPendingRequestedGroups() {
+            $userID = $this->getUserID();
+
+            $query = mysqli_query($this->db_connection, "SELECT gml.statusCode, g.groupName
+                                                         FROM groups g
+                                                         INNER JOIN group_member_list gml ON g.groupID = gml.groupID
+                                                         WHERE gml.userID='$userID' AND gml.statusCode='PENDING'");
+
+            $groupRequested_num_rows = mysqli_num_rows($query);
+            if($groupRequested_num_rows) {
+                return mysqli_fetch_all($query, MYSQLI_ASSOC);
+            }
+            else {
+                return [];
+            }
+        }
+
+        function getAllPendingRequestedToGroup() {
+            $userID = $this->getUserID();
+
+            $query = mysqli_query($this->db_connection, "SELECT gml.statusCode, u.userID, u.firstName, u.lastName, gml.groupID, g.groupName
+                                                         FROM groups g
+                                                         INNER JOIN group_member_list gml ON g.groupID = gml.groupID
+                                                         INNER JOIN user u ON gml.userID = u.userID
+                                                         WHERE g.groupManagerID='$userID' AND gml.statusCode='PENDING'");
+
+            $toGroupRequested_num_rows = mysqli_num_rows($query);
+            if($toGroupRequested_num_rows) {
+                return mysqli_fetch_all($query, MYSQLI_ASSOC);
+            }
+            else {
+                return [];
+            }
+        }
+
+        function updateRequestedPeopleToJoinGroup($groupID, $userID, $newStatus) {
+            $update_RequestedPeopleToJoinEvent =  mysqli_query($this->db_connection, "UPDATE group_member_list
+                                                                                      SET statusCode='APPROVED'
+                                                                                      WHERE groupID = '$groupID' AND userID='$userID' AND statusCode='PENDING'");
+
+            if(!$update_RequestedPeopleToJoinEvent) {
+                echo 'placeholder could not update';
+            } else {
+                echo 'updated placeholder';
+            }
+        }
+
+        function getAllJoinedGroups() {
+            $userID = $this->getUserID();
+            $query = mysqli_query($this->db_connection, "SELECT gml.statusCode, g.groupName, g.groupID
+                                                         FROM group_member_list gml
+                                                         INNER JOIN groups g ON gml.groupID = g.groupID
+                                                         WHERE gml.userID='$userID' AND gml.statusCode='APPROVED'");
+
+            $joinedGroups_num_rows = mysqli_num_rows($query);
+            if($joinedGroups_num_rows) {
+                return mysqli_fetch_all($query, MYSQLI_ASSOC);
+            }
+            else {
+                return [];
+            }
+        }
+
+        function getAllAvailableGroups() {
+            $userID = $this->getUserID();
+            $query = mysqli_query($this->db_connection, "SELECT DISTINCT g.groupName, g.groupID
+                                                         FROM groups g
+                                                         INNER JOIN event_list el ON g.eventID = el.eventID
+                                                         LEFT JOIN group_member_list gml ON g.groupID = gml.groupID
+                                                         WHERE el.userID = '$userID'");
+
+                                                        //  SELECT DISTINCT g.groupName, g.groupID
+                                                        //  FROM groups g
+                                                        //  INNER JOIN event_list el ON g.eventID = el.eventID
+                                                        //  LEFT JOIN group_member_list gml ON g.groupID = gml.groupID
+                                                        //  WHERE el.userID = '$userID' AND gml.userID != '$userID'");
+
+                                                        //  SELECT DISTINCT g.groupName, g.groupID
+                                                        //  FROM groups g
+                                                        //  INNER JOIN event_list el ON g.eventID = el.eventID
+                                                        //  LEFT JOIN group_member_list gml ON g.groupID = gml.groupID
+                                                        //  WHERE el.userID = 3 AND gml.groupID != (SELECT groupID FROM group_member_list WHERE userID = 3)
+            $joinedGroups_num_rows = mysqli_num_rows($query);
+            if($joinedGroups_num_rows) {
+                return mysqli_fetch_all($query, MYSQLI_ASSOC);
+            }
+            else {
+                return [];
+            }
+        }
+
+
+
+        // function getAllUserAvailableGroups() {
+        //     $userID = $this->user->getUserID();
+        //     $query = mysqli_query($this->db_connection, "SELECT e.eventID, e.eventName, e.eventDescription, e.eventType, e.startDate, e.endDate
+        //                                                  FROM user u
+        //                                                  INNER JOIN event_manager em ON u.userID = em.userID
+        //                                                  INNER JOIN event e ON em.eventManagerID = e.eventManagerID
+        //                                                  WHERE em.statusCode='APPROVED' AND em.userID !='$userID'");
+
+        //     $all_approved_events_num_rows = mysqli_num_rows($query);
+        //     if($all_approved_events_num_rows) {
+        //         return mysqli_fetch_all($query, MYSQLI_ASSOC);
+        //     }
+        //     else {
+        //         return [];
+        //     }
+        // }
     }
 ?>

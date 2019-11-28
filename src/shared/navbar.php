@@ -70,6 +70,14 @@
 
       <div class="row px-4" style="transform: rotate(0);">
         <span>
+          <a href="/comp353/src/pages/group-page.php" class="stretched-link">Groups</a>
+        </span>
+      </div>
+
+      <hr>
+
+      <div class="row px-4" style="transform: rotate(0);">
+        <span>
           <a href="#" class="stretched-link">something</a>
         </span>
       </div>

@@ -39,7 +39,7 @@
                                 <input class="form-check-input" type="radio" name="eventType" id="eventType"
                                     value="private" required>
                                 <label class="form-check-label text-nowrap" for="eventType">
-                                    private
+                                    Private
                                 </label>
                             </div>
 
