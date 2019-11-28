@@ -35,7 +35,7 @@
         function getManagedEventNameAndStatus() {
             $userID = $this->getUserID();
 
-            $query = mysqli_query($this->db_connection, "SELECT em.statusCode, e.eventName
+            $query = mysqli_query($this->db_connection, "SELECT e.eventID, em.statusCode, e.eventName, e.pageTemplate
                                                          FROM user u
                                                          INNER JOIN event_manager em ON u.userID = em.userID
                                                          INNER JOIN event e ON em.eventManagerID = e.eventManagerID
@@ -109,7 +109,7 @@
         function getAllGoingEvents() {
             $userID = $this->getUserID();
 
-            $query = mysqli_query($this->db_connection, "SELECT el.statusCode, e.eventName
+            $query = mysqli_query($this->db_connection, "SELECT e.eventID, el.statusCode, e.eventName, e.pageTemplate
                                                          FROM user u
                                                          INNER JOIN event_list el ON u.userID = el.userID
                                                          INNER JOIN event e ON el.eventID = e.eventID
