@@ -159,7 +159,7 @@
             ?>
             <p>Event name: <?php echo $row['eventName']; ?></p>
             <p>Status: <?php echo $row['statusCode']; ?></p>
-            <?php if( ($row['statusCode']) == "APPROVED"): ?>
+            <?php if($row['statusCode'] == "APPROVED"): ?>
             <p>Link to event page:<a href="<?php echo "{$row['pageTemplate']}?id={$row['eventID']}" ; ?>"> Click here</a></p>
             <?php endif; ?>
             <hr>
