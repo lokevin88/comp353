@@ -13,17 +13,17 @@
                     <div class="form-group">
                         <label for="eventName">Event</label>
                         <input type="text" class="form-control" name="eventName" id="eventName"
-                            placeholder="Enter event name" required>
+                            placeholder="Enter event name" pattern="[^\s]+" title="No blanks" required>
                     </div>
                     <div class="form-group">
                         <label for="eventDescription">Description</label>
                         <input type="text" class="form-control" name="eventDescription" id="eventDescription"
-                            placeholder="Enter description" required>
+                            placeholder="Enter description" pattern="[^\s]+" title="No blanks" required>
                     </div>
                     <div class="form-group">
                         <label for="eventPhoneNumber">Phone number</label>
                         <input type="text" class="form-control" name="eventPhoneNumber" id="eventPhoneNumber"
-                            placeholder="Enter phone number" required>
+                            placeholder="Enter phone number" pattern="[^\s]+" title="No blanks" required>
                     </div>
                     <fieldset class="form-group">
                         <p class="col-form-label pt-0">Event type</p>
@@ -68,14 +68,14 @@
                                     value="/comp353/src/pages/eventTemplate/event-template1.php" checked
                                     required>
                                 <label class="form-check-label text-nowrap" for="pageTemplate">
-                                    Something1Placholder
+                                    No sidebar
                                 </label>
                             </div>
                             <div class="form-check col-md-6">
                                 <input class="form-check-input" type="radio" name="pageTemplate" id="pageTemplate"
                                     value="/comp353/src/pages/eventTemplate/event-template2.php" required>
                                 <label class="form-check-label text-nowrap" for="pageTemplate">
-                                    Something2Placeholder
+                                    With sidebar
                                 </label>
                             </div>
                         </div>

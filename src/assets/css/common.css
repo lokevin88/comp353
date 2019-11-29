@@ -74,6 +74,11 @@ body {
   border-radius: 0.25rem;
 }
 
+.message_content {
+  width: 100%;
+  height: 125px;
+}
+
 .commonGroupAndEventSideContainer {
   margin: 15px;
 }
