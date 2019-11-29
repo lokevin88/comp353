@@ -10,8 +10,36 @@
             $this->user = mysqli_fetch_array($query);
         }
 
+        function getUser() {
+            return $this->user;
+        }
+
         function getUserID() {
             return $this->user['userID'];
+        }
+
+        function getUserEmail() {
+            return $this->user['emailAddress'];
+        }
+
+        function getUsername() {
+            return $this->user['username'];
+        }
+
+        function getUserFirstName() {
+            return $this->user['firstName'];
+        }
+
+        function getUserLastName() {
+            return $this->user['lastName'];
+        }
+
+        function getUserGender() {
+            return $this->user['gender'];
+        }
+
+        function getUserDateOfBirth() {
+            return $this->user['dob'];
         }
 
         function createEvent($eventArray) {
@@ -306,5 +334,18 @@
         //         return [];
         //     }
         // }
+
+        function submitEventPosts($eID, $content) {
+            $userID = $this->getUserID();
+            $username = $this->getUsername();
+            $eventID = $eID;
+            $created_at = date("Y-m-d H:i:s");
+
+            $no_tags_body_content = strip_tags($content);
+            $ignore_special_characters_body_content = mysqli_real_escape_string($this->db_connection, $no_tags_body_content);
+
+            $insert_EventPosts =  mysqli_query($this->db_connection, "INSERT INTO event_posts (eventID, content, timeOfPosting, userWhoPosted) VALUES
+                                                                    ('$eventID', '$ignore_special_characters_body_content', '$created_at', '$username')");
+        }
     }
 ?>

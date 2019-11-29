@@ -68,14 +68,14 @@
                                     value="/comp353/src/pages/eventTemplate/event-template1.php" checked
                                     required>
                                 <label class="form-check-label text-nowrap" for="pageTemplate">
-                                    Something1Placholder
+                                    No sidebar
                                 </label>
                             </div>
                             <div class="form-check col-md-6">
                                 <input class="form-check-input" type="radio" name="pageTemplate" id="pageTemplate"
                                     value="/comp353/src/pages/eventTemplate/event-template2.php" required>
                                 <label class="form-check-label text-nowrap" for="pageTemplate">
-                                    Something2Placeholder
+                                    With sidebar
                                 </label>
                             </div>
                         </div>

@@ -92,13 +92,14 @@
                             <th scope="col">Status</th>
                             <th scope="col"></th>
                             <th scope="col"></th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
                         <form action="group-page.php" method="post">
                             <?php if($count_request_to_join_groups_status == 0) : ?>
                             <tr class="table-secondary text-center">
-                                <td colspan="6">
+                                <td colspan="7">
                                     <h3>No one wants to join your group as of yet</h3>
                                 </td>
                             </tr>

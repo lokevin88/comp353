@@ -2,6 +2,7 @@
     require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/navbar.php';
     $idRaw = $_SERVER['QUERY_STRING'];
     // groupID= is of length 8, subtringing it with give the ID
+    // you can use $_GET['groupID']; instead since we have a key/property/attribute defined (if it was like .com/?okay) then query_string would be okay
     $id = substr($idRaw, 8);
 
     include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/user.php';
