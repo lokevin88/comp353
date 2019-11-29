@@ -182,7 +182,7 @@
         function getManagedGroupName() {
             $userID = $this->getUserID();
 
-            $query = mysqli_query($this->db_connection, "SELECT groupName, groupDescription
+            $query = mysqli_query($this->db_connection, "SELECT groupName, groupDescription, groupID
                                                          FROM groups
                                                          WHERE groupManagerID='$userID'
                                                          ORDER BY groupID DESC

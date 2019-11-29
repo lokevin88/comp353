@@ -114,7 +114,7 @@ CREATE TABLE groups (
     eventID int(11) NOT NULL,
     CONSTRAINT PK_Group PRIMARY KEY (groupID),
     CONSTRAINT FK_Group_Event_ID FOREIGN KEY (eventID) REFERENCES event(eventID) ON DELETE CASCADE,
-    CONSTRAINT FK_Group_Manager FOREIGN KEY (groupManagerID) REFERENCES event(eventManagerID) ON DELETE CASCADE
+    CONSTRAINT FK_Group_Manager FOREIGN KEY (groupManagerID) REFERENCES event_manager(eventManagerID) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS group_member_list;
