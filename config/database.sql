@@ -69,7 +69,7 @@ CREATE TABLE event_manager (
 
 DROP TABLE IF EXISTS event_fee_calculation;
 CREATE TABLE event_fee_calculation (
-    eventFeeID int(11) NOT NULL,
+    eventFeeID int(11) NOT NULL AUTO_INCREMENT,
     controllerID int(11) NOT NULL,
     -- chargeRate int(11) NOT NULL, WILL ADD CHARGE RATE AFTER DISCUSSING
     CONSTRAINT PK_Event_Fee PRIMARY KEY (eventFeeID),
@@ -126,6 +126,27 @@ CREATE TABLE group_member_list (
     CONSTRAINT PK_Group_Member_List PRIMARY KEY (groupID, userID),
     CONSTRAINT FK_Group_Member_List_Group FOREIGN KEY (groupID) REFERENCES groups(groupID) ON DELETE CASCADE,
     CONSTRAINT FK_Group_Member_List_User FOREIGN KEY (userID) REFERENCES user(userID) ON DELETE CASCADE
+);
+
+DROP TABLE IF EXISTS event_posts;
+CREATE TABLE event_posts (
+    postsID int(11) NOT NULL AUTO_INCREMENT,
+    eventID int(11) NOT NULL,
+    content TEXT NOT NULL,
+    timeOfPosting DATETIME NOT NULL,
+    userWhoPosted varchar(50) NOT NULL,
+    CONSTRAINT PK_Event_Posts PRIMARY KEY (postsID),
+    CONSTRAINT FK_Event_Posts_Event_ID FOREIGN KEY (eventID) REFERENCES event(eventID) ON DELETE CASCADE
+);
+
+DROP TABLE IF EXISTS event_posts_replies;
+CREATE TABLE event_posts_replies (
+    repliesID int(11) NOT NULL AUTO_INCREMENT,
+    postsID int(11) NOT NULL,
+    content TEXT NOT NULL,
+    timeOfPosting DATETIME NOT NULL,
+    CONSTRAINT PK_Event_Posts_Replies PRIMARY KEY (repliesID),
+    CONSTRAINT FK_Event_Posts_Replies_Posts_ID FOREIGN KEY (postsID) REFERENCES event_posts(postsID) ON DELETE CASCADE
 );
 
 INSERT INTO user

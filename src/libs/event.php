@@ -25,5 +25,20 @@
             }
         }
 
+        function getAllPostsFromEvent($eventID) {
+            $query = mysqli_query($this->db_connection, "SELECT content, timeOfPosting, userWhoPosted
+                                                         FROM event_posts ep
+                                                         WHERE eventID ='$eventID'
+                                                         ORDER BY timeOfPosting DESC");
+
+            $all_approved_events_num_rows = mysqli_num_rows($query);
+            if($all_approved_events_num_rows) {
+                return mysqli_fetch_all($query, MYSQLI_ASSOC);
+            }
+            else {
+                return [];
+            }
+        }
+
     }
 ?>

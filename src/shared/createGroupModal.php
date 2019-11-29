@@ -21,12 +21,12 @@
                     <div class="form-group">
                         <label for="groupName">Group Name</label>
                         <input type="text" class="form-control" name="groupName" id="groupName"
-                            placeholder="Enter group name" required>
+                            placeholder="Enter group name" pattern="[^\s]+" title="No blanks" required>
                     </div>
                     <div class="form-group">
                         <label for="groupDescription">Description</label>
                         <input type="text" class="form-control" name="groupDescription" id="groupDescription"
-                            placeholder="Enter description" required>
+                            placeholder="Enter description" pattern="[^\s]+" title="No blanks" required>
                     </div>
                     <div class="form-group">
                         <label for="groupDescription">Related to Event</label>
