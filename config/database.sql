@@ -148,11 +148,11 @@ INSERT INTO event_manager(eventManagerID, userID, statusCode) VALUES (2,3,"APPRO
 
 INSERT INTO event
     (eventID, eventManagerID, eventFeeID, eventName, eventDescription, eventPhoneNumber, eventType, size, startDate, endDate, pageTemplate)
-    VALUES (1,1,1,"Some Event","Some amazing event","888-888-8888","public",25,"2019-12-24","2019-12-26","/comp353/src/pages/eventTemplate/event-something-template.php");
+    VALUES (1,1,1,"Some Event","Some amazing event","888-888-8888","public",25,"2019-12-24","2019-12-26","/comp353/src/pages/eventTemplate/event-template1.php");
 
 INSERT INTO event
     (eventID, eventManagerID, eventFeeID, eventName, eventDescription, eventPhoneNumber, eventType, size, startDate, endDate, pageTemplate)
-    VALUES (2,1,1,"Some Christmas Event","Some amazing christmas event","888-888-8888","public",25,"2019-12-24","2019-12-26","/comp353/src/pages/eventTemplate/event-something-template.php");
+    VALUES (2,1,1,"Some Christmas Event","Some amazing christmas event","888-888-8888","public",25,"2019-12-24","2019-12-26","/comp353/src/pages/eventTemplate/event-template2.php");
 
 INSERT INTO event_list(eventID, userID, statusPosition, statusCode) VALUES (1,1,"EVENTMANAGER", "");
 
