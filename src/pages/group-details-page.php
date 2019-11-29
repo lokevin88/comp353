@@ -33,12 +33,27 @@
         navigateTo("/comp353/src/pages/group-page.php");
     }
 
+    if(isset($_POST['deleteGroup'])) {
+        $currentGroupID = $_POST['deleteGroup'];
+        $group->deleteGroup($currentGroupID);
+        navigateTo("/comp353/src/pages/group-page.php");
+    }
+
 ?>
 
 <div class="main-body">
 <div class="jumbotron">
     <?php echo $title?>
     <hr class="my-4">
+    <p class="lead">
+        <div style="text-align: right">
+            <form action='group-details-page.php' method="post">
+                <button type="submit" class="btn btn-danger" value="<?php echo $groupID; ?>" name="deleteGroup">
+                    Delete Group <i class="fa fa-minus-circle"></i>
+                </button>
+            </form>
+        </div>
+    </p>
 </div>
 
   <div class="row-nomargin">

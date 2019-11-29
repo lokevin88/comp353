@@ -44,5 +44,14 @@
                                                          WHERE userID = $userID");
         }
 
+        function deleteGroup($groupID) {
+            $queryGroup = mysqli_query($this->db_connection, "DELETE
+                                                              FROM groups
+                                                              WHERE groupID = $groupID");
+            $queryMembers = mysqli_query($this->db_connection, "DELETE
+                                                                FROM group_member_list
+                                                                WHERE groupID = $groupID");
+        }
+
     }
 ?>
