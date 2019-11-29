@@ -67,7 +67,7 @@
                   <div class="form-group row">
                     <label for="fname" class="col-sm-2 col-form-label text-nowrap">First Name</label>
                     <div class="col-sm-10">
-                      <input type="text" pattern="[A-Za-z]{3}" class="form-control" name="fname" id="fname" placeholder="John" pattern="[^\s]+" title="No blanks" required>
+                      <input type="text" class="form-control" name="fname" id="fname" placeholder="John" pattern="[^\s]+" title="No blanks" required>
                     </div>
                   </div>
                   <div class="form-group row">
