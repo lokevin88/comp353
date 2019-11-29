@@ -149,6 +149,29 @@ CREATE TABLE event_posts_replies (
     CONSTRAINT FK_Event_Posts_Replies_Posts_ID FOREIGN KEY (postsID) REFERENCES event_posts(postsID) ON DELETE CASCADE
 );
 
+
+
+DROP TABLE IF EXISTS group_posts;
+CREATE TABLE group_posts (
+    gPostsID int(11) NOT NULL AUTO_INCREMENT,
+    groupID int(11) NOT NULL,
+    content TEXT NOT NULL,
+    timeOfPosting DATETIME NOT NULL,
+    userWhoPosted varchar(50) NOT NULL,
+    CONSTRAINT PK_Group_Posts PRIMARY KEY (gPostsID),
+    CONSTRAINT FK_Group_Posts_Group_ID FOREIGN KEY (groupID) REFERENCES groups(groupID) ON DELETE CASCADE
+);
+
+DROP TABLE IF EXISTS group_posts_replies;
+CREATE TABLE group_posts_replies (
+    repliesID int(11) NOT NULL AUTO_INCREMENT,
+    gPostsID int(11) NOT NULL,
+    content TEXT NOT NULL,
+    timeOfPosting DATETIME NOT NULL,
+    CONSTRAINT PK_Group_Posts_Replies PRIMARY KEY (repliesID),
+    CONSTRAINT FK_Group_Posts_Replies_Posts_ID FOREIGN KEY (gPostsID) REFERENCES group_posts(gPostsID) ON DELETE CASCADE
+);
+
 INSERT INTO user
     (userID, emailAddress, username, firstName, lastName, gender, dob, profilePicture, password)
     VALUES (1,"user@db.com","user","firstUser","lastUser","male","1999-10-11","/comp353/src/assets/images/mockuser.png","user");

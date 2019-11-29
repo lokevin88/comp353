@@ -53,5 +53,20 @@
                                                                 WHERE groupID = $groupID");
         }
 
+        function getAllPostsFromGroup($groupID) {
+            $query = mysqli_query($this->db_connection, "SELECT content, timeOfPosting, userWhoPosted
+                                                         FROM group_posts
+                                                         WHERE groupID ='$groupID'
+                                                         ORDER BY timeOfPosting DESC");
+
+            $all_group_posts = mysqli_num_rows($query);
+            if($all_group_posts) {
+                return mysqli_fetch_all($query, MYSQLI_ASSOC);
+            }
+            else {
+                return [];
+            }
+        }
+
     }
 ?>

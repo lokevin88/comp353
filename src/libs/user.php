@@ -347,5 +347,17 @@
             $insert_EventPosts =  mysqli_query($this->db_connection, "INSERT INTO event_posts (eventID, content, timeOfPosting, userWhoPosted) VALUES
                                                                     ('$eventID', '$ignore_special_characters_body_content', '$created_at', '$username')");
         }
+
+        function submitGroupPosts($groupID, $content) {
+            $userID = $this->getUserID();
+            $username = $this->getUsername();
+            $created_at = date("Y-m-d H:i:s");
+
+            $no_tags_body_content = strip_tags($content);
+            $ignore_special_characters_body_content = mysqli_real_escape_string($this->db_connection, $no_tags_body_content);
+
+            $insert_groupPosts =  mysqli_query($this->db_connection, "INSERT INTO group_posts (groupID, content, timeOfPosting, userWhoPosted) VALUES
+                                                                    ('$groupID', '$ignore_special_characters_body_content', '$created_at', '$username')");
+        }
     }
 ?>
