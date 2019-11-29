@@ -13,17 +13,17 @@
                     <div class="form-group">
                         <label for="eventName">Event</label>
                         <input type="text" class="form-control" name="eventName" id="eventName"
-                            placeholder="Enter event name" required>
+                            placeholder="Enter event name" pattern="[^\s]+" title="Input text" required>
                     </div>
                     <div class="form-group">
                         <label for="eventDescription">Description</label>
                         <input type="text" class="form-control" name="eventDescription" id="eventDescription"
-                            placeholder="Enter description" required>
+                            placeholder="Enter description" pattern="[^\s]+" title="Input text" required>
                     </div>
                     <div class="form-group">
                         <label for="eventPhoneNumber">Phone number</label>
                         <input type="text" class="form-control" name="eventPhoneNumber" id="eventPhoneNumber"
-                            placeholder="Enter phone number" required>
+                            placeholder="Enter phone number" pattern="[^\s]+" title="Input text" required>
                     </div>
                     <fieldset class="form-group">
                         <p class="col-form-label pt-0">Event type</p>

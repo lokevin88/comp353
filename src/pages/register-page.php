@@ -67,13 +67,13 @@
                   <div class="form-group row">
                     <label for="fname" class="col-sm-2 col-form-label text-nowrap">First Name</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" name="fname" id="fname" placeholder="John">
+                      <input type="text" pattern="[A-Za-z]{3}" class="form-control" name="fname" id="fname" placeholder="John" pattern="[^\s]+" title="Input text" required>
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="lname" class="col-sm-2 col-form-label text-nowrap">LastName</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" name="lname" id="lname" placeholder="Doe">
+                      <input type="text" class="form-control" name="lname" id="lname" placeholder="Doe" pattern="[^\s]+" title="Input text" required>
                     </div>
                   </div>
                   <fieldset class="form-group">
@@ -106,7 +106,7 @@
                   <div class="form-group row">
                     <label for="username" class="col-sm-2 col-form-label text-nowrap">Username</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" name="username" id="username" placeholder="JohnDoe"
+                      <input type="text" class="form-control" name="username" id="username" placeholder="JohnDoe" pattern="[^\s]+" title="Input text"
                         required>
                     </div>
                   </div>
