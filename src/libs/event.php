@@ -8,6 +8,16 @@
             $this->user = new User($this->db_connection, $user_email);
         }
 
+        function getEventName($eventID) {
+            $query = mysqli_query($this->db_connection, "SELECT eventName
+                                                         FROM event e
+                                                         WHERE eventID ='$eventID'");
+
+            $eventName = mysqli_fetch_array($query);
+
+            return $eventName['eventName'];
+        }
+
         function getAllApprovedEvents() {
             $userID = $this->user->getUserID();
             $query = mysqli_query($this->db_connection, "SELECT e.eventID, e.eventName, e.eventDescription, e.eventType, e.startDate, e.endDate

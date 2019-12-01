@@ -1,7 +1,5 @@
+<?php if($count_all_replies_on_member_posting != 0): ?>
 <div class="row mt-3">
-    <?php
-        foreach($event_all_replies_on_member_posting as $row):
-    ?>
     <div class="col-md-12">
         <form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
             <div class="input-group mb-3">
@@ -13,6 +11,10 @@
             </div>
         </form>
     </div>
+
+    <?php
+        foreach($event_all_replies_on_member_posting as $row):
+    ?>
 
     <div class="col-md-12">
         <div class="card">
@@ -37,3 +39,4 @@
     </div>
     <?php endforeach; ?>
 </div>
+<?php endif; ?>
