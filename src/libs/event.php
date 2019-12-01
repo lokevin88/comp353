@@ -26,7 +26,7 @@
         }
 
         function getAllPostsFromEvent($eventID) {
-            $query = mysqli_query($this->db_connection, "SELECT content, timeOfPosting, userWhoPosted
+            $query = mysqli_query($this->db_connection, "SELECT postsID, content, timeOfPosting, userWhoPosted
                                                          FROM event_posts ep
                                                          WHERE eventID ='$eventID'
                                                          ORDER BY timeOfPosting DESC");

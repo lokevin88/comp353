@@ -10,6 +10,10 @@
 /* controller css */
 @import "/comp353/src/assets/css/controller.css";
 
+/* event templates css */
+@import "/comp353/src/assets/css/event-template1.css";
+@import "/comp353/src/assets/css/event-template2.css";
+
 * {
   font-family: "Roboto";
   margin: 0;

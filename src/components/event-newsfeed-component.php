@@ -20,8 +20,10 @@
             <blockquote class="blockquote mb-0">
                 <p class="card-body-text"><?php echo $row['content']; ?></p>
                 <footer class="blockquote-footer card-name-text"><?php echo $row['userWhoPosted']; ?></footer>
-                <p class="card-body-text">reply</p>
             </blockquote>
+        </div>
+        <div class="card-footer">
+            <div id="reply-<?php echo $row['postsID']; ?>" class="text-reply-color card-body-text">reply</div>
         </div>
     </div>
     <?php endforeach; ?>
