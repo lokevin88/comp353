@@ -196,7 +196,7 @@
         function getAllGoingEvents() {
             $userID = $this->getUserID();
 
-            $query = mysqli_query($this->db_connection, "SELECT e.eventID, el.statusCode, e.eventName, e.pageTemplate
+            $query = mysqli_query($this->db_connection, "SELECT e.eventID, e.eventDescription, el.statusCode, e.eventName, e.pageTemplate
                                                          FROM user u
                                                          INNER JOIN event_list el ON u.userID = el.userID
                                                          INNER JOIN event e ON el.eventID = e.eventID
@@ -332,7 +332,7 @@
 
         function getAllJoinedGroups() {
             $userID = $this->getUserID();
-            $query = mysqli_query($this->db_connection, "SELECT gml.statusCode, g.groupName, g.groupID
+            $query = mysqli_query($this->db_connection, "SELECT gml.statusCode, g.groupName, g.groupID, g.groupDescription
                                                          FROM group_member_list gml
                                                          INNER JOIN groups g ON gml.groupID = g.groupID
                                                          WHERE gml.userID='$userID' AND gml.statusCode='APPROVED'");
