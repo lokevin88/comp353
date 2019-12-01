@@ -11,6 +11,8 @@
 
     <?php
         foreach($event_all_member_posting as $row):
+        $event_all_replies_on_member_posting = $event->getAllRepliesFromPostsInEvent($eventID, $row['postsID']);
+        $count_all_replies_on_member_posting = count($event_all_replies_on_member_posting);
     ?>
     <div class="card">
         <div class="card-header card-title-text">
@@ -23,12 +25,10 @@
             </blockquote>
         </div>
         <div class="card-footer">
-            <div id="reply-<?php echo $row['postsID']; ?>" class="text-reply-color card-body-text">reply</div>
-            <div class="row">
+            <div id="reply-<?php echo $row['postsID']; ?>" class="text-reply-color card-body-text">reply (<?php echo $count_all_replies_on_member_posting ?>)</div>
                 <?php
                     include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/components/event-newsfeed-reply-component.php';
                 ?>
-            </div>
         </div>
     </div>
     <?php endforeach; ?>

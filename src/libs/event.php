@@ -41,11 +41,11 @@
         }
 
 
-        function getAllRepliesFromPostsInEvent($postsID) {
-            $query = mysqli_query($this->db_connection, "SELECT content, timeOfPosting, userWhoPosted
+        function getAllRepliesFromPostsInEvent($eventID, $postsID) {
+            $query = mysqli_query($this->db_connection, "SELECT epr.content, epr.timeOfPosting, epr.userWhoPosted
                                                          FROM event_posts_replies epr
                                                          INNER JOIN event_posts ep ON epr.postsID = ep.postsID
-                                                         WHERE postsID ='$postsID'
+                                                         WHERE ep.eventID ='$eventID' AND epr.postsID='$postsID'
                                                          ORDER BY timeOfPosting DESC");
 
             $all_repliesposting_num_rows = mysqli_num_rows($query);

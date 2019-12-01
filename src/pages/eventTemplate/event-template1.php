@@ -9,6 +9,8 @@
     $user = new User($databaseConnection, $user_email);
 
     $event = new Event($databaseConnection, $user_email);
+
+    // all posting in events
     $event_all_member_posting = $event->getAllPostsFromEvent($eventID);
     $count_all_member_posting = count($event_all_member_posting);
 
