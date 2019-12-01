@@ -5,6 +5,8 @@
     include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/event.php';
 
     $eventID = $_GET['id'];
+    //hotfix ...... navigateTo does not work in the newsfeed component for replying
+    $path = "<script>window.location = '/comp353/src/pages/eventTemplate/event-template2.php?id=$eventID';</script>";
 
     $user = new User($databaseConnection, $user_email);
 
@@ -23,9 +25,7 @@
       navigateTo("/comp353/src/pages/eventTemplate/event-template2.php?id=$eventID");
     }
   ?>
-
 <div id="event-template-wrapper" class="main-body">
-
   <?php
     include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/components/bannerAndMessage-component.php';
   ?>

@@ -108,6 +108,11 @@ body {
   margin-top: -45px;
 }
 
+#globalError {
+  color: indianred;
+  background-color: darkgrey;
+}
+
 /* main-body-container */
 
 .main-body {
