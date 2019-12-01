@@ -140,7 +140,7 @@
         <div class="col-lg-4 whiteBorderAndBlackLines">
             <h4>Pending to join</h4>
             <?php if($count_requested_groups_status == 0): ?>
-            <p>No pending request to join</p>
+            <p>Not in any groups</p>
             <?php endif; ?>
 
             <?php

@@ -21,6 +21,7 @@
   ?>
 
 <body>
+  <div id="globalError"></div>
   <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
     <a class="navbar-brand" href="/comp353/src/pages/homepage.php">rr_comp353_2</a>
 
