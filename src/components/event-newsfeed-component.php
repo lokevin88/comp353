@@ -20,7 +20,7 @@
             <blockquote class="blockquote mb-0">
                 <p class="card-body-text"><?php echo $row['content']; ?></p>
                 <footer class="blockquote-footer card-name-text"><?php echo $row['userWhoPosted']; ?></footer>
-                <a href="#" class="card-body-text">reply</a>
+                <p class="card-body-text">reply</p>
             </blockquote>
         </div>
     </div>

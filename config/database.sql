@@ -145,6 +145,7 @@ CREATE TABLE event_posts_replies (
     postsID int(11) NOT NULL,
     content TEXT NOT NULL,
     timeOfPosting DATETIME NOT NULL,
+    userWhoPosted varchar(50) NOT NULL,
     CONSTRAINT PK_Event_Posts_Replies PRIMARY KEY (repliesID),
     CONSTRAINT FK_Event_Posts_Replies_Posts_ID FOREIGN KEY (postsID) REFERENCES event_posts(postsID) ON DELETE CASCADE
 );
