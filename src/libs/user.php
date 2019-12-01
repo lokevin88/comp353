@@ -68,6 +68,25 @@
                                                          INNER JOIN event_manager em ON u.userID = em.userID
                                                          INNER JOIN event e ON em.eventManagerID = e.eventManagerID
                                                          WHERE u.userID='$userID'
+                                                         ORDER BY e.eventID DESC");
+
+            $managedEvent_num_rows = mysqli_num_rows($query);
+            if($managedEvent_num_rows) {
+                return mysqli_fetch_all($query, MYSQLI_ASSOC);
+            }
+            else {
+                return [];
+            }
+        }
+
+        function getManagedEventNameAndStatusLIMIT() {
+            $userID = $this->getUserID();
+
+            $query = mysqli_query($this->db_connection, "SELECT e.eventID, em.statusCode, e.eventName, e.pageTemplate
+                                                         FROM user u
+                                                         INNER JOIN event_manager em ON u.userID = em.userID
+                                                         INNER JOIN event e ON em.eventManagerID = e.eventManagerID
+                                                         WHERE u.userID='$userID'
                                                          ORDER BY e.eventID DESC
                                                          LIMIT 3");
 
@@ -79,6 +98,7 @@
                 return [];
             }
         }
+
 
         function getManagedEventsNameAndID() {
             $userID = $this->getUserID();
@@ -153,6 +173,26 @@
             }
         }
 
+        function getAllRequestedEventsLIMIT() {
+            $userID = $this->getUserID();
+
+            $query = mysqli_query($this->db_connection, "SELECT el.statusCode, e.eventName
+                                                         FROM user u
+                                                         INNER JOIN event_list el ON u.userID = el.userID
+                                                         INNER JOIN event e ON el.eventID = e.eventID
+                                                         WHERE u.userID='$userID' AND el.statusCode='PENDING'
+                                                         ORDER BY e.eventID DESC
+                                                         LIMIT 3");
+
+            $eventRequested_num_rows = mysqli_num_rows($query);
+            if($eventRequested_num_rows) {
+                return mysqli_fetch_all($query, MYSQLI_ASSOC);
+            }
+            else {
+                return [];
+            }
+        }
+
         function getAllGoingEvents() {
             $userID = $this->getUserID();
 
@@ -213,8 +253,7 @@
             $query = mysqli_query($this->db_connection, "SELECT groupName, groupDescription
                                                          FROM groups
                                                          WHERE groupManagerID='$userID'
-                                                         ORDER BY groupID DESC
-                                                         LIMIT 3");
+                                                         ORDER BY groupID DESC");
 
             $managedGroups_num_rows = mysqli_num_rows($query);
             if($managedGroups_num_rows) {
@@ -232,6 +271,25 @@
                                                          FROM groups g
                                                          INNER JOIN group_member_list gml ON g.groupID = gml.groupID
                                                          WHERE gml.userID='$userID' AND gml.statusCode='PENDING'");
+
+            $groupRequested_num_rows = mysqli_num_rows($query);
+            if($groupRequested_num_rows) {
+                return mysqli_fetch_all($query, MYSQLI_ASSOC);
+            }
+            else {
+                return [];
+            }
+        }
+
+        function getAllRequestedGroupsLIMIT() {
+            $userID = $this->getUserID();
+
+            $query = mysqli_query($this->db_connection, "SELECT gml.statusCode, g.groupName
+                                                         FROM groups g
+                                                         INNER JOIN group_member_list gml ON g.groupID = gml.groupID
+                                                         WHERE gml.userID='$userID' AND gml.statusCode='PENDING'
+                                                         ORDER BY g.groupID DESC
+                                                         LIMIT 3");
 
             $groupRequested_num_rows = mysqli_num_rows($query);
             if($groupRequested_num_rows) {

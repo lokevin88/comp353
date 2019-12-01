@@ -7,8 +7,14 @@
     $placeholderTitle = 'Homepage';
 
     $user = new User($databaseConnection, $user_email);
-    $user_managed_events_status = $user->getManagedEventNameAndStatus();
+    $user_managed_events_status = $user->getManagedEventNameAndStatusLIMIT();
     $count_managed_events_result = count($user_managed_events_status);
+
+    $user_status_events = $user->getAllRequestedEventsLIMIT();
+    $count_status_events = count($user_status_events);
+
+    $user_status_groups = $user->getAllRequestedGroupsLIMIT();
+    $count_status_groups = count($user_status_groups);
 
     if(isset($_POST['createEvent'])) {
       $eventName = $_POST['eventName'];

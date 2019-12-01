@@ -10,7 +10,7 @@
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-            <form action="group-page.php" method="post">
+            <form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLongTitle">Create Group</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
