@@ -13,6 +13,9 @@
 /* event templates css */
 @import "/comp353/src/assets/css/event-template.css";
 
+/* homepage css */
+@import "/comp353/src/assets/css/homepage.css";
+
 * {
   font-family: "Roboto";
   margin: 0;
@@ -65,10 +68,6 @@ body {
 }
 
 .commonGroupAndEventSide {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 70px;
-  z-index: 1020;
   margin-top: 10px;
   background-color: white;
   /* height: 50%; */
