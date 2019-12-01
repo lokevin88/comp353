@@ -31,8 +31,25 @@
                                                          WHERE eventID ='$eventID'
                                                          ORDER BY timeOfPosting DESC");
 
-            $all_approved_events_num_rows = mysqli_num_rows($query);
-            if($all_approved_events_num_rows) {
+            $all_eventposting_num_rows = mysqli_num_rows($query);
+            if($all_eventposting_num_rows) {
+                return mysqli_fetch_all($query, MYSQLI_ASSOC);
+            }
+            else {
+                return [];
+            }
+        }
+
+
+        function getAllRepliesFromPostsInEvent($postsID) {
+            $query = mysqli_query($this->db_connection, "SELECT content, timeOfPosting, userWhoPosted
+                                                         FROM event_posts_replies epr
+                                                         INNER JOIN event_posts ep ON epr.postsID = ep.postsID
+                                                         WHERE postsID ='$postsID'
+                                                         ORDER BY timeOfPosting DESC");
+
+            $all_repliesposting_num_rows = mysqli_num_rows($query);
+            if($all_repliesposting_num_rows) {
                 return mysqli_fetch_all($query, MYSQLI_ASSOC);
             }
             else {

@@ -24,6 +24,11 @@
         </div>
         <div class="card-footer">
             <div id="reply-<?php echo $row['postsID']; ?>" class="text-reply-color card-body-text">reply</div>
+            <div class="row">
+                <?php
+                    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/components/event-newsfeed-reply-component.php';
+                ?>
+            </div>
         </div>
     </div>
     <?php endforeach; ?>
