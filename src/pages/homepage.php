@@ -4,6 +4,8 @@
     include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/user.php';
     include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/event.php';
 
+    $placeholderTitle = 'Homepage';
+
     $user = new User($databaseConnection, $user_email);
     $user_managed_events_status = $user->getManagedEventNameAndStatus();
     $count_managed_events_result = count($user_managed_events_status);

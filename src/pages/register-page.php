@@ -36,10 +36,10 @@
   <div id="login-wrapper" class="bg-dark">
     <div class="container-fluid">
       <div class="row vh-100">
-        <div class="col-md-8">
+        <div class="col-lg-8">
           <div class="introduction">
             <div class="row">
-              <h1>rr_comp_353_2</h1>
+              <h1 style="color: snow;"><a href="/comp353/index.php">rr_comp_353_2</a></h1>
             </div>
             <div class="row">
               <h2>Database</h2>
@@ -50,7 +50,7 @@
           </div>
         </div>
 
-        <div class="col-md-4 bg-light ">
+        <div class="col-lg-4 bg-light ">
           <div class="form-wrapper text-dark">
             <div class="form-container">
               <div class="row-nomargin margin-30">

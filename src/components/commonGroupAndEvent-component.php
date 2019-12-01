@@ -1,6 +1,11 @@
 <div class="commonGroupAndEventSide">
     <div class="row">
         <div class="col-lg-12">
+            <h2>Three recent requests</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
             <div class="commonGroupAndEventSideContainer">
             <?php
                 include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/managedEventStatus.php';

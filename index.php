@@ -21,7 +21,7 @@
         $query = mysqli_query($databaseConnection, "SELECT * FROM user where emailAddress='$email' AND password='$pwd'");
         $homepage = "/comp353/src/pages/homepage.php";
       }
-    
+
       $user_rows = mysqli_num_rows($query);
 
       if($user_rows) {
@@ -39,7 +39,7 @@
         <div class="col-md-8">
           <div class="introduction">
             <div class="row">
-              <h1>rr_comp_353_2</h1>
+              <h1 style="color: snow;"><a href="/comp353/index.php">rr_comp_353_2</a></h1>
             </div>
             <div class="row">
               <h2>Database</h2>

@@ -10,6 +10,9 @@
 /* controller css */
 @import "/comp353/src/assets/css/controller.css";
 
+/* event templates css */
+@import "/comp353/src/assets/css/event-template.css";
+
 * {
   font-family: "Roboto";
   margin: 0;
@@ -103,6 +106,11 @@ body {
 
 .logout {
   margin-top: -45px;
+}
+
+#globalError {
+  color: indianred;
+  background-color: darkgrey;
 }
 
 /* main-body-container */
