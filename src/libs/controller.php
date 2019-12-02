@@ -51,7 +51,6 @@
                 $dataAsArray = mysqli_fetch_array($query, MYSQLI_ASSOC);
                 return $dataAsArray['controllerID'];
             }
-            $db_connection.close();
 
         }
         function createEventFee($controllerID, $chargeRate) {

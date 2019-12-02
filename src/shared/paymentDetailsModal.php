@@ -2,7 +2,7 @@
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-            <form target="event-page.php" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+            <form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLongTitle">Payment Details</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -23,7 +23,7 @@
                     <div class="form-group">
                         <label for="securityCode">Security Code</label>
                         <input type="text" class="form-control" name="securityCode" id="securityCode"
-                            placeholder="Enter the 3 digits security code" required>
+                            placeholder="Enter the security code" required>
                     </div>
                     <div class="form-group">
                         <label for="billingAddress">Billing Address</label>
@@ -32,8 +32,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <input type="image" src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-medium.png" alt="Check out with PayPal" >
+                    <button type="submit" name="pay"  class="btn btn-success btn-lg btn-block">Save
+                    </button>
                 </div>
             </form>
         </div>
