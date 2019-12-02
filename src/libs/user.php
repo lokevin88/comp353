@@ -200,7 +200,7 @@
                                                          FROM user u
                                                          INNER JOIN event_list el ON u.userID = el.userID
                                                          INNER JOIN event e ON el.eventID = e.eventID
-                                                         WHERE u.userID='$userID' AND el.statusCode='APPROVED'");
+                                                         WHERE u.userID='$userID' AND (el.statusCode='APPROVED' OR el.statusCode='')");
 
             $eventGoing_num_rows = mysqli_num_rows($query);
             if($eventGoing_num_rows) {
@@ -335,7 +335,7 @@
             $query = mysqli_query($this->db_connection, "SELECT gml.statusCode, g.groupName, g.groupID, g.groupDescription
                                                          FROM group_member_list gml
                                                          INNER JOIN groups g ON gml.groupID = g.groupID
-                                                         WHERE gml.userID='$userID' AND gml.statusCode='APPROVED'");
+                                                         WHERE gml.userID='$userID' AND (gml.statusCode='APPROVED' OR gml.statusCode='')");
 
             $joinedGroups_num_rows = mysqli_num_rows($query);
             if($joinedGroups_num_rows) {
