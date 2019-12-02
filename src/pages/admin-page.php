@@ -114,6 +114,42 @@
     </div>
   </div>
 
+  <div class="report">
+    <a name="reportableName">User reports</a>
+    <div class="col-md-4">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Total</th>
+            <th scope="col">Count</th>
+          </tr>
+        </thead>
+          <tbody class="table-secondary">
+            <tr><td>Number of users</td>
+              <td><?php $result = mysqli_query($databaseConnection, "SELECT * FROM user");
+                if (mysqli_num_rows($result) > 0) {
+                  echo count(mysqli_fetch_all($result, MYSQLI_ASSOC));
+                } ?>
+              </td>
+            </tr>
+            <tr><td>Number of events</td>
+              <td><?php $result = mysqli_query($databaseConnection, "SELECT * FROM event");
+                if (mysqli_num_rows($result) > 0) {
+                  echo count(mysqli_fetch_all($result, MYSQLI_ASSOC));
+                } ?>
+              </td>
+            </tr>
+            <tr><td>Number of groups</td>
+              <td><?php $result = mysqli_query($databaseConnection, "SELECT * FROM groups");
+              if (mysqli_num_rows($result) > 0) {
+                echo count(mysqli_fetch_all($result, MYSQLI_ASSOC));
+              } ?>
+              </td>
+            </tr>
+          </tbody>
+      </table>
+    </div>
+
   <?php
 
     //  always import from above here
