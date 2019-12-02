@@ -56,7 +56,7 @@
       </div>
       <div class="row px-4 logout">
         <div class="col-md-12">
-          <a href="/comp353/src/shared/account.php" class="stretched-link">My account</a>
+          <a href="/comp353/src/pages/account-page.php" class="stretched-link">My account</a>
         </div>
         <div class="col-md-12">
           <a href="/comp353/src/shared/logout.php">logout</a>
