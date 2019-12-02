@@ -68,7 +68,7 @@
 
     <?php
     include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/components/bannerAndEvent-component.php';
-  ?>
+    ?>
 
     <div class="row-nomargin">
         <div class="col-lg-12">
@@ -128,7 +128,7 @@
     </div>
 
     <div class="row-nomargin">
-        <div class="col-lg-2 whiteBorderAndBlackLines">
+        <div class="col-lg-2 whiteBorderAndBlackLines" id="managedEvents">
             <?php
                 include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/managedEventStatus.php';
             ?>

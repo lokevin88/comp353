@@ -10,8 +10,9 @@
 </div>
 
 <?php
+    //MODAL FOR CREATING GROUP
     include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/createGroupModal.php';
 
-    //// CREATE MODAL FOR JOINING GROUP
+    //MODAL FOR JOINING GROUP
     include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/joinGroupModal.php';
 ?>

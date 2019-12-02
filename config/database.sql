@@ -1,19 +1,3 @@
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `rr_comp353_2`
---
-
 DROP DATABASE IF EXISTS rr_comp353_2;
 CREATE DATABASE rr_comp353_2
 CHARACTER SET = utf8mb4
@@ -61,17 +45,30 @@ CREATE TABLE user (
 DROP TABLE IF EXISTS event_manager;
 CREATE TABLE event_manager (
     eventManagerID int(11) NOT NULL AUTO_INCREMENT,
+    debitDetailsID int(11),
     userID int(11) NOT NULL,
     statusCode varchar(15) NOT NULL,
     CONSTRAINT PK_Event_Manager PRIMARY KEY (eventManagerID),
     CONSTRAINT FK_Event_Manager_User FOREIGN KEY (userID) REFERENCES user(userID) ON DELETE CASCADE
 );
 
+DROP TABLE IF EXISTS debit_details;
+CREATE TABLE debit_details (
+    debitDetailsID int(11) NOT NULL AUTO_INCREMENT,
+    eventManagerID int(11) NOT NULL,
+    cardNumber int(11) NOT NULL,
+    cardHolderName varchar(50) NOT NULL,
+    securityCode int(11) NOT NULL,
+    billingAddress varchar(200) NOT NULL,
+    CONSTRAINT PK_Debit_Details PRIMARY KEY (debitDetailsID),
+    CONSTRAINT FK_Event_Manager_ID FOREIGN KEY (eventManagerID) REFERENCES event_manager(eventManagerID) ON DELETE CASCADE
+);
+
 DROP TABLE IF EXISTS event_fee_calculation;
 CREATE TABLE event_fee_calculation (
     eventFeeID int(11) NOT NULL AUTO_INCREMENT,
     controllerID int(11) NOT NULL,
-    -- chargeRate int(11) NOT NULL, WILL ADD CHARGE RATE AFTER DISCUSSING
+    chargeRate int(11) NOT NULL,
     CONSTRAINT PK_Event_Fee PRIMARY KEY (eventFeeID),
     CONSTRAINT FK_Event_Fee_Controller FOREIGN KEY (controllerID) REFERENCES controller(controllerID) ON DELETE CASCADE
 );
@@ -186,7 +183,7 @@ INSERT INTO user
     (userID, emailAddress, username, firstName, lastName, gender, dob, profilePicture, password)
     VALUES (3,"user3@db.com","user3","firstUser3","lastUser3","male","1999-10-11","/comp353/src/assets/images/mockuser.png","user");
 
-INSERT INTO event_fee_calculation(eventFeeID, controllerID) VALUES (1,1);
+INSERT INTO event_fee_calculation(eventFeeID, controllerID, chargeRate) VALUES (1,1, 25);
 
 INSERT INTO event_manager(eventManagerID, userID, statusCode) VALUES (1,1,"APPROVED");
 
@@ -210,7 +207,7 @@ INSERT INTO groups(groupID, groupManagerID, groupName, groupDescription, eventID
 
 INSERT INTO group_member_list(groupID, userID, statusPosition, statusCode) VALUES (1,2,"PARTICIPANT","PENDING");
 
-INSERT INTO user (emailAddress, username, firstName, lastName, gender, profilePicture, password) VALUES
-                 ('mary@db.com', 'mary', 'Mary', 'Doe', 'Female', '/comp353/src/assets/images/mockuser.png', 'mary');
-INSERT INTO user (emailAddress, username, firstName, lastName, gender, profilePicture, password) VALUES
-                 ('john@db.com', 'john', 'John', 'Doe', 'Male', '/comp353/src/assets/images/mockuser.png', 'john');
+INSERT INTO user (emailAddress, username, firstName, lastName, gender, dob, profilePicture, password) VALUES
+                 ('mary@db.com', 'mary', 'Mary', 'Doe', 'Female', "1989-10-12", '/comp353/src/assets/images/mockuser.png', 'mary');
+INSERT INTO user (emailAddress, username, firstName, lastName, gender, dob, profilePicture, password) VALUES
+                 ('john@db.com', 'john', 'John', 'Doe', 'Male', "1979-12-11", '/comp353/src/assets/images/mockuser.png', 'john');
