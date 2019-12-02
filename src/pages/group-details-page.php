@@ -29,6 +29,7 @@
     $group_all_member_posting = $group->getAllPostsFromGroup($groupID);
     $count_all_member_posting = count($group_all_member_posting);
 
+    //All the POST requests for deleting member/group and submit posts
     if(isset($_POST['deleteMember'])) {
         $memberUserID = $_POST['deleteMember'];
         $group->deleteMember($memberUserID);
@@ -46,7 +47,7 @@
 
         $user->submitGroupPosts($groupID, $body_content);
         navigateTo("/comp353/src/pages/group-details-page.php?groupID=$groupID");
-      }
+    }
 
 ?>
 

@@ -441,5 +441,39 @@
             $insert_RepliesToPosts =  mysqli_query($this->db_connection, "INSERT INTO group_posts_replies (gPostsID, content, timeOfPosting, userWhoPosted) VALUES
                                                                     ('$postsID', '$ignore_special_characters_body_content', '$created_at', '$username')");
         }
+
+        function getAllCorrespondingUsers($keywords) {
+            if(sizeof($keywords) == 1) {
+                $words = $keywords[0];
+                if(strlen($words) == 0) {
+                    $query = mysqli_query($this->db_connection, "SELECT *
+                                                                 FROM user");
+                } else {
+                    $query = mysqli_query($this->db_connection, "SELECT *
+                                                                 FROM user
+                                                                 WHERE firstName like '%$words%' OR lastName like '%$words%'");
+                }
+            } else {
+                $first = $keywords[0];
+                $second = $keywords[1];
+                $query = mysqli_query($this->db_connection, "SELECT *
+                                                             FROM user
+                                                             WHERE (firstName like '%$first%' AND lastName like '%$second%')
+                                                             OR (firstName like '%$second%' AND lastName like '%$first%')");
+            }
+            $users_num_rows = mysqli_num_rows($query);
+            if($users_num_rows) {
+                return mysqli_fetch_all($query, MYSQLI_ASSOC);
+            }
+            else {
+                return [];
+            }
+        }
+
+        function deleteUser($userID) {
+            $query = mysqli_query($this->db_connection, "DELETE
+                                                         FROM user
+                                                         WHERE userID = $userID");
+        }
     }
 ?>
