@@ -34,7 +34,7 @@
     <div class="col-lg-9">
     <?php
         include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/components/event-newsfeed-component.php';
-      ?>
+    ?>
 
     </div>
     <div class="col-lg-3">

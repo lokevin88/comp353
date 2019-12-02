@@ -1,32 +1,72 @@
 <?php
     require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/navbar.php';
-    $idRaw = $_SERVER['QUERY_STRING'];
-    // groupID= is of length 8, subtringing it with give the ID
-    // you can use $_GET['groupID']; instead since we have a key/property/attribute defined (if it was like .com/?okay) then query_string would be okay
-    $id = substr($idRaw, 8);
 
+    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/group.php';
     include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/user.php';
 
-    // For the title
-    $title ="<h1 class='display-4'> Welcome to Group $id</h1>";
-  ?>
+    $group = new Group($databaseConnection);
+    $user = new User($databaseConnection, $user_email);
 
-<div class="main-body">
-<?php echo "hellloooo" .$id ?>
-<div class="jumbotron">
-    <?php echo $title?>
-    <hr class="my-4">
-</div>
+    // For the title
+    $groupID = $_GET['groupID'];
+    $groupName = $group->getGroupName($groupID);
+    $title ="<h1 class='display-4'> Welcome to $groupName Group</h1>";
+
+    // For getting the list of members from that specific group
+    $listMembers = $group->getListMembers($groupID);
+    $countListMembers = count($listMembers);
+    $subtitle = "List of members from " . $groupName . " group:";
+
+    // For checking if the current user is the manager of the group
+    $groupManagerID = $group->checkIfUserIsManager($groupID);
+    $userID = $user->getUserID();
+    $isGroupManager = false;
+    if ($groupManagerID == $userID) {
+        $isGroupManager = true;
+    }
+
+    // For getting all the posts of that specific group
+    $group_all_member_posting = $group->getAllPostsFromGroup($groupID);
+    $count_all_member_posting = count($group_all_member_posting);
+
+    if(isset($_POST['deleteMember'])) {
+        $memberUserID = $_POST['deleteMember'];
+        $group->deleteMember($memberUserID);
+        navigateTo("/comp353/src/pages/group-page.php");
+    }
+
+    if(isset($_POST['deleteGroup'])) {
+        $currentGroupID = $_POST['deleteGroup'];
+        $group->deleteGroup($currentGroupID);
+        navigateTo("/comp353/src/pages/group-page.php");
+    }
+
+    if(isset($_POST['submitGroupPost'])) {
+        $body_content = $_POST['message_content'];
+
+        $user->submitGroupPosts($groupID, $body_content);
+        navigateTo("/comp353/src/pages/group-details-page.php?groupID=$groupID");
+      }
+
+?>
+
+<div id="event-template-wrapper" class="main-body">
+
+  <?php
+    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/components/bannerAndGroupMessage-component.php';
+  ?>
 
   <div class="row-nomargin">
     <div class="col-lg-9"> <!-- change grid size accordingly from the 12 grid -->
-      <!-- put main things here -->
-      nfkdfjkdslfjklsdjfkldsj
-
+        <?php
+            include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/components/group-newsfeed-component.php';
+        ?>
     </div>
     <div class="col-lg-3"> <!-- change grid size accordingly from the 12 grid -->
       <!-- right side bar -->
-      fdksfhklshf.ksdhfks
+        <?php
+            include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/components/groupSidebar-component.php';
+        ?>
     </div>
   </div>
 </div>

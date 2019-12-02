@@ -250,7 +250,7 @@
         function getManagedGroupName() {
             $userID = $this->getUserID();
 
-            $query = mysqli_query($this->db_connection, "SELECT groupName, groupDescription
+            $query = mysqli_query($this->db_connection, "SELECT groupName, groupDescription, groupID
                                                          FROM groups
                                                          WHERE groupManagerID='$userID'
                                                          ORDER BY groupID DESC");
@@ -416,6 +416,29 @@
             $ignore_special_characters_body_content = mysqli_real_escape_string($this->db_connection, $no_tags_body_content);
 
             $insert_RepliesToPosts =  mysqli_query($this->db_connection, "INSERT INTO event_posts_replies (postsID, content, timeOfPosting, userWhoPosted) VALUES
+                                                                    ('$postsID', '$ignore_special_characters_body_content', '$created_at', '$username')");
+        }
+
+        function submitGroupPosts($groupID, $content) {
+            $userID = $this->getUserID();
+            $username = $this->getUsername();
+            $created_at = date("Y-m-d H:i:s");
+            $no_tags_body_content = strip_tags($content);
+            $ignore_special_characters_body_content = mysqli_real_escape_string($this->db_connection, $no_tags_body_content);
+            $insert_groupPosts =  mysqli_query($this->db_connection, "INSERT INTO group_posts (groupID, content, timeOfPosting, userWhoPosted) VALUES
+                                                                    ('$groupID', '$ignore_special_characters_body_content', '$created_at', '$username')");
+        }
+
+        function submitRepliesToGroupPosts($pID, $content) {
+            $userID = $this->getUserID();
+            $username = $this->getUsername();
+            $postsID = $pID;
+            $created_at = date("Y-m-d H:i:s");
+
+            $no_tags_body_content = strip_tags($content);
+            $ignore_special_characters_body_content = mysqli_real_escape_string($this->db_connection, $no_tags_body_content);
+
+            $insert_RepliesToPosts =  mysqli_query($this->db_connection, "INSERT INTO group_posts_replies (gPostsID, content, timeOfPosting, userWhoPosted) VALUES
                                                                     ('$postsID', '$ignore_special_characters_body_content', '$created_at', '$username')");
         }
     }

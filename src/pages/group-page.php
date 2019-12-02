@@ -49,13 +49,6 @@
         navigateTo("/comp353/src/pages/group-page.php");
     }
 
-    if(isset($_POST['addToPending'])) {
-        $eventID = $_POST['addToPending'];
-
-        $user->joinEvent($eventID);
-        navigateTo("/comp353/src/pages/group-page.php");
-    }
-
     if(isset($_POST['addToApproved'])) {
         $groupID = $_POST['addToApproved'];
         $userID = $_POST['userToAccept'];
@@ -167,65 +160,14 @@
 
             <?php
                 foreach($user_joined_groups_status as $row):
-                $link = '/comp353/src/pages/group-details-page.php?groupID=' . $row['groupID'];
             ?>
             <p>Group name: <?php echo $row['groupName']; ?></p>
             <p>Status: <?php echo $row['statusCode']; ?></p>
 
-            <a href="<?php echo $link;?>">Go to group's detail page</a>
+            <a href="<?php echo "/comp353/src/pages/group-details-page.php?groupID={$row['groupID']}";?>">Go to group's detail page</a>
             <hr>
             <?php endforeach; ?>
         </div>
-        <!-- <div class="col-lg-6 whiteBorderAndBlackLines">
-            <h4>Available Groups</h4>
-            <div class="table-responsive pendingTable">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Group Name</th>
-                            <th scope="col">Description</th>
-                            <th scope="col">Type</th>
-                            <th scope="col">From</th>
-                            <th scope="col">To</th>
-                            <th scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <form action="group-page.php" method="post">
-                            <?php if($count_all_approved_events_status == 0) : ?>
-                            <tr class="text-center">
-                                <td colspan="5">
-                                    <h3>No ongoing events</h3>
-                                </td>
-                            </tr>
-                            <?php endif; ?>
-
-                            <?php
-                                foreach($event_all_approved as $row):
-                            ?>
-
-                            <tr class="table-secondary">
-                                <td><?php echo $row['eventName']; ?></td>
-                                <td><?php echo $row['eventDescription']; ?></td>
-                                <td><?php echo $row['eventType']; ?></td>
-                                <td><?php echo $row['startDate']; ?></td>
-                                <td><?php echo $row['endDate']; ?></td>
-                                <td>
-                                    <button type="submit" name="addToPending" class="btn btn-primary"
-                                        value="<?php echo $row['eventID']; ?>">
-                                        <i class="fa fa-check"></i> Accept
-                                    </button>
-                                </td>
-                            </tr>
-                            <?php
-                                endforeach;
-                            ?>
-                        </form>
-                    </tbody>
-                </table>
-            </div>
-
-        </div> -->
     </div>
 </div>
 
