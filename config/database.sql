@@ -163,3 +163,8 @@ INSERT INTO groups(groupID, groupManagerID, groupName, groupDescription, eventID
 INSERT INTO groups(groupID, groupManagerID, groupName, groupDescription, eventID) VALUES (2,1,"Group2","The second group",2);
 
 INSERT INTO group_member_list(groupID, userID, statusPosition, statusCode) VALUES (1,2,"PARTICIPANT","PENDING");
+
+INSERT INTO user (emailAddress, username, firstName, lastName, gender, profilePicture, password) VALUES
+                 ('mary@db.com', 'mary', 'Mary', 'Doe', 'Female', '/comp353/src/assets/images/mockuser.png', 'mary');
+INSERT INTO user (emailAddress, username, firstName, lastName, gender, profilePicture, password) VALUES
+                 ('john@db.com', 'john', 'John', 'Doe', 'Male', '/comp353/src/assets/images/mockuser.png', 'john');
