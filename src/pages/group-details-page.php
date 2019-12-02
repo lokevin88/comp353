@@ -50,7 +50,7 @@
 
 ?>
 
-<div class="main-body">
+<div id="event-template-wrapper" class="main-body">
 
   <?php
     include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/components/bannerAndGroupMessage-component.php';

@@ -54,13 +54,29 @@
         }
 
         function getAllPostsFromGroup($groupID) {
-            $query = mysqli_query($this->db_connection, "SELECT content, timeOfPosting, userWhoPosted
+            $query = mysqli_query($this->db_connection, "SELECT content, timeOfPosting, userWhoPosted, gPostsID
                                                          FROM group_posts
                                                          WHERE groupID ='$groupID'
                                                          ORDER BY timeOfPosting DESC");
 
             $all_group_posts = mysqli_num_rows($query);
             if($all_group_posts) {
+                return mysqli_fetch_all($query, MYSQLI_ASSOC);
+            }
+            else {
+                return [];
+            }
+        }
+
+        function getAllRepliesFromPostsInGroup($groupID, $postsID) {
+            $query = mysqli_query($this->db_connection, "SELECT gpr.content, gpr.timeOfPosting, gpr.userWhoPosted
+                                                         FROM group_posts_replies gpr
+                                                         INNER JOIN group_posts gp ON gpr.gPostsID = gp.gPostsID
+                                                         WHERE gp.groupID ='$groupID' AND gpr.gPostsID='$postsID'
+                                                         ORDER BY timeOfPosting DESC");
+
+            $all_repliesposting_num_rows = mysqli_num_rows($query);
+            if($all_repliesposting_num_rows) {
                 return mysqli_fetch_all($query, MYSQLI_ASSOC);
             }
             else {

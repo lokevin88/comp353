@@ -169,6 +169,7 @@ CREATE TABLE group_posts_replies (
     gPostsID int(11) NOT NULL,
     content TEXT NOT NULL,
     timeOfPosting DATETIME NOT NULL,
+    userWhoPosted varchar(50) NOT NULL,
     CONSTRAINT PK_Group_Posts_Replies PRIMARY KEY (repliesID),
     CONSTRAINT FK_Group_Posts_Replies_Posts_ID FOREIGN KEY (gPostsID) REFERENCES group_posts(gPostsID) ON DELETE CASCADE
 );
