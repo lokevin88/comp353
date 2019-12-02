@@ -1,11 +1,21 @@
 <?php
     require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/head.php';
 
+    include_once($_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/admin.php');
+
+    $admin = new Admin($databaseConnection);
+
     if(!isset($_SESSION['email'])) {
       navigateTo("/comp353/index.php");
     } else {
       $user_email = $_SESSION['email'];
-      if($user_email == isAdmin) {
+
+      $adminID = $admin->getAdminID($user_email);
+      $isAdmin = false;
+      if(!empty($adminID)) {
+        $isAdmin = true;
+      }
+      if($isAdmin) {
         $query = mysqli_query($databaseConnection, "SELECT * FROM admin where emailAddress='$user_email'");
       }
       else if($user_email == isController) {
@@ -46,7 +56,7 @@
       </div>
       <div class="row px-4 logout">
         <div class="col-md-12">
-          <a href="#" class="stretched-link">My account</a>
+          <a href="/comp353/src/shared/account.php" class="stretched-link">My account</a>
         </div>
         <div class="col-md-12">
           <a href="/comp353/src/shared/logout.php">logout</a>

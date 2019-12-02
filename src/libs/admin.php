@@ -50,5 +50,33 @@
                 echo 'updated placeholder';
             }
         }
+
+        function getAdminID($email) {
+            $query = mysqli_query($this->db_connection, "SELECT adminID
+                                                         FROM admin
+                                                         WHERE emailAddress = '$email'");
+            if($query) {
+                $dataAsArray = mysqli_fetch_array($query, MYSQLI_ASSOC);
+                return $dataAsArray['adminID'];
+            }
+            $db_connection.close();
+
+        }
+
+        function getEmail($adminID) {
+            $query = mysqli_query($this->db_connection, "SELECT emailAddress
+                                                         FROM admin
+                                                         WHERE adminID = '$adminID'");
+            if($query) {
+                $dataAsArray = mysqli_fetch_array($query, MYSQLI_ASSOC);
+                return $dataAsArray['emailAddress'];
+            }
+        }
+
+        function updateEmail($adminID, $email) {
+            $query = mysqli_query($this->db_connection, "UPDATE admin
+                                                         SET emailAddress = '$email'
+                                                         WHERE adminID = '$adminID'");
+        }
     }
 ?>
