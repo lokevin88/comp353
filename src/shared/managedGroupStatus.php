@@ -8,7 +8,8 @@
 ?>
 <p>Group name: <?php echo $row['groupName']; ?></p>
 <p>Status: <?php echo $row['groupDescription']; ?></p>
-<p>Link to group page: </p>
+
+<a href="<?php echo "/comp353/src/pages/group-details-page.php?groupID={$row['groupID']}";?>">Go to group's detail page</a>
 <hr>
 <?php endforeach; ?>
 

@@ -36,10 +36,10 @@
   <div id="login-wrapper" class="bg-dark">
     <div class="container-fluid">
       <div class="row vh-100">
-        <div class="col-md-8">
+        <div class="col-lg-8">
           <div class="introduction">
             <div class="row">
-              <h1>rr_comp_353_2</h1>
+              <h1 style="color: snow;"><a href="/comp353/index.php">rr_comp_353_2</a></h1>
             </div>
             <div class="row">
               <h2>Database</h2>
@@ -50,7 +50,7 @@
           </div>
         </div>
 
-        <div class="col-md-4 bg-light ">
+        <div class="col-lg-4 bg-light ">
           <div class="form-wrapper text-dark">
             <div class="form-container">
               <div class="row-nomargin margin-30">
@@ -67,13 +67,13 @@
                   <div class="form-group row">
                     <label for="fname" class="col-sm-2 col-form-label text-nowrap">First Name</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" name="fname" id="fname" placeholder="John">
+                      <input type="text" class="form-control" name="fname" id="fname" placeholder="John" pattern="[^\s]+" title="No blanks" required>
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="lname" class="col-sm-2 col-form-label text-nowrap">LastName</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" name="lname" id="lname" placeholder="Doe">
+                      <input type="text" class="form-control" name="lname" id="lname" placeholder="Doe" pattern="[^\s]+" title="No blanks" required>
                     </div>
                   </div>
                   <fieldset class="form-group">
@@ -106,7 +106,7 @@
                   <div class="form-group row">
                     <label for="username" class="col-sm-2 col-form-label text-nowrap">Username</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" name="username" id="username" placeholder="JohnDoe"
+                      <input type="text" class="form-control" name="username" id="username" placeholder="JohnDoe" pattern="[^\s]+" title="No blanks"
                         required>
                     </div>
                   </div>

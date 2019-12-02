@@ -151,7 +151,7 @@
         <div class="col-lg-2 whiteBorderAndBlackLines">
             <h4>Going events</h4>
             <?php if($count_going_events_status == 0): ?>
-            <p>No pending request to join</p>
+            <p>Not in any events</p>
             <?php endif; ?>
 
             <?php

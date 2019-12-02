@@ -1,8 +1,10 @@
 <div class="jumbotron">
-    <h1 class="display-4">Main Page placeholder</h1>
+    <h1 class="display-4"><?php echo $placeholderTitle ?></h1>
     <hr class="my-4">
-    <textarea name="message_submit" id="message_submit" placeholder="..."></textarea>
-    <p class="lead">
-        <a class="btn bg-dark text-white btn-lg" href="#" role="button">Learn more</a>
-    </p>
+    <form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
+        <textarea name="message_content" class="message_content" placeholder="..."></textarea>
+        <p class="lead">
+            <button type="submit" name="submitEventPost" class="btn btn-lg bg-dark text-white">Submit post</button>
+        </p>
+    </form>
 </div>

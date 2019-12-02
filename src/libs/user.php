@@ -10,8 +10,36 @@
             $this->user = mysqli_fetch_array($query);
         }
 
+        function getUser() {
+            return $this->user;
+        }
+
         function getUserID() {
             return $this->user['userID'];
+        }
+
+        function getUserEmail() {
+            return $this->user['emailAddress'];
+        }
+
+        function getUsername() {
+            return $this->user['username'];
+        }
+
+        function getUserFirstName() {
+            return $this->user['firstName'];
+        }
+
+        function getUserLastName() {
+            return $this->user['lastName'];
+        }
+
+        function getUserGender() {
+            return $this->user['gender'];
+        }
+
+        function getUserDateOfBirth() {
+            return $this->user['dob'];
         }
 
         function createEvent($eventArray) {
@@ -40,6 +68,25 @@
                                                          INNER JOIN event_manager em ON u.userID = em.userID
                                                          INNER JOIN event e ON em.eventManagerID = e.eventManagerID
                                                          WHERE u.userID='$userID'
+                                                         ORDER BY e.eventID DESC");
+
+            $managedEvent_num_rows = mysqli_num_rows($query);
+            if($managedEvent_num_rows) {
+                return mysqli_fetch_all($query, MYSQLI_ASSOC);
+            }
+            else {
+                return [];
+            }
+        }
+
+        function getManagedEventNameAndStatusLIMIT() {
+            $userID = $this->getUserID();
+
+            $query = mysqli_query($this->db_connection, "SELECT e.eventID, em.statusCode, e.eventName, e.pageTemplate
+                                                         FROM user u
+                                                         INNER JOIN event_manager em ON u.userID = em.userID
+                                                         INNER JOIN event e ON em.eventManagerID = e.eventManagerID
+                                                         WHERE u.userID='$userID'
                                                          ORDER BY e.eventID DESC
                                                          LIMIT 3");
 
@@ -51,6 +98,7 @@
                 return [];
             }
         }
+
 
         function getManagedEventsNameAndID() {
             $userID = $this->getUserID();
@@ -125,10 +173,30 @@
             }
         }
 
+        function getAllRequestedEventsLIMIT() {
+            $userID = $this->getUserID();
+
+            $query = mysqli_query($this->db_connection, "SELECT el.statusCode, e.eventName
+                                                         FROM user u
+                                                         INNER JOIN event_list el ON u.userID = el.userID
+                                                         INNER JOIN event e ON el.eventID = e.eventID
+                                                         WHERE u.userID='$userID' AND el.statusCode='PENDING'
+                                                         ORDER BY e.eventID DESC
+                                                         LIMIT 3");
+
+            $eventRequested_num_rows = mysqli_num_rows($query);
+            if($eventRequested_num_rows) {
+                return mysqli_fetch_all($query, MYSQLI_ASSOC);
+            }
+            else {
+                return [];
+            }
+        }
+
         function getAllGoingEvents() {
             $userID = $this->getUserID();
 
-            $query = mysqli_query($this->db_connection, "SELECT e.eventID, el.statusCode, e.eventName, e.pageTemplate
+            $query = mysqli_query($this->db_connection, "SELECT e.eventID, e.eventDescription, el.statusCode, e.eventName, e.pageTemplate
                                                          FROM user u
                                                          INNER JOIN event_list el ON u.userID = el.userID
                                                          INNER JOIN event e ON el.eventID = e.eventID
@@ -182,11 +250,10 @@
         function getManagedGroupName() {
             $userID = $this->getUserID();
 
-            $query = mysqli_query($this->db_connection, "SELECT groupName, groupDescription
+            $query = mysqli_query($this->db_connection, "SELECT groupName, groupDescription, groupID
                                                          FROM groups
                                                          WHERE groupManagerID='$userID'
-                                                         ORDER BY groupID DESC
-                                                         LIMIT 3");
+                                                         ORDER BY groupID DESC");
 
             $managedGroups_num_rows = mysqli_num_rows($query);
             if($managedGroups_num_rows) {
@@ -204,6 +271,25 @@
                                                          FROM groups g
                                                          INNER JOIN group_member_list gml ON g.groupID = gml.groupID
                                                          WHERE gml.userID='$userID' AND gml.statusCode='PENDING'");
+
+            $groupRequested_num_rows = mysqli_num_rows($query);
+            if($groupRequested_num_rows) {
+                return mysqli_fetch_all($query, MYSQLI_ASSOC);
+            }
+            else {
+                return [];
+            }
+        }
+
+        function getAllRequestedGroupsLIMIT() {
+            $userID = $this->getUserID();
+
+            $query = mysqli_query($this->db_connection, "SELECT gml.statusCode, g.groupName
+                                                         FROM groups g
+                                                         INNER JOIN group_member_list gml ON g.groupID = gml.groupID
+                                                         WHERE gml.userID='$userID' AND gml.statusCode='PENDING'
+                                                         ORDER BY g.groupID DESC
+                                                         LIMIT 3");
 
             $groupRequested_num_rows = mysqli_num_rows($query);
             if($groupRequested_num_rows) {
@@ -246,7 +332,7 @@
 
         function getAllJoinedGroups() {
             $userID = $this->getUserID();
-            $query = mysqli_query($this->db_connection, "SELECT gml.statusCode, g.groupName, g.groupID
+            $query = mysqli_query($this->db_connection, "SELECT gml.statusCode, g.groupName, g.groupID, g.groupDescription
                                                          FROM group_member_list gml
                                                          INNER JOIN groups g ON gml.groupID = g.groupID
                                                          WHERE gml.userID='$userID' AND gml.statusCode='APPROVED'");
@@ -306,5 +392,54 @@
         //         return [];
         //     }
         // }
+
+        function submitEventPosts($eID, $content) {
+            $userID = $this->getUserID();
+            $username = $this->getUsername();
+            $eventID = $eID;
+            $created_at = date("Y-m-d H:i:s");
+
+            $no_tags_body_content = strip_tags($content);
+            $ignore_special_characters_body_content = mysqli_real_escape_string($this->db_connection, $no_tags_body_content);
+
+            $insert_EventPosts =  mysqli_query($this->db_connection, "INSERT INTO event_posts (eventID, content, timeOfPosting, userWhoPosted) VALUES
+                                                                    ('$eventID', '$ignore_special_characters_body_content', '$created_at', '$username')");
+        }
+
+        function submitRepliesToEventPosts($pID, $content) {
+            $userID = $this->getUserID();
+            $username = $this->getUsername();
+            $postsID = $pID;
+            $created_at = date("Y-m-d H:i:s");
+
+            $no_tags_body_content = strip_tags($content);
+            $ignore_special_characters_body_content = mysqli_real_escape_string($this->db_connection, $no_tags_body_content);
+
+            $insert_RepliesToPosts =  mysqli_query($this->db_connection, "INSERT INTO event_posts_replies (postsID, content, timeOfPosting, userWhoPosted) VALUES
+                                                                    ('$postsID', '$ignore_special_characters_body_content', '$created_at', '$username')");
+        }
+
+        function submitGroupPosts($groupID, $content) {
+            $userID = $this->getUserID();
+            $username = $this->getUsername();
+            $created_at = date("Y-m-d H:i:s");
+            $no_tags_body_content = strip_tags($content);
+            $ignore_special_characters_body_content = mysqli_real_escape_string($this->db_connection, $no_tags_body_content);
+            $insert_groupPosts =  mysqli_query($this->db_connection, "INSERT INTO group_posts (groupID, content, timeOfPosting, userWhoPosted) VALUES
+                                                                    ('$groupID', '$ignore_special_characters_body_content', '$created_at', '$username')");
+        }
+
+        function submitRepliesToGroupPosts($pID, $content) {
+            $userID = $this->getUserID();
+            $username = $this->getUsername();
+            $postsID = $pID;
+            $created_at = date("Y-m-d H:i:s");
+
+            $no_tags_body_content = strip_tags($content);
+            $ignore_special_characters_body_content = mysqli_real_escape_string($this->db_connection, $no_tags_body_content);
+
+            $insert_RepliesToPosts =  mysqli_query($this->db_connection, "INSERT INTO group_posts_replies (gPostsID, content, timeOfPosting, userWhoPosted) VALUES
+                                                                    ('$postsID', '$ignore_special_characters_body_content', '$created_at', '$username')");
+        }
     }
 ?>

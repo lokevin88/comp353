@@ -10,7 +10,7 @@
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-            <form action="group-page.php" method="post">
+            <form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLongTitle">Create Group</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -21,12 +21,12 @@
                     <div class="form-group">
                         <label for="groupName">Group Name</label>
                         <input type="text" class="form-control" name="groupName" id="groupName"
-                            placeholder="Enter group name" required>
+                            placeholder="Enter group name" pattern="[^\s]+" title="No blanks" required>
                     </div>
                     <div class="form-group">
                         <label for="groupDescription">Description</label>
                         <input type="text" class="form-control" name="groupDescription" id="groupDescription"
-                            placeholder="Enter description" required>
+                            placeholder="Enter description" pattern="[^\s]+" title="No blanks" required>
                     </div>
                     <div class="form-group">
                         <label for="groupDescription">Related to Event</label>

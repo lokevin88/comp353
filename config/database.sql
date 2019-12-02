@@ -69,7 +69,7 @@ CREATE TABLE event_manager (
 
 DROP TABLE IF EXISTS event_fee_calculation;
 CREATE TABLE event_fee_calculation (
-    eventFeeID int(11) NOT NULL,
+    eventFeeID int(11) NOT NULL AUTO_INCREMENT,
     controllerID int(11) NOT NULL,
     -- chargeRate int(11) NOT NULL, WILL ADD CHARGE RATE AFTER DISCUSSING
     CONSTRAINT PK_Event_Fee PRIMARY KEY (eventFeeID),
@@ -114,7 +114,7 @@ CREATE TABLE groups (
     eventID int(11) NOT NULL,
     CONSTRAINT PK_Group PRIMARY KEY (groupID),
     CONSTRAINT FK_Group_Event_ID FOREIGN KEY (eventID) REFERENCES event(eventID) ON DELETE CASCADE,
-    CONSTRAINT FK_Group_Manager FOREIGN KEY (groupManagerID) REFERENCES event(eventManagerID) ON DELETE CASCADE
+    CONSTRAINT FK_Group_Manager FOREIGN KEY (groupManagerID) REFERENCES event_manager(eventManagerID) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS group_member_list;
@@ -126,6 +126,52 @@ CREATE TABLE group_member_list (
     CONSTRAINT PK_Group_Member_List PRIMARY KEY (groupID, userID),
     CONSTRAINT FK_Group_Member_List_Group FOREIGN KEY (groupID) REFERENCES groups(groupID) ON DELETE CASCADE,
     CONSTRAINT FK_Group_Member_List_User FOREIGN KEY (userID) REFERENCES user(userID) ON DELETE CASCADE
+);
+
+DROP TABLE IF EXISTS event_posts;
+CREATE TABLE event_posts (
+    postsID int(11) NOT NULL AUTO_INCREMENT,
+    eventID int(11) NOT NULL,
+    content TEXT NOT NULL,
+    timeOfPosting DATETIME NOT NULL,
+    userWhoPosted varchar(50) NOT NULL,
+    CONSTRAINT PK_Event_Posts PRIMARY KEY (postsID),
+    CONSTRAINT FK_Event_Posts_Event_ID FOREIGN KEY (eventID) REFERENCES event(eventID) ON DELETE CASCADE
+);
+
+DROP TABLE IF EXISTS event_posts_replies;
+CREATE TABLE event_posts_replies (
+    repliesID int(11) NOT NULL AUTO_INCREMENT,
+    postsID int(11) NOT NULL,
+    content TEXT NOT NULL,
+    timeOfPosting DATETIME NOT NULL,
+    userWhoPosted varchar(50) NOT NULL,
+    CONSTRAINT PK_Event_Posts_Replies PRIMARY KEY (repliesID),
+    CONSTRAINT FK_Event_Posts_Replies_Posts_ID FOREIGN KEY (postsID) REFERENCES event_posts(postsID) ON DELETE CASCADE
+);
+
+
+
+DROP TABLE IF EXISTS group_posts;
+CREATE TABLE group_posts (
+    gPostsID int(11) NOT NULL AUTO_INCREMENT,
+    groupID int(11) NOT NULL,
+    content TEXT NOT NULL,
+    timeOfPosting DATETIME NOT NULL,
+    userWhoPosted varchar(50) NOT NULL,
+    CONSTRAINT PK_Group_Posts PRIMARY KEY (gPostsID),
+    CONSTRAINT FK_Group_Posts_Group_ID FOREIGN KEY (groupID) REFERENCES groups(groupID) ON DELETE CASCADE
+);
+
+DROP TABLE IF EXISTS group_posts_replies;
+CREATE TABLE group_posts_replies (
+    repliesID int(11) NOT NULL AUTO_INCREMENT,
+    gPostsID int(11) NOT NULL,
+    content TEXT NOT NULL,
+    timeOfPosting DATETIME NOT NULL,
+    userWhoPosted varchar(50) NOT NULL,
+    CONSTRAINT PK_Group_Posts_Replies PRIMARY KEY (repliesID),
+    CONSTRAINT FK_Group_Posts_Replies_Posts_ID FOREIGN KEY (gPostsID) REFERENCES group_posts(gPostsID) ON DELETE CASCADE
 );
 
 INSERT INTO user
@@ -148,11 +194,11 @@ INSERT INTO event_manager(eventManagerID, userID, statusCode) VALUES (2,3,"APPRO
 
 INSERT INTO event
     (eventID, eventManagerID, eventFeeID, eventName, eventDescription, eventPhoneNumber, eventType, size, startDate, endDate, pageTemplate)
-    VALUES (1,1,1,"Some Event","Some amazing event","888-888-8888","public",25,"2019-12-24","2019-12-26","/comp353/src/pages/eventTemplate/event-something-template.php");
+    VALUES (1,1,1,"Some Event","Some amazing event","888-888-8888","public",25,"2019-12-24","2019-12-26","/comp353/src/pages/eventTemplate/event-template1.php");
 
 INSERT INTO event
     (eventID, eventManagerID, eventFeeID, eventName, eventDescription, eventPhoneNumber, eventType, size, startDate, endDate, pageTemplate)
-    VALUES (2,1,1,"Some Christmas Event","Some amazing christmas event","888-888-8888","public",25,"2019-12-24","2019-12-26","/comp353/src/pages/eventTemplate/event-something-template.php");
+    VALUES (2,1,1,"Some Christmas Event","Some amazing christmas event","888-888-8888","public",25,"2019-12-24","2019-12-26","/comp353/src/pages/eventTemplate/event-template2.php");
 
 INSERT INTO event_list(eventID, userID, statusPosition, statusCode) VALUES (1,1,"EVENTMANAGER", "");
 
