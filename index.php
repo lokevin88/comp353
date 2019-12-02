@@ -3,13 +3,23 @@
 <?php
     require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/head.php';
 
+    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/admin.php';
+
+    $admin = new Admin($databaseConnection);
+
     $homepage = '';
 
     if(isset($_POST['login'])) {
       $email = $_POST['email'];
       $pwd = $_POST['pwd'];
 
-      if($email == isAdmin) {
+      $adminID = $admin->getAdminID($email);
+      $isAdmin = false;
+      if(!empty($adminID)) {
+        $isAdmin = true;
+      }
+
+      if($isAdmin) {
         $query = mysqli_query($databaseConnection, "SELECT * FROM admin where emailAddress='$email' AND password='$pwd'");
         $homepage = "/comp353/src/pages/admin-page.php";
       }

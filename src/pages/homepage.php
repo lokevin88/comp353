@@ -4,6 +4,10 @@
     include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/user.php';
     include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/event.php';
 
+    if($isAdmin) {
+      navigateTo("/comp353/src/pages/admin-page.php");
+    }
+
     $placeholderTitle = 'Homepage';
 
     $user = new User($databaseConnection, $user_email);

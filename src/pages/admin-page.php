@@ -1,13 +1,10 @@
 <?php
     require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/navbar.php';
     //  always import from below here
-    if($user_email != isAdmin) {
+
+    if($isAdmin == false) {
         navigateTo("/comp353/src/pages/homepage.php");
     }
-
-    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/admin.php';
-
-    $admin = new Admin($databaseConnection);
 
     $admin_pending_result = $admin->getAllPendingEvents();
     $count_pending_result = count($admin_pending_result);
