@@ -62,13 +62,37 @@
         $user->updateRequestedPeopleToJoinEvent($eventID, $userID, 'REJECTED');
         navigateTo("/comp353/src/pages/event-page.php");
     }
+
+    if(isset($_POST['pay'])) {
+        $cardNumber = $_POST['cardNumber'];
+        $cardHolderName = $_POST['cardHolderName'];
+        $securityCode = $_POST['securityCode'];
+        $billingAddress = $_POST['billingAddress'];
+
+        $array = array($cardNumber, $cardHolderName, $securityCode, $billingAddress);
+        $debitDetailsID = $user->insertPaymentInfo($array);
+        $user->updateEventManagerDebitDetails($debitDetailsID);
+        navigateTo("/comp353/src/pages/event-page.php");
+    }
+
+    if(isset($_POST['paying'])) {
+        $eventID = $_POST['paying'];
+        $user->updateEventManagerStatusCode($eventID);
+        // sleep(10);
+        $url = "https://www.paypal.com/cgi-bin/webscr";
+        echo '<script type="text/javascript">   window.open("'.$url.'", "_blank"); </script>';
+        // navigateTo("/comp353/src/pages/event-page.php");
+        // $url = "https://www.paypal.com/cgi-bin/webscr";
+        // echo '<script type="text/javascript">   window.open("'.$url.'", "_blank"); </script>';
+        // echo "<script type='text/javascript'> window.open('https://www.paypal.com/cgi-bin/webscr', '_blank'); </script>";
+    }
   ?>
 
 <div id="event-wrapper" class="main-body">
 
     <?php
     include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/components/bannerAndEvent-component.php';
-  ?>
+    ?>
 
     <div class="row-nomargin">
         <div class="col-lg-12">
@@ -128,7 +152,7 @@
     </div>
 
     <div class="row-nomargin">
-        <div class="col-lg-2 whiteBorderAndBlackLines">
+        <div class="col-lg-2 whiteBorderAndBlackLines" id="managedEvents">
             <?php
                 include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/managedEventStatus.php';
             ?>

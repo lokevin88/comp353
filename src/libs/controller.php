@@ -26,18 +26,50 @@
             }
         }
 
-        function updateEventManagerStatus($eventID) {
+        function updateEventManagerStatus($eventID, $eventFeeID) {
 
             $update_StatusCodeQuery =  mysqli_query($this->db_connection, "UPDATE event_manager em
                                                                            INNER JOIN event e ON em.eventManagerID = e.eventManagerID
-                                                                           SET em.statusCode='APPROVED'
+                                                                           SET em.statusCode='PAYMENT'
                                                                            WHERE e.eventID = '$eventID'");
 
+            $update_eventFeeQuery =  mysqli_query($this->db_connection, "UPDATE event
+                                                                         SET eventFeeID='$eventFeeID'
+                                                                         WHERE eventID = '$eventID'");
             if(!$update_StatusCodeQuery) {
                 echo 'placeholder could not update';
             } else {
                 echo 'updated placeholder';
             }
+        }
+
+        function getControllerID($email) {
+            $query = mysqli_query($this->db_connection, "SELECT controllerID
+                                                         FROM controller
+                                                         WHERE emailAddress = '$email'");
+            if($query) {
+                $dataAsArray = mysqli_fetch_array($query, MYSQLI_ASSOC);
+                return $dataAsArray['controllerID'];
+            }
+
+        }
+
+        function createEventFee($controllerID, $chargeRate) {
+            $query = mysqli_query($this->db_connection, "INSERT INTO event_fee_calculation (controllerID, chargeRate)
+                                                         VALUES ('$controllerID', '$chargeRate')");
+            $eventFeeID = mysqli_insert_id($this->db_connection);
+            if($eventFeeID) {
+                return $eventFeeID;
+            }
+            else {
+                return "";
+            }
+        }
+
+        function updateEmail($controllerID, $email) {
+            $query = mysqli_query($this->db_connection, "UPDATE controller
+                                                         SET emailAddress = '$email'
+                                                         WHERE controllerID = '$controllerID'");
         }
     }
 ?>

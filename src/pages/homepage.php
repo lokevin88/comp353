@@ -2,7 +2,7 @@
     require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/navbar.php';
     //  always import from below here
     include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/user.php';
-    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/event.php';
+    include_once($_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/event.php');
 
     if($isAdmin) {
       navigateTo("/comp353/src/pages/admin-page.php");

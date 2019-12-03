@@ -11,14 +11,13 @@
 
     $controller_reviewing_result = $controller->getAllReviewingEvents();
     $count_reviewing_result = count($controller_reviewing_result);
-
     if(isset($_POST['addToAccepted'])) {
-      // $chargeRate = "chargeRate-" . $row['eventID'];
-      // echo $chargeRate;
-
+      $controllerID = $controller->getControllerID($user_email);
       $eventID = $_POST['addToAccepted'];
-
-      $controller->updateEventManagerStatus($eventID);
+      $chargeRate = $_POST['chargeRate'];
+      echo "ID|" . $controllerID . "|chargeRate|" . $chargeRate;
+      $eventFeeID = $controller->createEventFee($controllerID, $chargeRate);
+      $controller->updateEventManagerStatus($eventID, $eventFeeID);
 
       navigateTo("/comp353/src/pages/controller-page.php");
     }
@@ -56,7 +55,7 @@
             <td><?php echo $row['username']; ?></td>
             <td><?php echo $row['statusCode']; ?></td>
             <td><?php echo $row['eventName']; ?></td>
-            <td><input type="number" class="form-control" name="chargeRate-<?php echo $row['eventID']; ?>" id="chargeRate" placeholder="price">
+            <td><input type="number" class="form-control" name="chargeRate" id="chargeRate" placeholder="price">
             <td>
               <button type="submit" name="addToAccepted" class="btn btn-primary" value="<?php echo $row['eventID']; ?>">
                 <i class="fa fa-check"></i> Accept

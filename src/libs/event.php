@@ -67,5 +67,17 @@
             }
         }
 
+        function getEventFee($eventFeeID) {
+            $query = mysqli_query($this->db_connection, "SELECT efc.chargeRate
+                                                         FROM event_fee_calculation efc
+                                                         INNER JOIN event e ON efc.eventFeeID = e.eventFeeID
+                                                         WHERE efc.eventFeeID ='$eventFeeID'");
+
+            if($query) {
+                $dataAsArray = mysqli_fetch_array($query, MYSQLI_ASSOC);
+                return $dataAsArray['chargeRate'];
+            }
+        }
+
     }
 ?>

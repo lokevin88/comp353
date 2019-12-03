@@ -63,7 +63,7 @@
         function getManagedEventNameAndStatus() {
             $userID = $this->getUserID();
 
-            $query = mysqli_query($this->db_connection, "SELECT e.eventID, em.statusCode, e.eventName, e.pageTemplate
+            $query = mysqli_query($this->db_connection, "SELECT e.eventID, em.statusCode, e.eventName, e.pageTemplate, e.eventFeeID
                                                          FROM user u
                                                          INNER JOIN event_manager em ON u.userID = em.userID
                                                          INNER JOIN event e ON em.eventManagerID = e.eventManagerID
@@ -244,7 +244,6 @@
                 $dataAsArray = mysqli_fetch_array($query, MYSQLI_ASSOC);
                 return $dataAsArray['eventManagerID'];
             }
-
         }
 
         function getManagedGroupName() {
@@ -374,25 +373,6 @@
             }
         }
 
-
-
-        // function getAllUserAvailableGroups() {
-        //     $userID = $this->user->getUserID();
-        //     $query = mysqli_query($this->db_connection, "SELECT e.eventID, e.eventName, e.eventDescription, e.eventType, e.startDate, e.endDate
-        //                                                  FROM user u
-        //                                                  INNER JOIN event_manager em ON u.userID = em.userID
-        //                                                  INNER JOIN event e ON em.eventManagerID = e.eventManagerID
-        //                                                  WHERE em.statusCode='APPROVED' AND em.userID !='$userID'");
-
-        //     $all_approved_events_num_rows = mysqli_num_rows($query);
-        //     if($all_approved_events_num_rows) {
-        //         return mysqli_fetch_all($query, MYSQLI_ASSOC);
-        //     }
-        //     else {
-        //         return [];
-        //     }
-        // }
-
         function submitEventPosts($eID, $content) {
             $userID = $this->getUserID();
             $username = $this->getUsername();
@@ -474,6 +454,73 @@
             $query = mysqli_query($this->db_connection, "DELETE
                                                          FROM user
                                                          WHERE userID = $userID");
+        }
+
+        function getEventManagerIDByUserID($userID) {
+            $query = mysqli_query($this->db_connection, "SELECT eventManagerID
+                                                         FROM event_manager
+                                                         WHERE userID = '$userID'
+                                                         ORDER BY eventManagerID DESC
+                                                         LIMIT 1");
+            if($query) {
+                $dataAsArray = mysqli_fetch_array($query, MYSQLI_ASSOC);
+                return $dataAsArray['eventManagerID'];
+            }
+        }
+
+        function getEventManagerIDByEventID($eventID) {
+            $query = mysqli_query($this->db_connection, "SELECT eventManagerID
+                                                         FROM event
+                                                         WHERE eventID = $eventID");
+            if($query) {
+                $dataAsArray = mysqli_fetch_array($query, MYSQLI_ASSOC);
+                return $dataAsArray['eventManagerID'];
+            }
+        }
+
+        function insertPaymentInfo($array) {
+            $userID = $this->getUserID();
+            $eventManagerID = $this->getEventManagerIDByUserID($userID);
+            $insert_groupQuery =  mysqli_query($this->db_connection, "INSERT INTO debit_details (eventManagerID, cardNumber, cardHolderName, securityCode, billingAddress) VALUES
+            ('$eventManagerID', '$array[0]', '$array[1]', '$array[2]', '$array[3]')");
+            $debitDetailsID = mysqli_insert_id($this->db_connection);
+            if($debitDetailsID) {
+                return $debitDetailsID;
+            }
+            else {
+                return "";
+            }
+        }
+
+        function updateEventManagerDebitDetails($debitDetailsID) {
+            $userID = $this->getUserID();
+            $eventManagerID = $this->getEventManagerIDFromUserID($userID);
+            $update_eventFeeQuery =  mysqli_query($this->db_connection, "UPDATE event_manager
+                                                                         SET debitDetailsID='$debitDetailsID'
+                                                                         WHERE eventManagerID = '$eventManagerID'");
+        }
+
+        function checkIfDebitDetailsExist($eventManagerID) {
+            $userID = $this->getUserID();
+            $query =  mysqli_query($this->db_connection, "SELECT debitDetailsID
+                                                          FROM event_manager
+                                                          WHERE eventManagerID='$eventManagerID'");
+            if($query) {
+                $dataAsArray = mysqli_fetch_array($query, MYSQLI_ASSOC);
+                return $dataAsArray['debitDetailsID'];
+            }
+        }
+
+        function updateEventManagerStatusCode($eventID) {
+            $update_StatusCodeQuery =  mysqli_query($this->db_connection, "UPDATE event_manager em
+                                                                           INNER JOIN event e ON em.eventManagerID = e.eventManagerID
+                                                                           SET em.statusCode='APPROVED'
+                                                                           WHERE e.eventID = '$eventID'");
+
+            if($update_StatusCodeQuery) {
+                $url = "/comp353/src/pages/event-page.php";
+                echo '<script type="text/javascript">   window.open("'.$url.'"); </script>';
+            }
         }
     }
 ?>
