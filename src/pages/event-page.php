@@ -78,6 +78,9 @@
     if(isset($_POST['paying'])) {
         $eventID = $_POST['paying'];
         $user->updateEventManagerStatusCode($eventID);
+        // sleep(10);
+        $url = "https://www.paypal.com/cgi-bin/webscr";
+        echo '<script type="text/javascript">   window.open("'.$url.'", "_blank"); </script>';
         // navigateTo("/comp353/src/pages/event-page.php");
         // $url = "https://www.paypal.com/cgi-bin/webscr";
         // echo '<script type="text/javascript">   window.open("'.$url.'", "_blank"); </script>';

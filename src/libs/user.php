@@ -518,9 +518,8 @@
                                                                            WHERE e.eventID = '$eventID'");
 
             if($update_StatusCodeQuery) {
-                $url = "https://www.paypal.com/cgi-bin/webscr";
-                echo '<script type="text/javascript">   window.open("'.$url.'", "_blank"); </script>';
-                navigateTo("/comp353/src/pages/event-page.php");
+                $url = "/comp353/src/pages/event-page.php";
+                echo '<script type="text/javascript">   window.open("'.$url.'"); </script>';
             }
         }
     }
