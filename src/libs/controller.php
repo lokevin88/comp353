@@ -53,6 +53,7 @@
             }
 
         }
+
         function createEventFee($controllerID, $chargeRate) {
             $query = mysqli_query($this->db_connection, "INSERT INTO event_fee_calculation (controllerID, chargeRate)
                                                          VALUES ('$controllerID', '$chargeRate')");
@@ -63,6 +64,12 @@
             else {
                 return "";
             }
+        }
+
+        function updateEmail($controllerID, $email) {
+            $query = mysqli_query($this->db_connection, "UPDATE controller
+                                                         SET emailAddress = '$email'
+                                                         WHERE controllerID = '$controllerID'");
         }
     }
 ?>
