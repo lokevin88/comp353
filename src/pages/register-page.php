@@ -24,7 +24,7 @@
         array_push($errors, $emailMatch);
       }
 
-      if(strlen($username) >= 5 || strlen($username) <= 20) {
+      if(strlen($username) < 5 || strlen($username) > 20) {
         array_push($errors, $usernameChar);
       }
 

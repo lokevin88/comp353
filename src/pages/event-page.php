@@ -23,6 +23,12 @@
     $event_all_approved = $event->getAllApprovedEvents();
     $count_all_approved_events_status = count($event_all_approved);
 
+    $eventLength = "must be between 5 and 50 characters";
+    $eventDescriptionLength = "must be between 5 and 100 characters";
+    $eventNumberFormat = "format should be as follows xxx-xxx-xxxx";
+    $eventNumberFormatRegex = "/^[0-9]{3}-[0-9]{3}-[0-9]{4}$/";
+    $eventDateCheck = "choose proper start and end dates";
+    $errors = array();
 
     if(isset($_POST['createEvent'])) {
       $eventName = $_POST['eventName'];
@@ -34,10 +40,29 @@
       $eventEndDate = $_POST['eventEndDate'];
       $pageTemplate = $_POST['pageTemplate'];
 
-      $eventArray = array($eventName, $eventDescription, $eventPhoneNumber, $eventType, $eventSize, $eventStartDate, $eventEndDate, $pageTemplate);
+      if(strlen($eventName) < 5 || strlen($eventName) > 50) {
+        array_push($errors, $eventLength);
+      }
 
-      $user->createEvent($eventArray);
-      navigateTo("/comp353/src/pages/event-page.php");
+      if(strlen($eventDescription) < 5 || strlen($eventDescription) > 100) {
+        array_push($errors, $eventDescriptionLength);
+      }
+
+      if(!preg_match($eventNumberFormatRegex, $eventPhoneNumber)) {
+        array_push($errors, $eventNumberFormat);
+      }
+
+      if($eventStartDate > $eventEndDate) {
+        array_push($errors, $eventDateCheck);
+      }
+
+
+      if(empty($errors)) {
+        $eventArray = array($eventName, $eventDescription, $eventPhoneNumber, $eventType, $eventSize, $eventStartDate, $eventEndDate, $pageTemplate);
+
+        $user->createEvent($eventArray);
+        navigateTo("/comp353/src/pages/homepage.php");
+      }
     }
 
     if(isset($_POST['addToPending'])) {
@@ -63,16 +88,42 @@
         navigateTo("/comp353/src/pages/event-page.php");
     }
 
+    $cardNumberLength = "input your 11 digits card number";
+    $cardNumberRegex = "/^[0-9]{11}$/";
+    $cardHolderNameLength = "must be between 5 and 20 characters";
+    $securityCodeLength = "enter your 4 digits security code";
+    $securityCodeRegex = "/^[0-9]{4}$/";
+    $billingAddressLength = "must be between 5 and 50 characters";
+    $errors1 = array();
+
     if(isset($_POST['pay'])) {
         $cardNumber = $_POST['cardNumber'];
         $cardHolderName = $_POST['cardHolderName'];
         $securityCode = $_POST['securityCode'];
         $billingAddress = $_POST['billingAddress'];
 
-        $array = array($cardNumber, $cardHolderName, $securityCode, $billingAddress);
-        $debitDetailsID = $user->insertPaymentInfo($array);
-        $user->updateEventManagerDebitDetails($debitDetailsID);
-        navigateTo("/comp353/src/pages/event-page.php");
+        if(!preg_match($cardNumberRegex, $cardNumber)) {
+            array_push($errors1, $cardNumberLength);
+        }
+
+        if(strlen($cardHolderName) < 5 || strlen($cardHolderName) > 20) {
+            array_push($errors1, $cardHolderNameLength);
+        }
+
+        if(!preg_match($securityCodeRegex, $securityCode)) {
+            array_push($errors1, $securityCodeLength);
+        }
+
+        if(strlen($billingAddress) < 5 || strlen($billingAddress) > 50) {
+            array_push($errors1, $billingAddressLength);
+        }
+
+        if(empty($errors1)) {
+            $array = array($cardNumber, $cardHolderName, $securityCode, $billingAddress);
+            $debitDetailsID = $user->insertPaymentInfo($array);
+            $user->updateEventManagerDebitDetails($debitDetailsID);
+            navigateTo("/comp353/src/pages/event-page.php");
+        }
     }
 
     if(isset($_POST['paying'])) {
