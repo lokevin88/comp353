@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+
 <?php
     require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/head.php';
 
@@ -8,6 +7,7 @@
     $admin = new Admin($databaseConnection);
 
     $homepage = '';
+    $error = '';
 
     if(isset($_POST['login'])) {
       $email = $_POST['email'];
@@ -36,12 +36,13 @@
 
       if($user_rows) {
         $_SESSION['email'] = $email;
-
+        $error = '';
         navigateTo($homepage);
+      } else {
+        $error = "Input of email or password is incorrect!";
       }
     }
 ?>
-
 <body class="vh-100">
   <div id="login-wrapper" class="bg-dark">
     <div class="container-fluid">
@@ -93,6 +94,11 @@
                     </div>
                   </div>
                 </form>
+                <div class="row">
+                    <div class="col-sm-12 text-danger">
+                      <?php echo $error; ?>
+                    </div>
+                </div>
               </div>
             </div>
           </div>
@@ -100,9 +106,6 @@
 
       </div>
     </div>
-
     <?php
     require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/jsScript.php';
   ?>
-
-</html>

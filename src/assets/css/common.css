@@ -16,9 +16,6 @@
 /* homepage css */
 @import "/comp353/src/assets/css/homepage.css";
 
-/* account css */
-@import "/comp353/src/assets/css/account.css";
-
 * {
   font-family: "Roboto";
   margin: 0;

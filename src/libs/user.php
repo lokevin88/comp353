@@ -494,7 +494,7 @@
 
         function updateEventManagerDebitDetails($debitDetailsID) {
             $userID = $this->getUserID();
-            $eventManagerID = $this->getEventManagerIDFromUserID($userID);
+            $eventManagerID = $this->getEventManagerIDByUserID($userID);
             $update_eventFeeQuery =  mysqli_query($this->db_connection, "UPDATE event_manager
                                                                          SET debitDetailsID='$debitDetailsID'
                                                                          WHERE eventManagerID = '$eventManagerID'");
