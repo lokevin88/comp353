@@ -35,11 +35,6 @@
   <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
     <a class="navbar-brand" href="/comp353/src/pages/homepage.php">rr_comp353_2</a>
 
-    <div class="d-flex flex-fill justify-content-end">
-
-      <a class="nav-link text-white" href="#">NotificationPlaceHolder</a>
-      <a class="nav-link text-white" href="#">MessengerPlaceHolder</a>
-    </div>
   </nav>
 
   <div class="sideNavBar text-black">
@@ -82,22 +77,6 @@
       <div class="row px-4" style="transform: rotate(0);">
         <span>
           <a href="/comp353/src/pages/group-page.php" class="stretched-link">Groups</a>
-        </span>
-      </div>
-
-      <hr>
-
-      <div class="row px-4" style="transform: rotate(0);">
-        <span>
-          <a href="#" class="stretched-link">something</a>
-        </span>
-      </div>
-
-      <hr>
-
-      <div class="row px-4" style="transform: rotate(0);">
-        <span>
-          <a href="#">something</a>
         </span>
       </div>
 
