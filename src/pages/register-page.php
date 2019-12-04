@@ -3,6 +3,10 @@
 <?php
     require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/head.php';
 
+    $emailMatch = "Email already exist. Please use another one!";
+    $usernameChar = "must be between 5 and 15 characters";
+    $errors = array();
+
     if(isset($_POST['register'])) {
       $email = $_POST['email'];
       $username = $_POST['username'];
@@ -13,21 +17,23 @@
       $profilePic = "/comp353/src/assets/images/mockuser.png";
       $pwd = $_POST['pwd'];
 
-      echo $username;
-      echo $dob;
-
       $emailResult_query = mysqli_query($databaseConnection, "SELECT * FROM user where emailAddress='$email'");
       $emailResult_rows = mysqli_num_rows($emailResult_query);
 
       if($emailResult_rows) {
-        // call jsfunction to display message PLACEHOLDER
-        echo 'display something saying email exists already';
+        array_push($errors, $emailMatch);
       }
-      else {
-        $register_query = mysqli_query($databaseConnection, "INSERT INTO user (emailAddress, username, firstName, lastName, gender, dob, profilePicture, password) VALUES
-        ('$email', '$username', '$fname', '$lname', '$gender', '$dob', '$profilePic', '$pwd')");
-        navigateTo("/comp353/index.php");
+
+      if(strlen($username) >= 5 || strlen($username) <= 20) {
+        array_push($errors, $usernameChar);
       }
+
+      if(empty($errors)) {
+          $register_query = mysqli_query($databaseConnection, "INSERT INTO user (emailAddress, username, firstName, lastName, gender, dob, profilePicture, password) VALUES
+          ('$email', '$username', '$fname', '$lname', '$gender', '$dob', '$profilePic', '$pwd')");
+          navigateTo("/comp353/index.php");
+      }
+
 
     }
   ?>
@@ -63,6 +69,11 @@
                     <div class="col-sm-10">
                       <input type="email" class="form-control" name="email" id="email" placeholder="test@hotmail.com" required>
                     </div>
+                    <?php if(in_array($emailMatch, $errors)): ?>
+                    <div class="col-sm-10 text-danger">
+                        <?php echo $emailMatch; ?>
+                    </div>
+                    <?php endif; ?>
                   </div>
                   <div class="form-group row">
                     <label for="fname" class="col-sm-2 col-form-label text-nowrap">First Name</label>
@@ -109,6 +120,11 @@
                       <input type="text" class="form-control" name="username" id="username" placeholder="JohnDoe" title="No blanks"
                         required>
                     </div>
+                    <?php if(in_array($usernameChar, $errors)): ?>
+                    <div class="col-sm-10 text-danger">
+                        <?php echo $usernameChar; ?>
+                    </div>
+                    <?php endif; ?>
                   </div>
                   <div class="form-group row">
                     <label for="pwd" class="col-sm-2 col-form-label text-nowrap">Password</label>
