@@ -200,7 +200,7 @@
                                                          FROM user u
                                                          INNER JOIN event_list el ON u.userID = el.userID
                                                          INNER JOIN event e ON el.eventID = e.eventID
-                                                         WHERE u.userID='$userID' AND (el.statusCode='APPROVED' OR el.statusCode='')");
+                                                         WHERE u.userID='$userID' AND (el.statusCode='APPROVED' OR el.statusCode='MANAGED')");
 
             $eventGoing_num_rows = mysqli_num_rows($query);
             if($eventGoing_num_rows) {

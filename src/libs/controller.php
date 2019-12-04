@@ -33,6 +33,10 @@
                                                                            SET em.statusCode='PAYMENT'
                                                                            WHERE e.eventID = '$eventID'");
 
+            $update_StatusCodeQuery =  mysqli_query($this->db_connection, "UPDATE event_list
+                                                                           SET statusCode='MANAGED'
+                                                                           WHERE eventID = '$eventID'");
+
             $update_eventFeeQuery =  mysqli_query($this->db_connection, "UPDATE event
                                                                          SET eventFeeID='$eventFeeID'
                                                                          WHERE eventID = '$eventID'");
