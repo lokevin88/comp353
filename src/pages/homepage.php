@@ -17,14 +17,19 @@
     $user_status_events = $user->getAllRequestedEventsLIMIT();
     $count_status_events = count($user_status_events);
 
-    $user_status_groups = $user->getAllRequestedGroupsLIMIT();
-    $count_status_groups = count($user_status_groups);
-
     $user_going_events = $user->getAllGoingEvents();
     $count_going_events = count($user_going_events);
 
     $user_joined_groups = $user->getAllJoinedGroups();
     $count_joined_groups = count($user_joined_groups);
+
+
+    $eventLength = "must be between 5 and 50 characters";
+    $eventDescriptionLength = "must be between 5 and 100 characters";
+    $eventNumberFormat = "format should be as follows xxx-xxx-xxxx";
+    $eventNumberFormatRegex = "/^[0-9]{3}-[0-9]{3}-[0-9]{4}$/";
+    $eventDateCheck = "choose proper start and end dates";
+    $errors = array();
 
     if(isset($_POST['createEvent'])) {
       $eventName = $_POST['eventName'];
@@ -36,11 +41,41 @@
       $eventEndDate = $_POST['eventEndDate'];
       $pageTemplate = $_POST['pageTemplate'];
 
-      $eventArray = array($eventName, $eventDescription, $eventPhoneNumber, $eventType, $eventSize, $eventStartDate, $eventEndDate, $pageTemplate);
+      if(strlen($eventName) < 5 || strlen($eventName) > 50) {
+        array_push($errors, $eventLength);
+      }
 
-      $user->createEvent($eventArray);
-      navigateTo("/comp353/src/pages/homepage.php");
+      if(strlen($eventDescription) < 5 || strlen($eventDescription) > 100) {
+        array_push($errors, $eventDescriptionLength);
+      }
+
+      if(!preg_match($eventNumberFormatRegex, $eventPhoneNumber)) {
+        array_push($errors, $eventNumberFormat);
+      }
+
+      if($eventStartDate > $eventEndDate) {
+        array_push($errors, $eventDateCheck);
+      }
+
+
+      if(empty($errors)) {
+        $eventArray = array($eventName, $eventDescription, $eventPhoneNumber, $eventType, $eventSize, $eventStartDate, $eventEndDate, $pageTemplate);
+
+        $user->createEvent($eventArray);
+        navigateTo("/comp353/src/pages/homepage.php");
+      }
     }
+
+    if(isset($_POST['createGroup'])) {
+      $groupName = $_POST['groupName'];
+      $groupDescription = $_POST['groupDescription'];
+      $eventID = $_POST['eventID'];
+
+      $groupArray = array($groupName, $groupDescription, $eventID);
+
+      $user->createGroup($groupArray);
+      navigateTo("/comp353/src/pages/group-page.php");
+  }
 
   ?>
 

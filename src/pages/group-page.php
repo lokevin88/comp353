@@ -31,15 +31,29 @@
     // $event_all_approved = $user->getAllUserAvailableGroups();
     // $count_all_approved_events_status = count($event_all_approved);
 
+    $groupNameLength = "must be between 5 and 50 characters";
+    $groupDescriptionLength = "must be between 5 and 100 characters";
+    $errors = array();
+
     if(isset($_POST['createGroup'])) {
         $groupName = $_POST['groupName'];
         $groupDescription = $_POST['groupDescription'];
         $eventID = $_POST['eventID'];
 
-        $groupArray = array($groupName, $groupDescription, $eventID);
+        if(strlen($groupName) < 5 || strlen($groupName) > 50) {
+            array_push($errors, $groupNameLength);
+          }
 
-        $user->createGroup($groupArray);
-        navigateTo("/comp353/src/pages/group-page.php");
+          if(strlen($groupDescription) < 5 || strlen($groupDescription) > 100) {
+            array_push($errors, $groupDescriptionLength);
+          }
+
+        if(empty($errors)) {
+            $groupArray = array($groupName, $groupDescription, $eventID);
+
+            $user->createGroup($groupArray);
+            navigateTo("/comp353/src/pages/group-page.php");
+        }
     }
 
     if(isset($_POST['joinGroup'])) {

@@ -22,11 +22,23 @@
                         <label for="groupName">Group Name</label>
                         <input type="text" class="form-control" name="groupName" id="groupName"
                             placeholder="Enter group name" title="No blanks" required>
+
+                        <?php if(in_array($groupNameLength, $errors)): ?>
+                        <div class="text-danger">
+                        <?php echo $groupNameLength; ?>
+                        </div>
+                        <?php endif; ?>
                     </div>
                     <div class="form-group">
                         <label for="groupDescription">Description</label>
                         <input type="text" class="form-control" name="groupDescription" id="groupDescription"
                             placeholder="Enter description" title="No blanks" required>
+
+                        <?php if(in_array($groupDescriptionLength, $errors)): ?>
+                        <div class="text-danger">
+                        <?php echo $groupDescriptionLength; ?>
+                        </div>
+                        <?php endif; ?>
                     </div>
                     <div class="form-group">
                         <label for="groupDescription">Related to Event</label>

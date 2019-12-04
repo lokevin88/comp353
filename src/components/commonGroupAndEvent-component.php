@@ -36,28 +36,6 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="commonGroupAndEventSideContainer">
-                <h4>Groups Status</h4>
-                <?php if($count_status_groups == 0): ?>
-                <p>No groups status</p>
-                <?php endif; ?>
-
-                <?php
-                    foreach($user_status_groups as $row):
-                ?>
-                <p>Event name: <?php echo $row['groupName']; ?></p>
-                <p>Status: <?php echo $row['statusCode']; ?></p>
-                <hr>
-                <?php endforeach; ?>
-                <div class="btn-group groupAndEventGroup">
-                    <button type="button" class="btn bg-dark text-white" data-toggle="modal"
-                        data-target="#createGroupModal">Create Group</button>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 
 <?php
