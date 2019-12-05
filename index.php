@@ -107,5 +107,5 @@
       </div>
     </div>
     <?php
-    require $_SERVER['DOCUMENT_ROOT'] . './comp353/src/shared/jsScript.php';
+    require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/jsScript.php';
   ?>

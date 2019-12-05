@@ -1,7 +1,7 @@
 <?php
-    require $_SERVER['DOCUMENT_ROOT'] . './comp353/src/shared/navbar.php';
+    require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/navbar.php';
 
-    include $_SERVER['DOCUMENT_ROOT'] . './comp353/src/libs/user.php';
+    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/user.php';
     $user = new User($databaseConnection, $user_email);
 
     $words = "";
@@ -24,7 +24,7 @@
 
   <?php
     $placeholderTitle = "All users found from the search";
-    include $_SERVER['DOCUMENT_ROOT'] . './comp353/src/components/banner-component.php';
+    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/components/banner-component.php';
   ?>
 
   <div class="row-nomargin">
@@ -85,5 +85,5 @@
 <?php
 
     //  always import from above here
-    require $_SERVER['DOCUMENT_ROOT'] . './comp353/src/shared/jsScript.php';
+    require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/jsScript.php';
   ?>

@@ -1,8 +1,8 @@
 <?php
-    require $_SERVER['DOCUMENT_ROOT'] . './comp353/src/shared/navbar.php';
+    require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/navbar.php';
     //  always import from below here
-    include $_SERVER['DOCUMENT_ROOT'] . './comp353/src/libs/user.php';
-    include $_SERVER['DOCUMENT_ROOT'] . './comp353/src/libs/event.php';
+    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/user.php';
+    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/event.php';
 
     $eventID = $_GET['id'];
     //hotfix ...... navigateTo does not work in the newsfeed component for replying
@@ -27,19 +27,19 @@
   ?>
 <div id="event-template-wrapper" class="main-body">
   <?php
-    include $_SERVER['DOCUMENT_ROOT'] . './comp353/src/components/bannerAndMessage-component.php';
+    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/components/bannerAndMessage-component.php';
   ?>
 
   <div class="row">
     <div class="col-lg-9">
     <?php
-        include $_SERVER['DOCUMENT_ROOT'] . './comp353/src/components/event-newsfeed-component.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/components/event-newsfeed-component.php';
     ?>
 
     </div>
     <div class="col-lg-3">
     <?php
-        include $_SERVER['DOCUMENT_ROOT'] . './comp353/src/components/template2Sidebar-component.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/components/template2Sidebar-component.php';
       ?>
     </div>
   </div>
@@ -48,5 +48,5 @@
 <?php
 
     //  always import from above here
-    require $_SERVER['DOCUMENT_ROOT'] . './comp353/src/shared/jsScript.php';
+    require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/jsScript.php';
   ?>
