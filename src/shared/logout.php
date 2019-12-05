@@ -1,5 +1,5 @@
 <?php
-    require $_SERVER['DOCUMENT_ROOT'] . './comp353/src/shared/head.php';
+    require './comp353/src/shared/head.php';
 
     session_start();
     session_unset();

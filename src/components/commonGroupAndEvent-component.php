@@ -8,7 +8,7 @@
         <div class="col-lg-12">
             <div class="commonGroupAndEventSideContainer">
                 <?php
-                include $_SERVER['DOCUMENT_ROOT'] . './comp353/src/shared/managedEventStatus.php';
+                include './comp353/src/shared/managedEventStatus.php';
             ?>
             </div>
         </div>
@@ -39,6 +39,6 @@
 </div>
 
 <?php
-    include $_SERVER['DOCUMENT_ROOT'] . './comp353/src/shared/createEventModal.php';
-    include $_SERVER['DOCUMENT_ROOT'] . './comp353/src/shared/createGroupModal.php';
+    include './comp353/src/shared/createEventModal.php';
+    include './comp353/src/shared/createGroupModal.php';
 ?>

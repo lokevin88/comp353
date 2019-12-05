@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-    require $_SERVER['DOCUMENT_ROOT'] . './comp353/src/shared/head.php';
+    require './comp353/src/shared/head.php';
 
     $emailMatch = "Email already exist. Please use another one!";
     $usernameChar = "must be between 5 and 15 characters";
@@ -147,7 +147,7 @@
     </div>
   </div>
   <?php
-    require $_SERVER['DOCUMENT_ROOT'] . './comp353/src/shared/jsScript.php';
+    require './comp353/src/shared/jsScript.php';
   ?>
 
 </html>

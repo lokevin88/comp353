@@ -34,7 +34,7 @@
         <div class="card-footer">
             <div id="reply-<?php echo $row['postsID']; ?>" class="text-reply-color card-body-text" onclick="displayReplies(event);">reply (<?php echo $count_all_replies_on_member_posting ?>)</div>
                 <?php
-                    include $_SERVER['DOCUMENT_ROOT'] . './comp353/src/components/event-newsfeed-reply-component.php';
+                    include './comp353/src/components/event-newsfeed-reply-component.php';
                 ?>
         </div>
     </div>
