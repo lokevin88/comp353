@@ -224,8 +224,8 @@
             $userID = $this->getUserID();
             $eventManagerID = $this->getEventManagerIDFromUserID($userID);
             // create group
-            $insert_groupQuery =  mysqli_query($this->db_connection, "INSERT INTO groups (groupManagerID, groupName, groupDescription, eventID) VALUES
-            ('$eventManagerID', '$groupArray[0]', '$groupArray[1]', '$groupArray[2]')");
+            $insert_groupQuery =  mysqli_query($this->db_connection, "INSERT INTO groups (eventID, groupManagerID, groupName, groupDescription) VALUES
+            ('$groupArray[2]', '$eventManagerID', '$groupArray[0]', '$groupArray[1]')");
         }
 
         function joinGroup($groupID) {

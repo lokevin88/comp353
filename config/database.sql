@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS rr_comp353_2;
-CREATE DATABASE rr_comp353_2
+DROP DATABASE IF EXISTS rrc353_2;
+CREATE DATABASE rrc353_2
 CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_unicode_ci;
-USE rr_comp353_2;
+USE rrc353_2;
 
 DROP TABLE IF EXISTS admin;
 CREATE TABLE admin (
@@ -105,10 +105,10 @@ CREATE TABLE event_list (
 DROP TABLE IF EXISTS groups;
 CREATE TABLE groups (
     groupID int(11) NOT NULL AUTO_INCREMENT,
+    eventID int(11) NOT NULL,
     groupManagerID int(11) NOT NULL,
     groupName varchar(255),
     groupDescription varchar(255),
-    eventID int(11) NOT NULL,
     CONSTRAINT PK_Group PRIMARY KEY (groupID),
     CONSTRAINT FK_Group_Event_ID FOREIGN KEY (eventID) REFERENCES event(eventID) ON DELETE CASCADE,
     CONSTRAINT FK_Group_Manager FOREIGN KEY (groupManagerID) REFERENCES event_manager(eventManagerID) ON DELETE CASCADE
@@ -201,9 +201,9 @@ INSERT INTO event_list(eventID, userID, statusPosition, statusCode) VALUES (1,1,
 
 INSERT INTO event_list(eventID, userID, statusPosition, statusCode) VALUES (1,2,"PARTICIPANT","APPROVED");
 
-INSERT INTO groups(groupID, groupManagerID, groupName, groupDescription, eventID) VALUES (1,1,"Group1","The first group",1);
+INSERT INTO groups(groupID, eventID, groupManagerID, groupName, groupDescription) VALUES (1,1,1,"Group1","The first group");
 
-INSERT INTO groups(groupID, groupManagerID, groupName, groupDescription, eventID) VALUES (2,1,"Group2","The second group",2);
+INSERT INTO groups(groupID, eventID, groupManagerID, groupName, groupDescription) VALUES (2,2,1,"Group2","The second group");
 
 INSERT INTO group_member_list(groupID, userID, statusPosition, statusCode) VALUES (1,2,"PARTICIPANT","PENDING");
 
