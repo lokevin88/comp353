@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 05, 2019 at 04:38 AM
+-- Generation Time: Dec 05, 2019 at 08:44 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.2.24
 
@@ -21,6 +21,10 @@ SET time_zone = "+00:00";
 --
 -- Database: `rrc353_2`
 --
+
+DROP DATABASE IF EXISTS rrc353_2;
+CREATE DATABASE rrc353_2;
+USE rrc353_2;
 
 -- --------------------------------------------------------
 
@@ -41,7 +45,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`adminID`, `emailAddress`, `username`, `password`, `profilePicture`) VALUES
-(1, 'admin@db.com', 'admin', 'admin', 'https://rrc353.encs.concordia.ca/comp353/src/assets/images/mockadmin.png');
+(1, 'admin@db.com', 'admin', 'admin', '/comp353/src/assets/images/mockadmin.png');
 
 -- --------------------------------------------------------
 
@@ -62,7 +66,7 @@ CREATE TABLE `controller` (
 --
 
 INSERT INTO `controller` (`controllerID`, `emailAddress`, `username`, `password`, `profilePicture`) VALUES
-(1, 'controller@db.com', 'controller', 'controller', 'https://rrc353.encs.concordia.ca/comp353/src/assets/images/mockcontroller.png');
+(1, 'controller@db.com', 'controller', 'controller', '/comp353/src/assets/images/mockcontroller.png');
 
 -- --------------------------------------------------------
 
@@ -104,8 +108,8 @@ CREATE TABLE `event` (
 --
 
 INSERT INTO `event` (`eventID`, `eventManagerID`, `eventFeeID`, `eventName`, `eventDescription`, `eventPhoneNumber`, `eventType`, `size`, `startDate`, `endDate`, `pageTemplate`) VALUES
-(1, 1, 1, 'Some Event', 'Some amazing event', '888-888-8888', 'public', 25, '2019-12-24', '2019-12-26', 'https://rrc353.encs.concordia.ca/comp353/src/pages/eventTemplate/event-template1.php'),
-(2, 1, 1, 'Some Christmas Event', 'Some amazing christmas event', '888-888-8888', 'public', 25, '2019-12-24', '2019-12-26', 'https://rrc353.encs.concordia.ca/comp353/src/pages/eventTemplate/event-template2.php');
+(1, 1, 1, 'Some Event', 'Some amazing event', '888-888-8888', 'public', 25, '2019-12-24', '2019-12-26', '/comp353/src/pages/eventTemplate/event-template1.php'),
+(2, 1, 1, 'Some Christmas Event', 'Some amazing christmas event', '888-888-8888', 'public', 25, '2019-12-24', '2019-12-26', '/comp353/src/pages/eventTemplate/event-template2.php');
 
 -- --------------------------------------------------------
 
@@ -204,19 +208,19 @@ CREATE TABLE `event_posts_replies` (
 
 CREATE TABLE `groups` (
   `groupID` int(11) NOT NULL,
+  `eventID` int(11) NOT NULL,
   `groupManagerID` int(11) NOT NULL,
   `groupName` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `groupDescription` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `eventID` int(11) NOT NULL
+  `groupDescription` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `groups`
 --
 
-INSERT INTO `groups` (`groupID`, `groupManagerID`, `groupName`, `groupDescription`, `eventID`) VALUES
-(1, 1, 'Group1', 'The first group', 1),
-(2, 1, 'Group2', 'The second group', 2);
+INSERT INTO `groups` (`groupID`, `eventID`, `groupManagerID`, `groupName`, `groupDescription`) VALUES
+(1, 1, 1, 'Group1', 'The first group'),
+(2, 2, 1, 'Group2', 'The second group');
 
 -- --------------------------------------------------------
 
@@ -289,11 +293,11 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`userID`, `emailAddress`, `username`, `firstName`, `lastName`, `gender`, `dob`, `profilePicture`, `password`) VALUES
-(1, 'user@db.com', 'user', 'firstUser', 'lastUser', 'male', '1999-10-11', 'https://rrc353.encs.concordia.ca/comp353/src/assets/images/mockuser.png', 'user'),
-(2, 'user2@db.com', 'user2', 'firstUser2', 'lastUser2', 'male', '1999-10-11', 'https://rrc353.encs.concordia.ca/comp353/src/assets/images/mockuser.png', 'user'),
-(3, 'user3@db.com', 'user3', 'firstUser3', 'lastUser3', 'male', '1999-10-11', 'https://rrc353.encs.concordia.ca/comp353/src/assets/images/mockuser.png', 'user'),
-(4, 'mary@db.com', 'mary', 'Mary', 'Doe', 'Female', '1989-10-12', 'https://rrc353.encs.concordia.ca/comp353/src/assets/images/mockuser.png', 'mary'),
-(5, 'john@db.com', 'john', 'John', 'Doe', 'Male', '1979-12-11', 'https://rrc353.encs.concordia.ca/comp353/src/assets/images/mockuser.png', 'john');
+(1, 'user@db.com', 'user', 'firstUser', 'lastUser', 'male', '1999-10-11', '/comp353/src/assets/images/mockuser.png', 'user'),
+(2, 'user2@db.com', 'user2', 'firstUser2', 'lastUser2', 'male', '1999-10-11', '/comp353/src/assets/images/mockuser.png', 'user'),
+(3, 'user3@db.com', 'user3', 'firstUser3', 'lastUser3', 'male', '1999-10-11', '/comp353/src/assets/images/mockuser.png', 'user'),
+(4, 'mary@db.com', 'mary', 'Mary', 'Doe', 'Female', '1989-10-12', '/comp353/src/assets/images/mockuser.png', 'mary'),
+(5, 'john@db.com', 'john', 'John', 'Doe', 'Male', '1979-12-11', '/comp353/src/assets/images/mockuser.png', 'john');
 
 --
 -- Indexes for dumped tables
