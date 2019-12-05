@@ -10,5 +10,5 @@
 
 
 <?php
-    include $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/shared/createEventModal.php';
+    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/createEventModal.php';
 ?>

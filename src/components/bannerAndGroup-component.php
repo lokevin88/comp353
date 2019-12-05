@@ -11,8 +11,8 @@
 
 <?php
     //MODAL FOR CREATING GROUP
-    include $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/shared/createGroupModal.php';
+    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/createGroupModal.php';
 
     //MODAL FOR JOINING GROUP
-    include $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/shared/joinGroupModal.php';
+    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/joinGroupModal.php';
 ?>

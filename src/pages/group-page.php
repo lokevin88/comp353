@@ -7,11 +7,11 @@
 -->
 
 <?php
-    require $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/shared/navbar.php';
+    require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/navbar.php';
 
-    include $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/libs/user.php';
+    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/user.php';
 
-    include $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/libs/event.php';
+    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/event.php';
 
     $user = new User($databaseConnection, $user_email);
     // get all managed groups
@@ -83,7 +83,7 @@
 <div id="event-wrapper" class="main-body">
 
     <?php
-    include $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/components/bannerAndGroup-component.php';
+    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/components/bannerAndGroup-component.php';
   ?>
 
     <div class="row-nomargin">
@@ -148,7 +148,7 @@
     <div class="row-nomargin">
         <div class="col-lg-4 whiteBorderAndBlackLines">
             <?php
-                include $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/shared/managedGroupStatus.php';
+                include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/managedGroupStatus.php';
             ?>
         </div>
         <div class="col-lg-4 whiteBorderAndBlackLines">
@@ -188,5 +188,5 @@
 <?php
 
     //  always import from above here
-    require $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/shared/jsScript.php';
+    require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/jsScript.php';
   ?>

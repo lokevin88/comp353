@@ -29,7 +29,7 @@
 
   <?php
 
-  require $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/config/mysql_connection.php';
-  require $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/shared/init.php';
+  require $_SERVER['DOCUMENT_ROOT'] . '/comp353/config/mysql_connection.php';
+  require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/init.php';
   ?>
 </head>

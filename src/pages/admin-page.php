@@ -1,5 +1,5 @@
 <?php
-    require $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/shared/navbar.php';
+    require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/navbar.php';
     //  always import from below here
 
     if($isAdmin == false) {
@@ -150,5 +150,5 @@
   <?php
 
     //  always import from above here
-    require $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/shared/jsScript.php';
+    require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/jsScript.php';
   ?>
