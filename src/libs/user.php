@@ -331,9 +331,10 @@
 
         function getAllJoinedGroups() {
             $userID = $this->getUserID();
+
             $query = mysqli_query($this->db_connection, "SELECT gml.statusCode, g.groupName, g.groupID, g.groupDescription
-                                                         FROM group_member_list AS gml
-                                                         INNER JOIN groups AS g ON gml.groupID = g.groupID
+                                                         FROM group_member_list gml
+                                                         INNER JOIN groups g ON gml.groupID = g.groupID
                                                          WHERE gml.userID='$userID' AND (gml.statusCode='APPROVED' OR gml.statusCode='')");
 
             $joinedGroups_num_rows = mysqli_num_rows($query);
