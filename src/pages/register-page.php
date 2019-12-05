@@ -27,9 +27,13 @@
       }
 
       if(empty($errors)) {
+        echo 'GOOD';
           $register_query = mysqli_query($databaseConnection, "INSERT INTO user (emailAddress, username, firstName, lastName, gender, dob, profilePicture, password) VALUES
           ('$email', '$username', '$fname', '$lname', '$gender', '$dob', '$profilePic', '$pwd')");
           navigateTo("https://rrc353.encs.concordia.ca/comp353/index.php");
+      }
+      else {
+        echo 'BAD';
       }
 
 
