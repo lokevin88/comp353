@@ -7,7 +7,7 @@
     DEFINE ('dbUser', 'root');
     DEFINE ('dbPassword', '');
     DEFINE ('dbHost', 'localhost');
-    DEFINE ('dbName', 'rr_comp353_2');
+    DEFINE ('dbName', 'rrc353_2');
 
     $databaseConnection = mysqli_connect(dbHost, dbUser, dbPassword, dbName);
 
