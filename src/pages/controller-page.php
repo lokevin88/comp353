@@ -4,7 +4,7 @@
     if($user_email != isController) {
         navigateTo("https://rrc353.encs.concordia.ca/comp353/src/pages/homepage.php");
     }
-    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/User.php';
+    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/user.php';
     include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/controller.php';
 
     $controller = new Controller($databaseConnection, $user_email);

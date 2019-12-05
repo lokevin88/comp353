@@ -91,8 +91,6 @@
         <div class="row">
           <div class="col-lg-12">
             <h2>Feeds from joined events and groups</h2>
-            <?php echo $user_email; ?>
-            <?php echo $_SESSION['email']; ?>
           </div>
         </div>
         <div class="row">
