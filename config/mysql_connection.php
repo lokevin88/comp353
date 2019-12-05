@@ -1,6 +1,4 @@
 <?php
-    ob_start();
-    session_start();
 
     // DEFINE ('isAdmin', 'admin@db.com');
     DEFINE ('isController', 'controller@db.com');
