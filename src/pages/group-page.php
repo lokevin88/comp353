@@ -1,11 +1,3 @@
-<!-- TO CHANGE to groups, this only to based off events page
-    TO CONTINUE :
-    CREATE A GROUP DETAILS PAGE WITH THE LATEST POST,
-    DISPLAYING ALL THE MEMBERS (POSSIBILITY TO KICk OUT
-    MEMBERS IF EVENMANAGER, INTEGRATE MESSAGING)
-
--->
-
 <?php
     require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/navbar.php';
 
