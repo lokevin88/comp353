@@ -35,7 +35,7 @@
         <div class="card-footer">
             <div id="reply-<?php echo $row['gPostsID']; ?>" class="text-reply-color card-body-text" onclick="displayReplies(event);">reply (<?php echo $count_all_replies_on_member_posting ?>)</div>
                 <?php
-                    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/components/group-newsfeed-reply-component.php';
+                    include $_SERVER['DOCUMENT_ROOT'] . './comp353/src/components/group-newsfeed-reply-component.php';
                 ?>
         </div>
     </div>

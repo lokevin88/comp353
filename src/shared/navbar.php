@@ -1,7 +1,7 @@
 <?php
-    require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/head.php';
+    require $_SERVER['DOCUMENT_ROOT'] . './comp353/src/shared/head.php';
 
-    include_once($_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/admin.php');
+    include_once($_SERVER['DOCUMENT_ROOT'] . './comp353/src/libs/admin.php');
 
     $admin = new Admin($databaseConnection);
 
