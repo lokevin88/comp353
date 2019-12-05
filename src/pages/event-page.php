@@ -118,12 +118,10 @@
             array_push($errors1, $billingAddressLength);
         }
 
-        if(empty($errors)) {
-            $array = array($cardNumber, $cardHolderName, $securityCode, $billingAddress);
-            $debitDetailsID = $user->insertPaymentInfo($array);
-            $user->updateEventManagerDebitDetails($debitDetailsID);
-            navigateTo("https://rrc353.encs.concordia.ca/comp353/src/pages/event-page.php");
-        }
+        $array = array($cardNumber, $cardHolderName, $securityCode, $billingAddress);
+        $debitDetailsID = $user->insertPaymentInfo($array);
+        $user->updateEventManagerDebitDetails($debitDetailsID);
+        navigateTo("https://rrc353.encs.concordia.ca/comp353/src/pages/event-page.php");
     }
 
     if(isset($_POST['paying'])) {
