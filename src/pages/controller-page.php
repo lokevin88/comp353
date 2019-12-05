@@ -1,11 +1,11 @@
 <?php
-    require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/navbar.php';
+    require $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/shared/navbar.php';
     //  always import from below here
     if($user_email != isController) {
-        navigateTo("/comp353/src/pages/homepage.php");
+        navigateTo("https://rrc353.encs.concordia.ca/comp353/src/pages/homepage.php");
     }
-    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/User.php';
-    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/controller.php';
+    include $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/libs/User.php';
+    include $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/libs/controller.php';
 
     $controller = new Controller($databaseConnection, $user_email);
 
@@ -19,7 +19,7 @@
       $eventFeeID = $controller->createEventFee($controllerID, $chargeRate);
       $controller->updateEventManagerStatus($eventID, $eventFeeID);
 
-      navigateTo("/comp353/src/pages/controller-page.php");
+      navigateTo("https://rrc353.encs.concordia.ca/comp353/src/pages/controller-page.php");
     }
 
   ?>
@@ -72,5 +72,5 @@
 <?php
 
     //  always import from above here
-    require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/jsScript.php';
+    require $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/shared/jsScript.php';
   ?>

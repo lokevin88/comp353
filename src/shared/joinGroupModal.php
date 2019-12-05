@@ -1,6 +1,6 @@
 <?php
 
-    // include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/user.php';
+    // include $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/libs/user.php';
 
     // $user = new User($databaseConnection, $user_email);
 

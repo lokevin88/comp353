@@ -1,5 +1,5 @@
 <?php
-    require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/navbar.php';
+    require $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/shared/navbar.php';
 
     if(isset($_POST['save'])) {
         $newEmail = $_POST['email'];
@@ -7,7 +7,7 @@
         $admin->updateEmail($adminID, $newEmail);
 
         $_SESSION['email'] = $newEmail;
-        navigateTo("/comp353/src/pages/account-page.php");
+        navigateTo("https://rrc353.encs.concordia.ca/comp353/src/pages/account-page.php");
     }
   ?>
 
@@ -15,7 +15,7 @@
 
   <?php
     $placeholderTitle = "My Account";
-    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/components/banner-component.php';
+    include $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/components/banner-component.php';
   ?>
 
   <div class="row-nomargin">
@@ -77,5 +77,5 @@
 <?php
 
     //  always import from above here
-    require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/jsScript.php';
+    require $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/shared/jsScript.php';
   ?>

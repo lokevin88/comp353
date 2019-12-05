@@ -1,11 +1,11 @@
 <?php
-    require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/navbar.php';
+    require $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/shared/navbar.php';
     //  always import from below here
-    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/user.php';
-    include_once($_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/event.php');
+    include $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/libs/user.php';
+    include_once($_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/libs/event.php');
 
     if($isAdmin) {
-      navigateTo("/comp353/src/pages/admin-page.php");
+      navigateTo("https://rrc353.encs.concordia.ca/comp353/src/pages/admin-page.php");
     }
 
     $placeholderTitle = 'Homepage';
@@ -62,7 +62,7 @@
         $eventArray = array($eventName, $eventDescription, $eventPhoneNumber, $eventType, $eventSize, $eventStartDate, $eventEndDate, $pageTemplate);
 
         $user->createEvent($eventArray);
-        navigateTo("/comp353/src/pages/homepage.php");
+        navigateTo("https://rrc353.encs.concordia.ca/comp353/src/pages/homepage.php");
       }
     }
 
@@ -74,7 +74,7 @@
       $groupArray = array($groupName, $groupDescription, $eventID);
 
       $user->createGroup($groupArray);
-      navigateTo("/comp353/src/pages/group-page.php");
+      navigateTo("https://rrc353.encs.concordia.ca/comp353/src/pages/group-page.php");
   }
 
   ?>
@@ -82,7 +82,7 @@
 <div id="homepage-wrapper" class="main-body">
 
   <?php
-    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/components/banner-component.php';
+    include $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/components/banner-component.php';
   ?>
 
   <div class="row">
@@ -142,7 +142,7 @@
     </div>
     <div class="col-lg-3">
       <?php
-        include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/components/commonGroupAndEvent-component.php';
+        include $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/components/commonGroupAndEvent-component.php';
       ?>
     </div>
   </div>
@@ -151,5 +151,5 @@
 <?php
 
     //  always import from above here
-    require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/jsScript.php';
+    require $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/shared/jsScript.php';
   ?>

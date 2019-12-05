@@ -7,11 +7,11 @@
 -->
 
 <?php
-    require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/navbar.php';
+    require $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/shared/navbar.php';
 
-    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/user.php';
+    include $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/libs/user.php';
 
-    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/event.php';
+    include $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/libs/event.php';
 
     $user = new User($databaseConnection, $user_email);
     // get all managed groups
@@ -52,7 +52,7 @@
             $groupArray = array($groupName, $groupDescription, $eventID);
 
             $user->createGroup($groupArray);
-            navigateTo("/comp353/src/pages/group-page.php");
+            navigateTo("https://rrc353.encs.concordia.ca/comp353/src/pages/group-page.php");
         }
     }
 
@@ -60,7 +60,7 @@
         $groupID = $_POST['groupID'];
 
         $user->joinGroup($groupID);
-        navigateTo("/comp353/src/pages/group-page.php");
+        navigateTo("https://rrc353.encs.concordia.ca/comp353/src/pages/group-page.php");
     }
 
     if(isset($_POST['addToApproved'])) {
@@ -68,7 +68,7 @@
         $userID = $_POST['userToAccept'];
 
         $user->updateRequestedPeopleToJoinGroup($groupID, $userID, 'APPROVED');
-        navigateTo("/comp353/src/pages/group-page.php");
+        navigateTo("https://rrc353.encs.concordia.ca/comp353/src/pages/group-page.php");
     }
 
     if(isset($_POST['addToRejected'])) {
@@ -76,14 +76,14 @@
         $userID = $_POST['userToAccept'];
 
         $user->updateRequestedPeopleToJoinGroup($groupID, $userID, 'REJECTED');
-        navigateTo("/comp353/src/pages/group-page.php");
+        navigateTo("https://rrc353.encs.concordia.ca/comp353/src/pages/group-page.php");
     }
   ?>
 
 <div id="event-wrapper" class="main-body">
 
     <?php
-    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/components/bannerAndGroup-component.php';
+    include $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/components/bannerAndGroup-component.php';
   ?>
 
     <div class="row-nomargin">
@@ -148,7 +148,7 @@
     <div class="row-nomargin">
         <div class="col-lg-4 whiteBorderAndBlackLines">
             <?php
-                include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/managedGroupStatus.php';
+                include $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/shared/managedGroupStatus.php';
             ?>
         </div>
         <div class="col-lg-4 whiteBorderAndBlackLines">
@@ -178,7 +178,7 @@
             <p>Group name: <?php echo $row['groupName']; ?></p>
             <p>Status: <?php echo $row['statusCode']; ?></p>
 
-            <a href="<?php echo "/comp353/src/pages/group-details-page.php?groupID={$row['groupID']}";?>">Go to group's detail page</a>
+            <a href="<?php echo "https://rrc353.encs.concordia.ca/comp353/src/pages/group-details-page.php?groupID={$row['groupID']}";?>">Go to group's detail page</a>
             <hr>
             <?php endforeach; ?>
         </div>
@@ -188,5 +188,5 @@
 <?php
 
     //  always import from above here
-    require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/jsScript.php';
+    require $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/shared/jsScript.php';
   ?>

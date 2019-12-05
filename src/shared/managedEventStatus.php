@@ -1,6 +1,6 @@
 <?php
     //MODAL FOR CREATING GROUP
-    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/paymentDetailsModal.php';
+    include $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/shared/paymentDetailsModal.php';
 
     $event = new Event($databaseConnection, $user_email);
 

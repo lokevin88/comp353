@@ -518,7 +518,7 @@
                                                                            WHERE e.eventID = '$eventID'");
 
             if($update_StatusCodeQuery) {
-                $url = "/comp353/src/pages/event-page.php";
+                $url = "https://rrc353.encs.concordia.ca/comp353/src/pages/event-page.php";
                 echo '<script type="text/javascript">   window.open("'.$url.'"); </script>';
             }
         }

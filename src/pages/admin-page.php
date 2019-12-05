@@ -1,9 +1,9 @@
 <?php
-    require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/navbar.php';
+    require $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/shared/navbar.php';
     //  always import from below here
 
     if($isAdmin == false) {
-        navigateTo("/comp353/src/pages/homepage.php");
+        navigateTo("https://rrc353.encs.concordia.ca/comp353/src/pages/homepage.php");
     }
 
     $admin_pending_result = $admin->getAllPendingEvents();
@@ -16,14 +16,14 @@
       $eventID = $_POST['addToReviewing'];
 
       $admin->updateEventManagerStatus($eventID, 'REVIEWING');
-      navigateTo("/comp353/src/pages/admin-page.php");
+      navigateTo("https://rrc353.encs.concordia.ca/comp353/src/pages/admin-page.php");
     }
 
     if(isset($_POST['addToRejected'])) {
       $eventID = $_POST['addToRejected'];
 
       $admin->updateEventManagerStatus($eventID, 'REJECTED');
-      navigateTo("/comp353/src/pages/admin-page.php");
+      navigateTo("https://rrc353.encs.concordia.ca/comp353/src/pages/admin-page.php");
     }
   ?>
 
@@ -150,5 +150,5 @@
   <?php
 
     //  always import from above here
-    require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/jsScript.php';
+    require $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/shared/jsScript.php';
   ?>

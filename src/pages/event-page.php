@@ -1,9 +1,9 @@
 <?php
-    require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/navbar.php';
+    require $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/shared/navbar.php';
     //  always import from below here
 
-    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/user.php';
-    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/event.php';
+    include $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/libs/user.php';
+    include $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/libs/event.php';
 
     $user = new User($databaseConnection, $user_email);
     // get all managed events
@@ -61,7 +61,7 @@
         $eventArray = array($eventName, $eventDescription, $eventPhoneNumber, $eventType, $eventSize, $eventStartDate, $eventEndDate, $pageTemplate);
 
         $user->createEvent($eventArray);
-        navigateTo("/comp353/src/pages/homepage.php");
+        navigateTo("https://rrc353.encs.concordia.ca/comp353/src/pages/homepage.php");
       }
     }
 
@@ -69,7 +69,7 @@
         $eventID = $_POST['addToPending'];
 
         $user->joinEvent($eventID);
-        navigateTo("/comp353/src/pages/event-page.php");
+        navigateTo("https://rrc353.encs.concordia.ca/comp353/src/pages/event-page.php");
     }
 
     if(isset($_POST['addToApproved'])) {
@@ -77,7 +77,7 @@
         $userID = $_POST['userToAccept'];
 
         $user->updateRequestedPeopleToJoinEvent($eventID, $userID, 'APPROVED');
-        navigateTo("/comp353/src/pages/event-page.php");
+        navigateTo("https://rrc353.encs.concordia.ca/comp353/src/pages/event-page.php");
     }
 
     if(isset($_POST['addToRejected'])) {
@@ -85,7 +85,7 @@
         $userID = $_POST['userToAccept'];
 
         $user->updateRequestedPeopleToJoinEvent($eventID, $userID, 'REJECTED');
-        navigateTo("/comp353/src/pages/event-page.php");
+        navigateTo("https://rrc353.encs.concordia.ca/comp353/src/pages/event-page.php");
     }
 
     $cardNumberLength = "input your 11 digits card number";
@@ -122,7 +122,7 @@
             $array = array($cardNumber, $cardHolderName, $securityCode, $billingAddress);
             $debitDetailsID = $user->insertPaymentInfo($array);
             $user->updateEventManagerDebitDetails($debitDetailsID);
-            navigateTo("/comp353/src/pages/event-page.php");
+            navigateTo("https://rrc353.encs.concordia.ca/comp353/src/pages/event-page.php");
         }
     }
 
@@ -132,7 +132,7 @@
         // sleep(10);
         $url = "https://www.paypal.com/cgi-bin/webscr";
         echo '<script type="text/javascript">   window.open("'.$url.'", "_blank"); </script>';
-        // navigateTo("/comp353/src/pages/event-page.php");
+        // navigateTo("https://rrc353.encs.concordia.ca/comp353/src/pages/event-page.php");
         // $url = "https://www.paypal.com/cgi-bin/webscr";
         // echo '<script type="text/javascript">   window.open("'.$url.'", "_blank"); </script>';
         // echo "<script type='text/javascript'> window.open('https://www.paypal.com/cgi-bin/webscr', '_blank'); </script>";
@@ -142,7 +142,7 @@
 <div id="event-wrapper" class="main-body">
 
     <?php
-    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/components/bannerAndEvent-component.php';
+    include $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/components/bannerAndEvent-component.php';
     ?>
 
     <div class="row-nomargin">
@@ -205,7 +205,7 @@
     <div class="row-nomargin">
         <div class="col-lg-2 whiteBorderAndBlackLines" id="managedEvents">
             <?php
-                include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/managedEventStatus.php';
+                include $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/shared/managedEventStatus.php';
             ?>
         </div>
         <div class="col-lg-2 whiteBorderAndBlackLines">
@@ -296,5 +296,5 @@
 <?php
 
     //  always import from above here
-    require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/jsScript.php';
+    require $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/shared/jsScript.php';
   ?>

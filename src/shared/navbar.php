@@ -1,12 +1,12 @@
 <?php
-    require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/head.php';
+    require $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/shared/head.php';
 
-    include_once($_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/admin.php');
+    include_once($_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/libs/admin.php');
 
     $admin = new Admin($databaseConnection);
 
     if(!isset($_SESSION['email'])) {
-      navigateTo("/comp353/index.php");
+      navigateTo("https://rrc353.encs.concordia.ca/comp353/index.php");
     } else {
       $user_email = $_SESSION['email'];
 
@@ -33,7 +33,7 @@
 <body>
   <div id="globalError"></div>
   <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
-    <a class="navbar-brand" href="/comp353/src/pages/homepage.php">rr_comp353_2</a>
+    <a class="navbar-brand" href="https://rrc353.encs.concordia.ca/comp353/src/pages/homepage.php">rr_comp353_2</a>
 
   </nav>
 
@@ -51,24 +51,24 @@
       </div>
       <div class="row px-4 logout">
         <div class="col-md-12">
-          <a href="/comp353/src/pages/account-page.php" class="stretched-link">My account</a>
+          <a href="https://rrc353.encs.concordia.ca/comp353/src/pages/account-page.php" class="stretched-link">My account</a>
         </div>
         <div class="col-md-12">
-          <a href="/comp353/src/shared/logout.php">logout</a>
+          <a href="https://rrc353.encs.concordia.ca/comp353/src/shared/logout.php">logout</a>
         </div>
       </div>
 
       <hr>
 
       <div class="row px-4" style="transform: rotate(0);">
-        <a href="/comp353/src/pages/homepage.php" class="stretched-link">Home</a>
+        <a href="https://rrc353.encs.concordia.ca/comp353/src/pages/homepage.php" class="stretched-link">Home</a>
       </div>
 
       <hr>
 
       <div class="row px-4" style="transform: rotate(0);">
         <span>
-          <a href="/comp353/src/pages/event-page.php" class="stretched-link">Events</a>
+          <a href="https://rrc353.encs.concordia.ca/comp353/src/pages/event-page.php" class="stretched-link">Events</a>
         </span>
       </div>
 
@@ -76,7 +76,7 @@
 
       <div class="row px-4" style="transform: rotate(0);">
         <span>
-          <a href="/comp353/src/pages/group-page.php" class="stretched-link">Groups</a>
+          <a href="https://rrc353.encs.concordia.ca/comp353/src/pages/group-page.php" class="stretched-link">Groups</a>
         </span>
       </div>
 

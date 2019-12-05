@@ -87,7 +87,7 @@
                         <div class="row text-center">
                             <div class="form-check col-md-6">
                                 <input class="form-check-input" type="radio" name="pageTemplate" id="pageTemplate"
-                                    value="/comp353/src/pages/eventTemplate/event-template1.php" checked
+                                    value="https://rrc353.encs.concordia.ca/comp353/src/pages/eventTemplate/event-template1.php" checked
                                     required>
                                 <label class="form-check-label text-nowrap" for="pageTemplate">
                                     No sidebar
@@ -95,7 +95,7 @@
                             </div>
                             <div class="form-check col-md-6">
                                 <input class="form-check-input" type="radio" name="pageTemplate" id="pageTemplate"
-                                    value="/comp353/src/pages/eventTemplate/event-template2.php" required>
+                                    value="https://rrc353.encs.concordia.ca/comp353/src/pages/eventTemplate/event-template2.php" required>
                                 <label class="form-check-label text-nowrap" for="pageTemplate">
                                     With sidebar
                                 </label>

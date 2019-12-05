@@ -14,7 +14,7 @@ CREATE TABLE admin (
     CONSTRAINT PK_Admin PRIMARY KEY (adminID)
 );
 
-INSERT INTO admin (emailAddress, username, password, profilePicture) VALUES ('admin@db.com', 'admin', 'admin', '/comp353/src/assets/images/mockadmin.png');
+INSERT INTO admin (emailAddress, username, password, profilePicture) VALUES ('admin@db.com', 'admin', 'admin', 'https://rrc353.encs.concordia.ca/comp353/src/assets/images/mockadmin.png');
 
 DROP TABLE IF EXISTS controller;
 CREATE TABLE controller (
@@ -26,7 +26,7 @@ CREATE TABLE controller (
     CONSTRAINT PK_Controller PRIMARY KEY (controllerID)
 );
 
-INSERT INTO controller (emailAddress, username, password, profilePicture) VALUES ('controller@db.com', 'controller', 'controller', '/comp353/src/assets/images/mockcontroller.png');
+INSERT INTO controller (emailAddress, username, password, profilePicture) VALUES ('controller@db.com', 'controller', 'controller', 'https://rrc353.encs.concordia.ca/comp353/src/assets/images/mockcontroller.png');
 
 DROP TABLE IF EXISTS user;
 CREATE TABLE user (
@@ -173,15 +173,15 @@ CREATE TABLE group_posts_replies (
 
 INSERT INTO user
     (userID, emailAddress, username, firstName, lastName, gender, dob, profilePicture, password)
-    VALUES (1,"user@db.com","user","firstUser","lastUser","male","1999-10-11","/comp353/src/assets/images/mockuser.png","user");
+    VALUES (1,"user@db.com","user","firstUser","lastUser","male","1999-10-11","https://rrc353.encs.concordia.ca/comp353/src/assets/images/mockuser.png","user");
 
 INSERT INTO user
     (userID, emailAddress, username, firstName, lastName, gender, dob, profilePicture, password)
-    VALUES (2,"user2@db.com","user2","firstUser2","lastUser2","male","1999-10-11","/comp353/src/assets/images/mockuser.png","user");
+    VALUES (2,"user2@db.com","user2","firstUser2","lastUser2","male","1999-10-11","https://rrc353.encs.concordia.ca/comp353/src/assets/images/mockuser.png","user");
 
 INSERT INTO user
     (userID, emailAddress, username, firstName, lastName, gender, dob, profilePicture, password)
-    VALUES (3,"user3@db.com","user3","firstUser3","lastUser3","male","1999-10-11","/comp353/src/assets/images/mockuser.png","user");
+    VALUES (3,"user3@db.com","user3","firstUser3","lastUser3","male","1999-10-11","https://rrc353.encs.concordia.ca/comp353/src/assets/images/mockuser.png","user");
 
 INSERT INTO event_fee_calculation(eventFeeID, controllerID, chargeRate) VALUES (1,1, 25);
 
@@ -191,11 +191,11 @@ INSERT INTO event_manager(eventManagerID, userID, statusCode) VALUES (2,3,"APPRO
 
 INSERT INTO event
     (eventID, eventManagerID, eventFeeID, eventName, eventDescription, eventPhoneNumber, eventType, size, startDate, endDate, pageTemplate)
-    VALUES (1,1,1,"Some Event","Some amazing event","888-888-8888","public",25,"2019-12-24","2019-12-26","/comp353/src/pages/eventTemplate/event-template1.php");
+    VALUES (1,1,1,"Some Event","Some amazing event","888-888-8888","public",25,"2019-12-24","2019-12-26","https://rrc353.encs.concordia.ca/comp353/src/pages/eventTemplate/event-template1.php");
 
 INSERT INTO event
     (eventID, eventManagerID, eventFeeID, eventName, eventDescription, eventPhoneNumber, eventType, size, startDate, endDate, pageTemplate)
-    VALUES (2,1,1,"Some Christmas Event","Some amazing christmas event","888-888-8888","public",25,"2019-12-24","2019-12-26","/comp353/src/pages/eventTemplate/event-template2.php");
+    VALUES (2,1,1,"Some Christmas Event","Some amazing christmas event","888-888-8888","public",25,"2019-12-24","2019-12-26","https://rrc353.encs.concordia.ca/comp353/src/pages/eventTemplate/event-template2.php");
 
 INSERT INTO event_list(eventID, userID, statusPosition, statusCode) VALUES (1,1,"EVENTMANAGER", "");
 
@@ -208,6 +208,6 @@ INSERT INTO groups(groupID, groupManagerID, groupName, groupDescription, eventID
 INSERT INTO group_member_list(groupID, userID, statusPosition, statusCode) VALUES (1,2,"PARTICIPANT","PENDING");
 
 INSERT INTO user (emailAddress, username, firstName, lastName, gender, dob, profilePicture, password) VALUES
-                 ('mary@db.com', 'mary', 'Mary', 'Doe', 'Female', "1989-10-12", '/comp353/src/assets/images/mockuser.png', 'mary');
+                 ('mary@db.com', 'mary', 'Mary', 'Doe', 'Female', "1989-10-12", 'https://rrc353.encs.concordia.ca/comp353/src/assets/images/mockuser.png', 'mary');
 INSERT INTO user (emailAddress, username, firstName, lastName, gender, dob, profilePicture, password) VALUES
-                 ('john@db.com', 'john', 'John', 'Doe', 'Male', "1979-12-11", '/comp353/src/assets/images/mockuser.png', 'john');
+                 ('john@db.com', 'john', 'John', 'Doe', 'Male', "1979-12-11", 'https://rrc353.encs.concordia.ca/comp353/src/assets/images/mockuser.png', 'john');

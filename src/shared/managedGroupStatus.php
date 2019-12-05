@@ -9,7 +9,7 @@
 <p>Group name: <?php echo $row['groupName']; ?></p>
 <p>Status: <?php echo $row['groupDescription']; ?></p>
 
-<a href="<?php echo "/comp353/src/pages/group-details-page.php?groupID={$row['groupID']}";?>">Go to group's detail page</a>
+<a href="<?php echo "https://rrc353.encs.concordia.ca/comp353/src/pages/group-details-page.php?groupID={$row['groupID']}";?>">Go to group's detail page</a>
 <hr>
 <?php endforeach; ?>
 

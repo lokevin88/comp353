@@ -1,8 +1,8 @@
 
 <?php
-    require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/head.php';
+    require $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/shared/head.php';
 
-    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/libs/admin.php';
+    include $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/libs/admin.php';
 
     $admin = new Admin($databaseConnection);
 
@@ -21,15 +21,15 @@
 
       if($isAdmin) {
         $query = mysqli_query($databaseConnection, "SELECT * FROM admin where emailAddress='$email' AND password='$pwd'");
-        $homepage = "/comp353/src/pages/admin-page.php";
+        $homepage = "https://rrc353.encs.concordia.ca/comp353/src/pages/admin-page.php";
       }
       else if($email == isController) {
         $query = mysqli_query($databaseConnection, "SELECT * FROM controller where emailAddress='$email' AND password='$pwd'");
-        $homepage = "/comp353/src/pages/controller-page.php";
+        $homepage = "https://rrc353.encs.concordia.ca/comp353/src/pages/controller-page.php";
       }
       else {
         $query = mysqli_query($databaseConnection, "SELECT * FROM user where emailAddress='$email' AND password='$pwd'");
-        $homepage = "/comp353/src/pages/homepage.php";
+        $homepage = "https://rrc353.encs.concordia.ca/comp353/src/pages/homepage.php";
       }
 
       $user_rows = mysqli_num_rows($query);
@@ -50,7 +50,7 @@
         <div class="col-md-8">
           <div class="introduction">
             <div class="row">
-              <h1 style="color: snow;"><a href="/comp353/index.php">rr_comp_353_2</a></h1>
+              <h1 style="color: snow;"><a href="https://rrc353.encs.concordia.ca/comp353/index.php">rr_comp_353_2</a></h1>
             </div>
             <div class="row">
               <h2>Database</h2>
@@ -90,7 +90,7 @@
                   </div>
                   <div class="form-group row">
                     <div class="col-sm-12">
-                      <a href="/comp353/src/pages/register-page.php">Register</a>
+                      <a href="https://rrc353.encs.concordia.ca/comp353/src/pages/register-page.php">Register</a>
                     </div>
                   </div>
                 </form>
@@ -107,5 +107,5 @@
       </div>
     </div>
     <?php
-    require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/jsScript.php';
+    require $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/shared/jsScript.php';
   ?>

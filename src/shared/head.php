@@ -25,11 +25,11 @@
 
 
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
-  <link href="/comp353/src/assets/css/common.css" type="text/css" rel="stylesheet" />
+  <link href="https://rrc353.encs.concordia.ca/comp353/src/assets/css/common.css" type="text/css" rel="stylesheet" />
 
   <?php
 
-  require $_SERVER['DOCUMENT_ROOT'] . '/comp353/config/mysql_connection.php';
-  require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/init.php';
+  require $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/config/mysql_connection.php';
+  require $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/shared/init.php';
   ?>
 </head>

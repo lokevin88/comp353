@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-    require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/head.php';
+    require $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/shared/head.php';
 
     $emailMatch = "Email already exist. Please use another one!";
     $usernameChar = "must be between 5 and 15 characters";
@@ -14,7 +14,7 @@
       $lname = $_POST['lname'];
       $gender = $_POST['gender'];
       $dob = $_POST['dob'];
-      $profilePic = "/comp353/src/assets/images/mockuser.png";
+      $profilePic = "https://rrc353.encs.concordia.ca/comp353/src/assets/images/mockuser.png";
       $pwd = $_POST['pwd'];
 
       $emailResult_query = mysqli_query($databaseConnection, "SELECT * FROM user where emailAddress='$email'");
@@ -31,7 +31,7 @@
       if(empty($errors)) {
           $register_query = mysqli_query($databaseConnection, "INSERT INTO user (emailAddress, username, firstName, lastName, gender, dob, profilePicture, password) VALUES
           ('$email', '$username', '$fname', '$lname', '$gender', '$dob', '$profilePic', '$pwd')");
-          navigateTo("/comp353/index.php");
+          navigateTo("https://rrc353.encs.concordia.ca/comp353/index.php");
       }
 
 
@@ -45,7 +45,7 @@
         <div class="col-lg-8">
           <div class="introduction">
             <div class="row">
-              <h1 style="color: snow;"><a href="/comp353/index.php">rr_comp_353_2</a></h1>
+              <h1 style="color: snow;"><a href="https://rrc353.encs.concordia.ca/comp353/index.php">rr_comp_353_2</a></h1>
             </div>
             <div class="row">
               <h2>Database</h2>
@@ -147,7 +147,7 @@
     </div>
   </div>
   <?php
-    require $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/jsScript.php';
+    require $_SERVER['DOCUMENT_ROOT'] . 'https://rrc353.encs.concordia.ca/comp353/src/shared/jsScript.php';
   ?>
 
 </html>
