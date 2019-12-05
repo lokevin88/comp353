@@ -13,7 +13,5 @@
     if(!$databaseConnection) {
         echo 'Could not connect to the server';
         exit;
-    }else {
-        echo 'cool conntected test';
     }
 ?>
