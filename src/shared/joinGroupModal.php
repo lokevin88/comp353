@@ -6,7 +6,7 @@
 
     /////////TESTING///////
     // SELECT DISTINCT g.groupName, g.groupID
-    // FROM groups g
+    // FROM `groups` g
     // INNER JOIN group_member_list gml ON g.groupID = gml.groupID
     // INNER JOIN event_list el ON g.eventID = el.eventID
     // WHERE gml.userID != '$userID'

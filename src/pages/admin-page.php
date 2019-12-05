@@ -137,7 +137,7 @@
               </td>
             </tr>
             <tr><td>Number of groups</td>
-              <td><?php $result = mysqli_query($databaseConnection, "SELECT * FROM groups");
+              <td><?php $result = mysqli_query($databaseConnection, "SELECT * FROM `groups`");
               if (mysqli_num_rows($result) > 0) {
                 echo count(mysqli_fetch_all($result, MYSQLI_ASSOC));
               } ?>

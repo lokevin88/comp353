@@ -9,7 +9,7 @@
 
         function getGroupName($groupID) {
             $query = mysqli_query($this->db_connection, "SELECT groupName
-                                                         FROM groups
+                                                         FROM `groups`
                                                          WHERE groupID = $groupID");
             if($query) {
                 $dataAsArray = mysqli_fetch_array($query, MYSQLI_ASSOC);
@@ -29,7 +29,7 @@
 
         function checkIfUserIsManager($groupID) {
             $query = mysqli_query($this->db_connection, "SELECT em.userID
-                                                         FROM groups g
+                                                         FROM `groups` g
                                                          INNER JOIN event_manager em ON g.groupManagerID = em.eventManagerID
                                                          WHERE g.groupID = $groupID");
             if($query) {
@@ -46,7 +46,7 @@
 
         function deleteGroup($groupID) {
             $queryGroup = mysqli_query($this->db_connection, "DELETE
-                                                              FROM groups
+                                                              FROM `groups`
                                                               WHERE groupID = $groupID");
             $queryMembers = mysqli_query($this->db_connection, "DELETE
                                                                 FROM group_member_list
