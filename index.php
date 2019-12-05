@@ -1,8 +1,8 @@
 
 <?php
-    require './comp353/src/shared/head.php';
+    require $_SERVER['DOCUMENT_ROOT'] . './comp353/src/shared/head.php';
 
-    include './comp353/src/libs/admin.php';
+    include $_SERVER['DOCUMENT_ROOT'] . './comp353/src/libs/admin.php';
 
     $admin = new Admin($databaseConnection);
 
@@ -107,5 +107,5 @@
       </div>
     </div>
     <?php
-    require './comp353/src/shared/jsScript.php';
+    require $_SERVER['DOCUMENT_ROOT'] . './comp353/src/shared/jsScript.php';
   ?>

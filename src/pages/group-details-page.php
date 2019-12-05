@@ -1,8 +1,8 @@
 <?php
-    require './comp353/src/shared/navbar.php';
+    require $_SERVER['DOCUMENT_ROOT'] . './comp353/src/shared/navbar.php';
 
-    include './comp353/src/libs/group.php';
-    include './comp353/src/libs/user.php';
+    include $_SERVER['DOCUMENT_ROOT'] . './comp353/src/libs/group.php';
+    include $_SERVER['DOCUMENT_ROOT'] . './comp353/src/libs/user.php';
 
     $group = new Group($databaseConnection);
     $user = new User($databaseConnection, $user_email);
@@ -54,19 +54,19 @@
 <div id="event-template-wrapper" class="main-body">
 
   <?php
-    include './comp353/src/components/bannerAndGroupMessage-component.php';
+    include $_SERVER['DOCUMENT_ROOT'] . './comp353/src/components/bannerAndGroupMessage-component.php';
   ?>
 
   <div class="row-nomargin">
     <div class="col-lg-9"> <!-- change grid size accordingly from the 12 grid -->
         <?php
-            include './comp353/src/components/group-newsfeed-component.php';
+            include $_SERVER['DOCUMENT_ROOT'] . './comp353/src/components/group-newsfeed-component.php';
         ?>
     </div>
     <div class="col-lg-3"> <!-- change grid size accordingly from the 12 grid -->
       <!-- right side bar -->
         <?php
-            include './comp353/src/components/groupSidebar-component.php';
+            include $_SERVER['DOCUMENT_ROOT'] . './comp353/src/components/groupSidebar-component.php';
         ?>
     </div>
   </div>
@@ -75,5 +75,5 @@
 <?php
 
     //  always import from above here
-    require './comp353/src/shared/jsScript.php';
+    require $_SERVER['DOCUMENT_ROOT'] . './comp353/src/shared/jsScript.php';
   ?>

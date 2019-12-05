@@ -11,8 +11,8 @@
 
 <?php
     //MODAL FOR CREATING GROUP
-    include '/comp353/src/shared/createGroupModal.php';
+    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/createGroupModal.php';
 
     //MODAL FOR JOINING GROUP
-    include '/comp353/src/shared/joinGroupModal.php';
+    include $_SERVER['DOCUMENT_ROOT'] . '/comp353/src/shared/joinGroupModal.php';
 ?>

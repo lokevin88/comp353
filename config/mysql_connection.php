@@ -4,10 +4,10 @@
     // DEFINE ('isAdmin', 'admin@db.com');
     DEFINE ('isController', 'controller@db.com');
 
-    DEFINE ('dbUser', 'rrc353_2');
-    DEFINE ('dbPassword', 'raG4Ek');
-    DEFINE ('dbHost', 'rrc353.encs.concordia.ca');
-    DEFINE ('dbName', 'rrc353_2');
+    DEFINE ('dbUser', 'root');
+    DEFINE ('dbPassword', '');
+    DEFINE ('dbHost', 'localhost');
+    DEFINE ('dbName', 'rr_comp353_2');
 
     $databaseConnection = mysqli_connect(dbHost, dbUser, dbPassword, dbName);
 

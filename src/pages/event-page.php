@@ -1,9 +1,9 @@
 <?php
-    require './comp353/src/shared/navbar.php';
+    require $_SERVER['DOCUMENT_ROOT'] . './comp353/src/shared/navbar.php';
     //  always import from below here
 
-    include './comp353/src/libs/user.php';
-    include './comp353/src/libs/event.php';
+    include $_SERVER['DOCUMENT_ROOT'] . './comp353/src/libs/user.php';
+    include $_SERVER['DOCUMENT_ROOT'] . './comp353/src/libs/event.php';
 
     $user = new User($databaseConnection, $user_email);
     // get all managed events
@@ -142,7 +142,7 @@
 <div id="event-wrapper" class="main-body">
 
     <?php
-    include './comp353/src/components/bannerAndEvent-component.php';
+    include $_SERVER['DOCUMENT_ROOT'] . './comp353/src/components/bannerAndEvent-component.php';
     ?>
 
     <div class="row-nomargin">
@@ -205,7 +205,7 @@
     <div class="row-nomargin">
         <div class="col-lg-2 whiteBorderAndBlackLines" id="managedEvents">
             <?php
-                include './comp353/src/shared/managedEventStatus.php';
+                include $_SERVER['DOCUMENT_ROOT'] . './comp353/src/shared/managedEventStatus.php';
             ?>
         </div>
         <div class="col-lg-2 whiteBorderAndBlackLines">
@@ -296,5 +296,5 @@
 <?php
 
     //  always import from above here
-    require './comp353/src/shared/jsScript.php';
+    require $_SERVER['DOCUMENT_ROOT'] . './comp353/src/shared/jsScript.php';
   ?>

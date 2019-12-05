@@ -1,5 +1,5 @@
 <?php
-    require './comp353/src/shared/navbar.php';
+    require $_SERVER['DOCUMENT_ROOT'] . './comp353/src/shared/navbar.php';
     //  always import from below here
 
     if($isAdmin == false) {
@@ -150,5 +150,5 @@
   <?php
 
     //  always import from above here
-    require './comp353/src/shared/jsScript.php';
+    require $_SERVER['DOCUMENT_ROOT'] . './comp353/src/shared/jsScript.php';
   ?>
